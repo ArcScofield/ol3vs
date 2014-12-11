@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<link href="css/normalize.css" rel="stylesheet" media="all">
+<title>FIFA Online3数据库</title>
+<style type="text/css">
+body {
+    font-family: "Microsoft YaHei",微软雅黑, 'Helvetica Neue',Helvetica,Arial,Sans-serif;
+    background: url(img/bg.jpg) top  center no-repeat;
+}
+
+.container {
+    margin: 45px auto 0 auto;
+}
+.side {
+    background: #1d1d1d;
+    width: 28%;
+    float: left;
+    border-radius: 6px;
+    background: rgba(29, 29, 29, 0.92);
+    box-shadow: 10px 10px 30px #111111;
+}
+.main {
+    float: right;
+    width: 71%;
+    background: #17212e;
+    background: rgba(29, 29, 29, 0.92);
+    box-shadow: 10px 10px 30px #111111;
+    color: #fefefe;
+    border-radius: 6px;
+}
+table {
+    width: 100%;
+}
+th {
+    line-height: 38px;
+    text-align: left;
+}
+td {
+    border-bottom: 1px solid #181818;
+    border-top: 1px solid #2f2f30; 
+    line-height: 42px;
+    text-align: left;
+}
+.t-c {
+    text-align: center;
+}
+@media (max-width:1189px) {
+    .container {
+        width: 980px;
+    }
+}
+@media (max-width:1500px) {
+    .container {
+        width: 1190px;
+    }
+}
+@media (max-width: 799px) {
+    .container {
+        width: 100%;
+    }
+    .side {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        border-radius: 0px;
+    }
+    .box-ad-search {
+        display: none;
+    }
+    .main {
+        float: none;
+        width: 100%;
+        border-radius: 0px;
+    }
+    .box-txt-search {
+        height: 35px;
+        padding: 5px 0;
+    }
+    #txtSearch {
+        height: 25px;
+        border-radius: 2px;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+    <div class="side">
+        <div class="box-txt-search">
+            <input type="search" id="txtSearch">
+        </div>
+        <div class="box-ad-search">
+            <select>
+                <option>德国足球甲级联赛</option>
+                <option>西班牙足球甲级联赛</option>
+                <option>法国足球甲级联赛</option>
+                <option>英格兰足球超级联赛</option>
+                <option></option>
+                <option></option>
+                <option></option>
+                <option></option>
+            </select>
+        </div>
+    </div>
+    <div class="main">
+        <table>
+            <thead>
+                <tr>
+                    <th width="10%"></th>
+                    <th>位置</th>
+                    <th>球员名</th>
+                    <th>能力</th>
+                    <th>俱乐部</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="t-c"><input type="checkbox"></td>
+                    <td><i></i>CF</td>
+                    <td>梅西</td>
+                    <td>83</td>
+                    <td>巴萨罗那</td>
+                </tr>
+                <tr>
+                    <td class="t-c"><input type="checkbox"></td>
+                    <td><i></i>CM</td>
+                    <td>亚亚图雷</td>
+                    <td>83</td>
+                    <td>曼城</td>
+                </tr>
+                <tr>
+                    <td class="t-c"><input type="checkbox"></td>
+                    <td><i></i>CM</td>
+                    <td>亚亚图雷</td>
+                    <td>83</td>
+                    <td>曼城</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="box-player-vs">
+    <div class="box-player-info">
+        <div class="box-head"></div>
+        <div>
+            <div>80KG 皇家马德里</div>
+            <div>1985.2.25</div>
+            <div></div>
+        </div>
+    </div>
+    <div class="box-player-data">
+        <ul>
+            <li>总能力值</li>
+        </ul>
+        <ul>
+            <li>
+                <span>盘带速度</span>
+                <span>84</span>
+                <span>86</span>
+                <span>2</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="js/lib/zepto/zepto.min.js"></script>
+<script type="text/javascript">
+$(function () {
+    $(".main").on("click", function () {
+        $.post("js/1.json", {}, function (data) {
+            console.log(data);
+        });
+    });
+});
+</script>
+</body>
+</html>
