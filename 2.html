@@ -9,8 +9,15 @@
 <title>FIFA Online3数据库</title>
 <style type="text/css">
 body {
-    font-family: "Microsoft YaHei",微软雅黑, 'Helvetica Neue',Helvetica,Arial,Sans-serif;
-    background: url(img/bg.jpg) top  center no-repeat;
+    font-family: "Microsoft YaHei",微软雅黑, Sans-serif;
+    color: #fefefe;
+}
+ul {
+    padding: 0px;
+    margin: 0px;
+}
+li {
+    list-style: none;
 }
 
 .container {
@@ -22,16 +29,28 @@ body {
     float: left;
     border-radius: 6px;
     background: rgba(29, 29, 29, 0.92);
-    box-shadow: 10px 10px 30px #111111;
+    box-shadow: 3px 3px 3px #111111;
 }
 .main {
     float: right;
     width: 71%;
     background: #17212e;
     background: rgba(29, 29, 29, 0.92);
-    box-shadow: 10px 10px 30px #111111;
-    color: #fefefe;
+    box-shadow: 3px 3px 3px #111111;
     border-radius: 6px;
+}
+
+.box-player-vs {
+    background: #1d1d1d;
+    width: 100%;
+    position: absolute;
+}
+.list-data > li {
+    line-height: 42px;
+}
+.list-data > li > span {
+    width: 25%;
+    float: left;
 }
 table {
     width: 100%;
@@ -54,9 +73,10 @@ td {
         width: 980px;
     }
 }
-@media (max-width:1500px) {
+@media (max-width:2090px) {
     .container {
         width: 1190px;
+        background: url(img/bg.jpg) top  center no-repeat;
     }
 }
 @media (max-width: 799px) {
@@ -102,10 +122,9 @@ td {
                 <option>西班牙足球甲级联赛</option>
                 <option>法国足球甲级联赛</option>
                 <option>英格兰足球超级联赛</option>
-                <option></option>
-                <option></option>
-                <option></option>
-                <option></option>
+            </select>
+            <select>
+                <OPTION></OPTION>
             </select>
         </div>
     </div>
@@ -121,50 +140,57 @@ td {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="t-c"><input type="checkbox"></td>
-                    <td><i></i>CF</td>
-                    <td>梅西</td>
-                    <td>83</td>
-                    <td>巴萨罗那</td>
-                </tr>
-                <tr>
-                    <td class="t-c"><input type="checkbox"></td>
-                    <td><i></i>CM</td>
-                    <td>亚亚图雷</td>
-                    <td>83</td>
-                    <td>曼城</td>
-                </tr>
-                <tr>
-                    <td class="t-c"><input type="checkbox"></td>
-                    <td><i></i>CM</td>
-                    <td>亚亚图雷</td>
-                    <td>83</td>
-                    <td>曼城</td>
-                </tr>
             </tbody>
         </table>
     </div>
 </div>
 <div class="box-player-vs">
-    <div class="box-player-info">
-        <div class="box-head"></div>
-        <div>
-            <div>80KG 皇家马德里</div>
-            <div>1985.2.25</div>
-            <div></div>
+    <div class="wrap">
+        <div class="box-player-info">
+            <div class="box-head"></div>
+            <div>
+                <div>80KG 皇家马德里</div>
+                <div>1985.2.25</div>
+                <div></div>
+            </div>
+        </div>
+        <div class="box-player-info">
+            <div class="box-head"></div>
+            <div>
+                <div>80KG 皇家马德里</div>
+                <div>1985.2.25</div>
+                <div></div>
+            </div>
         </div>
     </div>
     <div class="box-player-data">
         <ul>
             <li>总能力值</li>
         </ul>
-        <ul>
+        <ul class="list-data">
             <li>
-                <span>盘带速度</span>
-                <span>84</span>
-                <span>86</span>
-                <span>2</span>
+                <span class="data-item">盘带速度</span>
+                <span class="data-player-f">84</span>
+                <span class="data-player-s">86</span>
+                <span class="data-diff">2</span>
+            </li>
+            <li>
+                <span class="data-item">视野</span>
+                <span class="data-player-f">84</span>
+                <span class="data-player-s">86</span>
+                <span class="data-diff">2</span>
+            </li>
+            <li>
+                <span class="data-item">抢断</span>
+                <span class="data-player-f">84</span>
+                <span class="data-player-s">86</span>
+                <span class="data-diff">2</span>
+            </li>
+            <li>
+                <span class="data-item">战术意识</span>
+                <span class="data-player-f">84</span>
+                <span class="data-player-s">86</span>
+                <span class="data-diff">2</span>
             </li>
         </ul>
     </div>
@@ -172,11 +198,38 @@ td {
 <script type="text/javascript" src="js/lib/zepto/zepto.min.js"></script>
 <script type="text/javascript">
 $(function () {
-    $(".main").on("click", function () {
-        $.post("js/1.json", {}, function (data) {
-            console.log(data);
-        });
+    var result = [];
+
+    $.ajax({
+        url: "js/1.json",
+        dataType: "json",
+        success: function (resp) {
+            if (resp.code === "ok") {
+                result = resp.data;
+                renderList(result);
+                console.log(result);
+            }
+        }
     });
+
+    /**
+    * 渲染list
+    */
+    function renderList(data) {
+        var html = "";
+        
+        for (var i = 0; i < data.length; i++) {
+            html += "<tr>";
+            html += "<td class=\"t-c\"><input value=\"" + data[i].id + "\" type=\"checkbox\"></td>";
+            html += "<td><i></i>CF</td>";
+            html += "<td>" + data[i].name + "</td>";
+            html += "<td>83</td>";
+            html += "<td>" + data[i].jlb + "</td>";
+            html += "</tr>"
+        }
+
+        $(".main > table > tbody").html(html);
+    }
 });
 </script>
 </body>
