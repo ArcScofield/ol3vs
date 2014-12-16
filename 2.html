@@ -10,7 +10,9 @@
 <style type="text/css">
 body {
     font-family: "Microsoft YaHei",微软雅黑, Sans-serif;
+    /*
     color: #fefefe;
+    */
 }
 ul {
     padding: 0px;
@@ -44,6 +46,8 @@ li {
     background: #1d1d1d;
     width: 100%;
     position: absolute;
+    top: 0px;
+    right: 100%;
 }
 .list-data > li {
     line-height: 42px;
@@ -91,7 +95,6 @@ td {
         border-radius: 0px;
     }
     .box-ad-search {
-        display: none;
     }
     .main {
         float: none;
@@ -117,15 +120,47 @@ td {
             <input type="search" id="txtSearch">
         </div>
         <div class="box-ad-search">
-            <select>
-                <option>德国足球甲级联赛</option>
-                <option>西班牙足球甲级联赛</option>
-                <option>法国足球甲级联赛</option>
-                <option>英格兰足球超级联赛</option>
-            </select>
-            <select>
-                <OPTION></OPTION>
-            </select>
+            <ul>
+                <li>
+                    <select id="selectMatch">
+                        <option value="">联赛</option>
+                        <option value="1">西班牙足球甲级联赛</option>
+                        <option value="2">德国足球甲级联赛</option>
+                        <option value="3">英格兰足球超级联赛</option>
+                        <option value="4">意大利足球甲级联赛</option>
+                        <option value="5">法国足球甲级联赛</option>
+                        <option value="6">荷兰足球甲级联赛</option>
+                        <option value="7">比利时足球甲级联赛</option>
+                        <option value="8">丹麦足球超级联赛</option>
+                        <option value="9">英格兰足球冠军联赛</option>
+                        <option value="10">法国足球乙级联赛</option>
+                        <option value="11">德国足球乙级联赛</option>
+                        <option value="12">意大利足球乙级联赛</option>
+                        <option value="13">美国职业足球大联盟</option>
+                        <option value="14">挪威足球超级联赛</option>
+                        <option value="15">苏格兰足球超级联赛</option>
+                        <option value="16">西班牙足球乙级联赛</option>
+                        <option value="17">瑞典足球超级联赛</option>
+                        <option value="18">英格兰足球甲级联赛</option>
+                        <option value="19">阿根廷联赛</option>
+                        <option value="20">葡萄牙足球联赛</option>
+                        <option value="21">俄罗斯足球超级联赛</option>
+                        <option value="22">瑞士足球超级联赛</option>
+                        <option value="23">沙特阿拉伯足球联赛</option>
+                        <option value="24">澳大利亚职业足球联赛</option>
+                    </select>
+                </li>
+                <li>
+                    <select id="selectTeam">
+                        <option>球队</option>
+                    </select>
+                </li>
+                <li>
+                    <select>
+                        <option value=""></option>
+                    </select>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="main">
@@ -196,6 +231,7 @@ td {
     </div>
 </div>
 <script type="text/javascript" src="js/lib/zepto/zepto.min.js"></script>
+<script type="text/javascript" src="js/datas.js"></script>
 <script type="text/javascript">
 $(function () {
     var result = [];
@@ -204,10 +240,9 @@ $(function () {
         url: "js/1.json",
         dataType: "json",
         success: function (resp) {
-            if (resp.code === "ok") {
+            if (resp && resp.code === "ok") {
                 result = resp.data;
                 renderList(result);
-                console.log(result);
             }
         }
     });
@@ -230,6 +265,23 @@ $(function () {
 
         $(".main > table > tbody").html(html);
     }
+
+    $("#selectMatch").change(function () {
+        var val = $(this)[0].selectedIndex;
+        var doc = document.createDocumentFragment();
+        var datas = Matches[val - 1].team;
+        var op = document.createElement("option");
+        op.text = "球队";
+        op.value = 0;
+        doc.appendChild(op);
+        for (var i = 0; i < datas.length; i++) {
+            op = document.createElement("option");
+            op.text = datas[i].name;
+            op.value = datas[i].id;
+            doc.appendChild(op);
+        }
+        $("#selectTeam").empty()[0].appendChild(doc);
+    });
 });
 </script>
 </body>
