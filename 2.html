@@ -10,7 +10,6 @@
 <style type="text/css">
 body {
     font-family: "Microsoft YaHei",微软雅黑, Sans-serif;
-    color: #fefefe;
     overflow-x: hidden; 
 }
 ul {
@@ -140,6 +139,51 @@ td {
         <div class="box-ad-search">
             <ul class="list-ad-search">
                 <li>
+                    <span>位置：</span>
+                    <select>
+                        <option>位置</option>
+                        <optgroup label="FW">
+                            <option value="CF">CF</option>
+                            <option value="RW">RW</option>
+                            <option value="LW">LW</option>
+                            <option value="ST">ST</option>
+                        </optgroup>
+                        <optgroup label="MF">
+                            <option value="LM">LM</option>
+                            <option value="RM">RM</option>
+                            <option value="CM">CM</option>
+                            <option value="CAM">CAM</option>
+                            <option value="CDM">CDM</option>
+                        </optgroup>
+                        <optgroup label="DF">
+                            <option value="LWB">LWB</option>
+                            <option value="LB">LB</option>
+                            <option value="CB">CB</option>
+                            <option value="RB">RB</option>
+                            <option value="RWB">RWB</option>
+                        </optgroup>
+                        <optgroup label="GK">
+                            <option value="GK">GK</option>
+                        </optgroup>
+                    </select>
+                </li>
+                <li>
+                    <span>赛季：</span>
+                    <select>
+                        <option value="0">赛季</option>
+                        <option value="14">2014</option>
+                        <option value="10">2010</option>
+                        <option value="w">WC</option>
+                        <option value="l">传奇</option>
+                    </select>
+                </li>
+                <li>
+                    <span>能力：</span>
+                    <select></select>
+                     - 
+                    <select></select>
+                </li>
+                <li>
                     <span>联赛：</span>
                     <select id="selectMatch">
                         <option value="">联赛</option>
@@ -252,7 +296,6 @@ td {
     </div>
 </div>
 <script type="text/javascript" src="js/lib/zepto/zepto.min.js"></script>
-<script src="js/lib/touch/touch.min.js"></script>
 <script type="text/javascript" src="js/datas.js"></script>
 <script type="text/javascript">
 $(function () {
