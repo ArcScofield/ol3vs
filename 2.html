@@ -10,9 +10,8 @@
 <style type="text/css">
 body {
     font-family: "Microsoft YaHei",微软雅黑, Sans-serif;
-    /*
     color: #fefefe;
-    */
+    overflow-x: hidden; 
 }
 ul {
     padding: 0px;
@@ -47,7 +46,13 @@ li {
     width: 100%;
     position: absolute;
     top: 0px;
-    right: 100%;
+    left: 100%;
+    z-index: 2;
+    display: none;
+    transition: left .3s linear;
+}
+.box-player-vs > .box-top-bar {
+    line-height: 35px;
 }
 .list-data > li {
     line-height: 42px;
@@ -78,9 +83,11 @@ td {
     }
 }
 @media (max-width:2090px) {
+    body {
+        background: url(img/bg.jpg) top  center no-repeat;
+    }
     .container {
         width: 1190px;
-        background: url(img/bg.jpg) top  center no-repeat;
     }
 }
 @media (max-width: 799px) {
@@ -95,6 +102,9 @@ td {
         border-radius: 0px;
     }
     .box-ad-search {
+        height: 0px;
+        overflow: hidden;
+        transition: left .3s linear;
     }
     .main {
         float: none;
@@ -110,6 +120,14 @@ td {
         border-radius: 2px;
     }
 }
+.list-ad-search > li {
+    padding: 10px 0px;
+}
+.list-ad-search > li > span {
+    width: 90px;
+    display: inline-block;
+    text-align: right;
+}
 </style>
 </head>
 
@@ -117,11 +135,12 @@ td {
 <div class="container">
     <div class="side">
         <div class="box-txt-search">
-            <input type="search" id="txtSearch">
+            <input type="input" placeholder="逗号分隔搜索多名球员" id="txtSearch">
         </div>
         <div class="box-ad-search">
-            <ul>
+            <ul class="list-ad-search">
                 <li>
+                    <span>联赛：</span>
                     <select id="selectMatch">
                         <option value="">联赛</option>
                         <option value="1">西班牙足球甲级联赛</option>
@@ -148,17 +167,18 @@ td {
                         <option value="22">瑞士足球超级联赛</option>
                         <option value="23">沙特阿拉伯足球联赛</option>
                         <option value="24">澳大利亚职业足球联赛</option>
+                        <option value="25">土耳其足球超级联赛</option>
                     </select>
                 </li>
                 <li>
+                    <span>球队：</span>
                     <select id="selectTeam">
                         <option>球队</option>
                     </select>
                 </li>
                 <li>
-                    <select>
-                        <option value=""></option>
-                    </select>
+                    <span>隐藏能力：</span>
+                    <select id="selectHdProp"></select>
                 </li>
             </ul>
         </div>
@@ -180,6 +200,7 @@ td {
     </div>
 </div>
 <div class="box-player-vs">
+    <div class="box-top-bar">返回</div>
     <div class="wrap">
         <div class="box-player-info">
             <div class="box-head"></div>
@@ -231,6 +252,7 @@ td {
     </div>
 </div>
 <script type="text/javascript" src="js/lib/zepto/zepto.min.js"></script>
+<script src="js/lib/touch/touch.min.js"></script>
 <script type="text/javascript" src="js/datas.js"></script>
 <script type="text/javascript">
 $(function () {
@@ -245,6 +267,15 @@ $(function () {
                 renderList(result);
             }
         }
+    });
+
+    touch.on(".main", 'swipeRight', function(ev){
+        alert(1);
+        $(".box-ad-search").css("height", "auto");
+    });
+    $(".main").click(function () {
+        $(".box-ad-search").css("height", "auto");
+        // $(".box-player-vs").css("left", "0px");
     });
 
     /**
@@ -271,6 +302,7 @@ $(function () {
         var doc = document.createDocumentFragment();
         var datas = Matches[val - 1].team;
         var op = document.createElement("option");
+
         op.text = "球队";
         op.value = 0;
         doc.appendChild(op);
@@ -282,6 +314,16 @@ $(function () {
         }
         $("#selectTeam").empty()[0].appendChild(doc);
     });
+
+    var doc = document.createDocumentFragment();
+    var op = {};
+    for (var i = 0; i < HdProp.length; i++) {
+        op = document.createElement("option");
+        op.text = HdProp[i];
+        op.value = i;
+        doc.appendChild(op);
+    }
+    $("#selectHdProp")[0].appendChild(doc);
 });
 </script>
 </body>
