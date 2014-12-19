@@ -6,16 +6,31 @@
 <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <link href="css/normalize.css" rel="stylesheet" media="all">
-<title>FIFA Online3数据库</title>
+<title>FIFA Online3 杯赛系统</title>
 <style type="text/css">
 body {
     font-family: "Microsoft YaHei",微软雅黑, Sans-serif;
     overflow-x: hidden;
     background: #2f2f2f;
 }
-h1 {
+.sider {
+    float: left;
+    width: 220px;
+}
+.sider li {
+
+}
+.main {
+    position: absolute;
+    left: 230px;
+    right: 0px;
+}
+h2 {
     box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
     border-bottom: 1px solid #121212;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 8px 0 8px 20px;
 }
 </style>
 </head>
@@ -24,19 +39,67 @@ h1 {
 <div class="nav"></div>
 <div class="wrap">
     <div class="sider">
-        <h3>联赛</h3>
         <ul>
-            <li></li>
-        </ul>
-        <h3>杯赛</h3>
-        <ul>
-            <li></li>
+            <li>个人首页</li>
+            <li>队内联赛</li>
+            <li>队内杯赛</li>
+            <li>队内数据</li>
         </ul>
     </div>
-    <div class="main"></div>
+    <div class="main">
+        <div id="index">
+            <div>
+                <h2>FIFA OL3公告</h2>
+                <ul>
+                    <li>[活动]<a href="#">年末狂欢宴 史上最强福利即将开启！</a><span>2014-12-19</span></li>
+                    <li>[新闻]<a href="#">年末狂欢宴 史上最强福利即将开启！</a><span>2014-12-19</span></li>
+                    <li>[新闻]<a href="#">“14时代”数据更新指南</a><span>2014-12-17</span></li>
+                </ul>
+            </div>
+            <div>
+                <h2>个人战绩</h2>
+                <ul>
+                    <li>
+                        <span><span>最好成绩：</span></span>
+                        <span><span>冠军次数：</span></span>
+                        <span><span>亚军次数：</span></span>
+                        <span><span>季军次数：</span></span>
+                    </li>
+                    <li>
+                        <span><span>出场数：</span></span>
+                        <span><span>胜场数：</span></span>
+                        <span><span>平场数：</span></span>
+                        <span><span>负场数：</span></span>
+                    </li>
+                    <li>
+                        <span><span>进球数：</span></span>
+                        <span><span>场均进球：</span></span>
+                        <span><span>失球数：</span></span>
+                        <span><span>场均失球：</span></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="">
+            <ul>
+                <li>
+                    <span>杯赛名</span>
+                    <span>杯赛说明</span>
+                    <span>杯赛类型</span>
+                    <span>杯赛状态</span>
+                    <span>操作</span>
+                </li>
+                <li>
+                    <span>大鸟杯</span>
+                    <span></span>
+                    <span>杯赛类型</span>
+                    <span>杯赛状态</span>
+                    <span>报名 | 报分 |管理</span>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
-<script type="text/javascript" src="js/lib/zepto/zepto.min.js"></script>
-<script type="text/javascript" src="js/datas.js"></script>
 <script type="text/javascript">
 $(function () {
     
