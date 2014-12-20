@@ -13,17 +13,76 @@ body {
     overflow-x: hidden;
     background: #2f2f2f;
 }
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+li {
+    list-style: none;
+}
+.nav {
+    height: 60px;
+    background: #000000;
+    text-align: right;
+    line-height: 60px;
+}
+.nav > span {
+    display: inline-block;
+    width: 120px;
+    text-align: center;
+    color: #eaeaea;
+    font-weight: bolder;
+}
+.wrap {
+    position: relative;
+    height: 700px;
+}
 .sider {
     float: left;
+    height: 500px;
     width: 220px;
+    /*
+    box-shadow: rgba(255, 255, 255, 0.1) 1px 1px 0, rgba(0, 0, 0, 0.8) 0 1px 3px 0px inset;
+    */
 }
 .sider li {
-
+    padding: 12px 0 12px 20px;
+    color: #eaeaea;
+    box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
+    border-bottom: 1px solid #121212;
+    cursor: pointer;
+}
+.sider li:hover {
+    color: #84bcde;
 }
 .main {
     position: absolute;
-    left: 230px;
+    left: 235px;
     right: 0px;
+    top: 0px;
+    bottom: 0px;
+    padding-left: 10px;
+    box-shadow: rgba(255, 255, 255, 0.07) 1px 0 0 inset;
+    border-left: 1px solid #121212;
+    color: #999999;
+}
+#index li {
+    padding: 5px 0 5px 20px;
+    margin: 0px;
+}
+.type {
+    color: #bababa;
+}
+#index a {
+    color: #eaeaea;
+    text-decoration: none;
+}
+#index a:hover {
+    text-decoration: underline;
+}
+.time {
+    color: #666666;
+    margin-left: 10px;
 }
 h2 {
     box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
@@ -32,11 +91,39 @@ h2 {
     font-size: 16px;
     padding: 8px 0 8px 20px;
 }
+.box-tool-tax .txt-item {
+    display: inline-block;
+    width: 180px;
+    margin: 0 15px;
+}
+input {
+    box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
+    background: #202020;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: none;
+    height: 28px;
+    line-height: 28px;
+    color: #eaeaea;
+}
+.list-data > li > span {
+    display: inline-block;
+    width: 24%;
+    color: #ffffff;
+}
+.list-data > li > span > span {
+    display: inline-block;
+    width: 50%;
+    color: #666666;
+    text-align: right;
+}
 </style>
 </head>
 
 <body>
-<div class="nav"></div>
+<div class="nav">
+    <span>球员数据库</span>
+    <span>战队系统</span>
+</div>
 <div class="wrap">
     <div class="sider">
         <ul>
@@ -51,59 +138,126 @@ h2 {
             <div>
                 <h2>FIFA OL3公告</h2>
                 <ul>
-                    <li>[活动]<a href="#">年末狂欢宴 史上最强福利即将开启！</a><span>2014-12-19</span></li>
-                    <li>[新闻]<a href="#">年末狂欢宴 史上最强福利即将开启！</a><span>2014-12-19</span></li>
-                    <li>[新闻]<a href="#">“14时代”数据更新指南</a><span>2014-12-17</span></li>
+                    <li>
+                        <span class="type">[活动]</span>
+                        <a href="#">年末狂欢宴 史上最强福利即将开启！</a>
+                        <span class="time">2014-12-19</span>
+                    </li>
+                    <li>
+                        <span class="type">[新闻]</span>
+                        <a href="#">年末狂欢宴 史上最强福利即将开启！</a>
+                        <span class="time">2014-12-19</span>
+                    </li>
+                    <li>
+                        <span class="type">[新闻]</span>
+                        <a href="#">“14时代”数据更新指南</a>
+                        <span class="time">2014-12-17</span>
+                    </li>
+                    <li>
+                        <span class="type">[活动]</span>
+                        <a href="#">年末狂欢宴 史上最强福利即将开启！</a>
+                        <span class="time">2014-12-19</span>
+                    </li>
+                    <li>
+                        <span class="type">[新闻]</span>
+                        <a href="#">年末狂欢宴 史上最强福利即将开启！</a>
+                        <span class="time">2014-12-19</span>
+                    </li>
+                    <li>
+                        <span class="type">[新闻]</span>
+                        <a href="#">“14时代”数据更新指南</a>
+                        <span class="time">2014-12-17</span>
+                    </li>
                 </ul>
             </div>
             <div>
                 <h2>个人战绩</h2>
-                <ul>
+                <ul class="list-data">
                     <li>
-                        <span><span>最好成绩：</span></span>
-                        <span><span>冠军次数：</span></span>
-                        <span><span>亚军次数：</span></span>
-                        <span><span>季军次数：</span></span>
+                        <span><span>最好成绩：</span>冠军</span>
+                        <span><span>冠军次数：</span>1次</span>
+                        <span><span>亚军次数：</span>3次</span>
+                        <span><span>季军次数：</span>4次</span>
                     </li>
                     <li>
-                        <span><span>出场数：</span></span>
-                        <span><span>胜场数：</span></span>
-                        <span><span>平场数：</span></span>
-                        <span><span>负场数：</span></span>
+                        <span><span>出 场 数：</span>100</span>
+                        <span><span>胜 场 数：</span>100</span>
+                        <span><span>平 场 数：</span>100</span>
+                        <span><span>负 场 数：</span>100</span>
                     </li>
                     <li>
-                        <span><span>进球数：</span></span>
-                        <span><span>场均进球：</span></span>
-                        <span><span>失球数：</span></span>
-                        <span><span>场均失球：</span></span>
+                        <span><span>进 球 数：</span>100</span>
+                        <span><span>场均进球：</span>100</span>
+                        <span><span>失 球 数：</span>100</span>
+                        <span><span>场均失球：</span>100</span>
                     </li>
                 </ul>
             </div>
+            <div class="box-tool-tax">
+                <h2>税费计算器</h2>
+                <div>
+                    <label>价格：<input maxlength="11" type="text" id="txtPrice"></label>
+                    <span class="txt-item">税费：<span id="txtTax"></span></span>
+                    <span class="txt-item">获得：<span id="txtResult"></span></span>
+                </div>
+            </div>
         </div>
         <div id="">
-            <ul>
-                <li>
-                    <span>杯赛名</span>
-                    <span>杯赛说明</span>
-                    <span>杯赛类型</span>
-                    <span>杯赛状态</span>
-                    <span>操作</span>
-                </li>
-                <li>
-                    <span>大鸟杯</span>
-                    <span></span>
-                    <span>杯赛类型</span>
-                    <span>杯赛状态</span>
-                    <span>报名 | 报分 |管理</span>
-                </li>
-            </ul>
+            <table width="95%">
+                <tr>
+                    <th>杯赛名</th>
+                    <th>杯赛说明</th>
+                    <th>杯赛类型</th>
+                    <th>杯赛状态</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td>大鸟杯</dt>
+                    <td></td>
+                    <td>杯赛类型</td>
+                    <td>杯赛状态</td>
+                    <td>报名 | 报分 |管理</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
 <script type="text/javascript">
-$(function () {
-    
+var input = document.getElementById("txtPrice");
+var txtTax = document.getElementById("txtTax");
+var txtResult = document.getElementById("txtResult");
+
+addChangeEvent(input, function () {
+    var val = ~~input.value;
+
+    if (val > 1000) {
+        txtTax.innerHTML = (val * 0.33).toFixed(0);
+        txtResult.innerHTML = val - (val * 0.33).toFixed(0);
+    }
 });
+function addChangeEvent (element, callback) {
+    if (window.addEventListener) {  // 先执行W3C
+        element.addEventListener("input", callback);
+    } else {
+        element.attachEvent("onpropertychange", function(e) {
+            if (e.propertyName === "value") {
+                callback(e);
+            }
+        });
+    }
+
+    if (document.documentMode === 9) {
+        var selectionchange = function (e) {
+            if (e.type === "focus") {
+                document.addEventListener("selectionchange", callback);
+            } else {
+                document.removeEventListener("selectionchange", callback);
+            }
+        }
+        element.addEventListener("focus", selectionchange);
+        element.addEventListener("blur", selectionchange);
+    }
+}
 </script>
 </body>
 </html>
