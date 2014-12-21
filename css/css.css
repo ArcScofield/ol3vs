@@ -1,0 +1,7 @@
+.tb-team {
+	line-height: 35px;
+}
+.tb-team th, .tb-team td {
+    text-align: center;
+    border: 1px solid #555;
+}
