@@ -32,6 +32,7 @@ li {
     text-align: center;
     color: #eaeaea;
     font-weight: bolder;
+    border-top: 3px solid #dc343d; 
 }
 .wrap {
     position: relative;
@@ -65,6 +66,9 @@ li {
     box-shadow: rgba(255, 255, 255, 0.07) 1px 0 0 inset;
     border-left: 1px solid #121212;
     color: #999999;
+}
+#index {
+    display: none;
 }
 #index li {
     padding: 5px 0 5px 20px;
@@ -104,6 +108,13 @@ input {
     height: 28px;
     line-height: 28px;
     color: #eaeaea;
+}
+.tb-match th {
+    text-align: right;
+    padding: 10px 10px 10px 0; 
+}
+.tb-match td {
+   
 }
 .list-data > li > span {
     display: inline-block;
@@ -196,68 +207,159 @@ input {
             <div class="box-tool-tax">
                 <h2>税费计算器</h2>
                 <div>
-                    <label>价格：<input maxlength="11" type="text" id="txtPrice"></label>
-                    <span class="txt-item">税费：<span id="txtTax"></span></span>
+                    <label>出售价格：<input maxlength="11" type="text" id="txtPrice"></label>
+                    <span class="txt-item">手续费：<span id="txtTax"></span></span>
                     <span class="txt-item">获得：<span id="txtResult"></span></span>
                 </div>
             </div>
         </div>
         <div id="">
-            <table width="95%">
+            <h2>战队杯赛</h2>
+            <table width="95%" class="tb-match">
                 <tr>
-                    <th>杯赛名</th>
-                    <th>杯赛说明</th>
-                    <th>杯赛类型</th>
-                    <th>杯赛状态</th>
-                    <th>操作</th>
+                    <th>比赛名称：</th>
+                    <td>大鸟杯</td>
                 </tr>
                 <tr>
-                    <td>大鸟杯</dt>
+                    <th>报名开始：</th>
+                    <td>2014-11-12</td>
+                </tr>
+                <tr>
+                    <th>报名结束：</th>
+                    <td>2014-12-13</td>
+                </tr>
+                <tr>
+                    <th>比赛类型：</th>
                     <td></td>
-                    <td>杯赛类型</td>
-                    <td>杯赛状态</td>
-                    <td>报名 | 报分 |管理</td>
+                </tr>
+                <tr>
+                    <th>比赛说明：</th>
+                    <td>杯赛说明杯赛说明杯赛说明杯赛说明杯赛说明杯赛说明杯赛说明杯赛说明杯赛说明</td>
+                </tr>
+                <tr>
+                    <th>比赛奖励：</th>
+                    <td>20QB</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>我要报名 | 杯赛赛况</td>
+                </tr>
+            </table>
+            <table width="95%">
+                <tr>
+                    <th>A组</th>
+                    <th>队员</th>
+                    <th>出场</th>
+                    <th>胜</th>
+                    <th>平</th>
+                    <th>负</th>
+                    <th>进球</th>
+                    <th>失球</th>
+                    <th>净胜球</th>
+                    <th>积分</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>超毛</td>
+                    <td>6</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>10</td>
+                    <td>20</td>
+                    <td>20</td>
+                    <td>20</td>
+                    <td>10</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>超毛</td>
+                    <td>6</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>10</td>
+                    <td>20</td>
+                    <td>20</td>
+                    <td>20</td>
+                    <td>10</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>超毛</td>
+                    <td>6</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>10</td>
+                    <td>20</td>
+                    <td>20</td>
+                    <td>20</td>
+                    <td>10</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>超毛</td>
+                    <td>6</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>10</td>
+                    <td>20</td>
+                    <td>20</td>
+                    <td>20</td>
+                    <td>10</td>
+                    <td>15</td>
                 </tr>
             </table>
         </div>
     </div>
 </div>
 <script type="text/javascript">
-var input = document.getElementById("txtPrice");
-var txtTax = document.getElementById("txtTax");
-var txtResult = document.getElementById("txtResult");
+(function () {
+    var input = document.getElementById("txtPrice");
+    var txtTax = document.getElementById("txtTax");
+    var txtResult = document.getElementById("txtResult");
 
-addChangeEvent(input, function () {
-    var val = ~~input.value;
+    addChangeEvent(input, function () {
+        var val = ~~input.value;
 
-    if (val > 1000) {
-        txtTax.innerHTML = (val * 0.33).toFixed(0);
-        txtResult.innerHTML = val - (val * 0.33).toFixed(0);
-    }
-});
-function addChangeEvent (element, callback) {
-    if (window.addEventListener) {  // 先执行W3C
-        element.addEventListener("input", callback);
-    } else {
-        element.attachEvent("onpropertychange", function(e) {
-            if (e.propertyName === "value") {
-                callback(e);
-            }
-        });
-    }
-
-    if (document.documentMode === 9) {
-        var selectionchange = function (e) {
-            if (e.type === "focus") {
-                document.addEventListener("selectionchange", callback);
-            } else {
-                document.removeEventListener("selectionchange", callback);
-            }
+        if (val > 128000) {
+            txtTax.innerHTML = (val * 0.3).toFixed(0);
+            txtResult.innerHTML = val - (val * 0.33).toFixed(0);
         }
-        element.addEventListener("focus", selectionchange);
-        element.addEventListener("blur", selectionchange);
+    });
+
+    /**
+    * 输入框变动事件
+    */
+    function addChangeEvent (element, callback) {
+        if (window.addEventListener) {  // 先执行W3C
+            element.addEventListener("input", callback);
+        } else {
+            element.attachEvent("onpropertychange", function(e) {
+                if (e.propertyName === "value") {
+                    callback(e);
+                }
+            });
+        }
+
+        if (document.documentMode === 9) {
+            var selectionchange = function (e) {
+                if (e.type === "focus") {
+                    document.addEventListener("selectionchange", callback);
+                } else {
+                    document.removeEventListener("selectionchange", callback);
+                }
+            }
+            element.addEventListener("focus", selectionchange);
+            element.addEventListener("blur", selectionchange);
+        }
     }
-}
+})();
 </script>
 </body>
 </html>
