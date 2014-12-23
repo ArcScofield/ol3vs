@@ -101,14 +101,15 @@ h2 {
     width: 180px;
     margin: 0 15px;
 }
-input {
+input, textarea {
     box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
     background: #202020;
     background-color: rgba(0, 0, 0, 0.3);
     border: none;
-    height: 28px;
     line-height: 28px;
     color: #eaeaea;
+}
+textarea {
 }
 .tb-match th {
     text-align: right;
@@ -313,15 +314,15 @@ input {
             <table width="95%" class="tb-match">
                 <tr>
                     <th>比赛名称：</th>
-                    <td><input type="text" id=""></td>
+                    <td><input type="text" id="txtMatchName"></td>
                 </tr>
                 <tr>
                     <th>报名开始：</th>
-                    <td><input type="text" id=""></td>
+                    <td><input type="text" id="txtMatchStartTime"></td>
                 </tr>
                 <tr>
                     <th>报名结束：</th>
-                    <td><input type="text" id=""></td>
+                    <td><input type="text" id="txtMatchEndTime"></td>
                 </tr>
                 <tr>
                     <th>比赛类型：</th>
@@ -330,24 +331,38 @@ input {
                 <tr>
                     <th>比赛说明：</th>
                     <td>
-                        <textarea></textarea>
+                        <textarea rows="5" cols="60" id="txtMatchDesc"></textarea>
                     </td>
                 </tr>
                 <tr>
                     <th>比赛奖励：</th>
                     <td>
-                        <textarea></textarea>
+                        <textarea rows="5" cols="60" id="txtMatchReward"></textarea>
                     </td>
                 </tr>
                 <tr>
                     <th></th>
-                    <td><button>保存</button></td>
+                    <td><button id="btnSaveMatch">保存</button></td>
                 </tr>
             </table>
         </div>
     </div>
 </div>
+<script type="text/javascript" src="js/jq/jquery.js"></script>
 <script type="text/javascript">
+$(function () {
+    $("#btnSaveMatch").click(function () {
+        var data = {
+            "name": ,
+            "start":
+            "end": 
+            "desc": ,
+            "reward": ,
+
+        }
+        alert(1);
+    });
+});
 (function () {
     var input = document.getElementById("txtPrice");
     var txtTax = document.getElementById("txtTax");
