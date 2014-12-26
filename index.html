@@ -5,131 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<link href="css/normalize.css" rel="stylesheet" media="all">
+<link href="js/lib/bootstrap/css/bootstrap.css" rel="stylesheet" media="all">
 <link href="css/css.css" rel="stylesheet" media="all">
+<link href="css/plug.css" rel="stylesheet" media="all">
 <title>FIFA Online3 杯赛系统</title>
 <style type="text/css">
-body {
-    font-family: "Microsoft YaHei",微软雅黑, Sans-serif;
-    overflow-x: hidden;
-    background: #2f2f2f;
-}
-ul {
-    margin: 0px;
-    padding: 0px;
-}
-li {
-    list-style: none;
-}
-.nav {
-    height: 60px;
-    background: #000000;
-    text-align: right;
-    line-height: 60px;
-}
-.nav > span {
-    display: inline-block;
-    width: 120px;
-    text-align: center;
-    color: #eaeaea;
-    font-weight: bolder;
-    border-top: 3px solid #dc343d; 
-}
-.wrap {
-    position: relative;
-    height: 700px;
-}
-.sider {
-    float: left;
-    height: 500px;
-    width: 220px;
-    /*
-    box-shadow: rgba(255, 255, 255, 0.1) 1px 1px 0, rgba(0, 0, 0, 0.8) 0 1px 3px 0px inset;
-    */
-}
-.sider li {
-    padding: 12px 0 12px 20px;
-    color: #eaeaea;
-    box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
-    border-bottom: 1px solid #121212;
-    cursor: pointer;
-}
-.sider li:hover {
-    color: #84bcde;
-}
-.main {
-    position: absolute;
-    left: 235px;
-    right: 0px;
-    top: 0px;
-    bottom: 0px;
-    padding-left: 10px;
-    box-shadow: rgba(255, 255, 255, 0.07) 1px 0 0 inset;
-    border-left: 1px solid #121212;
-    color: #999999;
-}
-#index {
-    display: none;
-}
-#index li {
-    padding: 5px 0 5px 20px;
-    margin: 0px;
-}
-.type {
-    color: #bababa;
-}
-#index a {
-    color: #eaeaea;
-    text-decoration: none;
-}
-#index a:hover {
-    text-decoration: underline;
-}
-.time {
-    color: #666666;
-    margin-left: 10px;
-}
-h2 {
-    box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
-    border-bottom: 1px solid #121212;
-    color: #ffffff;
-    font-size: 16px;
-    padding: 8px 0 8px 20px;
-}
-.box-tool-tax .txt-item {
-    display: inline-block;
-    width: 180px;
-    margin: 0 15px;
-}
-input, textarea {
-    box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
-    background: #202020;
-    background-color: rgba(0, 0, 0, 0.3);
-    border: none;
-    line-height: 28px;
-    color: #eaeaea;
-}
-textarea {
-}
-.tb-match th {
-    text-align: right;
-    padding: 10px 10px 10px 0; 
-}
-.tb-match td {
-   
-}
 
-.list-data > li > span {
-    display: inline-block;
-    width: 24%;
-    color: #ffffff;
-}
-.list-data > li > span > span {
-    display: inline-block;
-    width: 50%;
-    color: #666666;
-    text-align: right;
-}
 </style>
 </head>
 
@@ -140,11 +21,12 @@ textarea {
 </div>
 <div class="wrap">
     <div class="sider">
+        <h3>个人首页</h3>
         <ul>
-            <li>个人首页</li>
-            <li>队内联赛</li>
-            <li>队内杯赛</li>
-            <li>队内数据</li>
+            <li><a href="#">个人首页</a></li>
+            <li><a href="#">队内联赛</a></li>
+            <li><a href="#">队内杯赛</a></li>
+            <li><a href="#">队内数据</a></li>
         </ul>
     </div>
     <div class="main">
@@ -218,7 +100,7 @@ textarea {
         </div>
         <div id="">
             <h2>战队杯赛</h2>
-            <table width="95%" class="tb-match">
+            <table class="tb-match">
                 <tr>
                     <th>比赛名称：</th>
                     <td>大鸟杯</td>
@@ -248,7 +130,7 @@ textarea {
                     <td>我要报名 | 杯赛赛况</td>
                 </tr>
             </table>
-            <table width="95%" class="tb-team">
+            <table width="95%" class="tb-team table table-bordered">
                 <tr>
                     <th width="5%">A组</th>
                     <th>队员</th>
@@ -311,56 +193,104 @@ textarea {
             </table>
         </div>
         <div>
-            <table width="95%" class="tb-match">
-                <tr>
-                    <th>比赛名称：</th>
-                    <td><input type="text" id="txtMatchName"></td>
-                </tr>
-                <tr>
-                    <th>报名开始：</th>
-                    <td><input type="text" id="txtMatchStartTime"></td>
-                </tr>
-                <tr>
-                    <th>报名结束：</th>
-                    <td><input type="text" id="txtMatchEndTime"></td>
-                </tr>
-                <tr>
-                    <th>比赛类型：</th>
-                    <td>3 VS 3</td>
-                </tr>
-                <tr>
-                    <th>比赛说明：</th>
-                    <td>
-                        <textarea rows="5" cols="60" id="txtMatchDesc"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <th>比赛奖励：</th>
-                    <td>
-                        <textarea rows="5" cols="60" id="txtMatchReward"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td><button id="btnSaveMatch">保存</button></td>
-                </tr>
-            </table>
+            <h2>创建杯赛</h2>
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="txtMatchName" class="col-sm-2 control-label">比赛名称：</label>
+                    <div class="col-sm-5">
+                        <input class="form-control" type="text" id="txtMatchName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtMatchStartTime" class="col-sm-2 control-label">报名开始：</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" id="txtMatchStartTime">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtMatchEndTime" class="col-sm-2 control-label">报名结束：</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" id="txtMatchEndTime">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">队伍数量：</label>
+                    <div class="col-sm-5">
+                        <div id="boxMatchTeamNum"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">比赛类型：</label>
+                    <div class="col-sm-5">
+                        <div id="boxMatchType"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtMatchDesc" class="col-sm-2 control-label">比赛奖励：</label>
+                    <div class="col-sm-8">
+                        <textarea class="form-control" id="txtMatchDesc"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtMatchReward" class="col-sm-2 control-label">比赛说明：</label>
+                    <div class="col-sm-8">
+                        <textarea class="form-control" id="txtMatchReward"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary" id="btnSaveMatch">保存</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-<script type="text/javascript" src="js/jq/jquery.js"></script>
+<script type="text/javascript" src="js/lib/jq/jquery.js"></script>
+<script type="text/javascript" src="js/plug/btngroup/btngroup.js"></script>
 <script type="text/javascript">
 $(function () {
-    $("#btnSaveMatch").click(function () {
+    $("#boxMatchTeamNum").btngroup({
+        items: [{
+            "text": "8支",
+            "value": 1
+        }, {
+            "text": "16支",
+            "value": 2
+        }, {
+            "text": "32支",
+            "value": 3
+        }],
+        type: 1,
+        data: [3]
+    });
+    $("#boxMatchType").btngroup({
+        items: [{
+            "text": "1 VS 1",
+            "value": 1
+        }, {
+            "text": "2 VS 2",
+            "value": 2
+        }, {
+            "text": "3 VS 3",
+            "value": 3
+        }],
+        type: 1,
+        data: [1]
+    });
+    $("#btnSaveMatch").click(function (e) {
         var data = {
-            "name": ,
-            "start":
-            "end": 
-            "desc": ,
-            "reward": ,
-
+            "name": $("#txtMatchName").val(),
+            "start": $("#txtMatchStartTime").val(),
+            "end": $("#txtMatchEndTime").val(),
+            "type": $("#boxMatchType").btngroup("getValue")[0],
+            "num": $("#boxMatchTeamNum").btngroup("getValue")[0],
+            "desc": $("#txtMatchDesc").val(),
+            "reward": $("#txtMatchReward").val()
         }
-        alert(1);
+        e.stopPropagation();
+        e.preventDefault()
+        console.log(data);
     });
 });
 (function () {
@@ -380,11 +310,11 @@ $(function () {
     /**
     * 输入框变动事件
     */
-    function addChangeEvent (element, callback) {
+    function addChangeEvent (el, callback) {
         if (window.addEventListener) {  // 先执行W3C
-            element.addEventListener("input", callback);
+            el.addEventListener("input", callback);
         } else {
-            element.attachEvent("onpropertychange", function(e) {
+            el.attachEvent("onpropertychange", function(e) {
                 if (e.propertyName === "value") {
                     callback(e);
                 }
@@ -399,8 +329,8 @@ $(function () {
                     document.removeEventListener("selectionchange", callback);
                 }
             }
-            element.addEventListener("focus", selectionchange);
-            element.addEventListener("blur", selectionchange);
+            el.addEventListener("focus", selectionchange);
+            el.addEventListener("blur", selectionchange);
         }
     }
 })();
