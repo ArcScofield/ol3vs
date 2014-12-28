@@ -1,0 +1,45 @@
+body {
+    font-family: "Microsoft YaHei",微软雅黑, Sans-serif;
+    overflow-x: hidden;
+}
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+li {
+    list-style: none;
+}
+.nav {
+    height: 45px;
+	background: #0666c5;
+	text-align: right;
+	background-color: #0767c8;
+	background-image: -moz-linear-gradient(top,#086ed5,#055db5);
+	background-image: -ms-linear-gradient(top,#086ed5,#055db5);
+	background-image: -webkit-gradient(linear,0 0,0 100%,from(#086ed5),to(#055db5));
+	background-image: -webkit-linear-gradient(top,#086ed5,#055db5);
+	background-image: -o-linear-gradient(top,#086ed5,#055db5);
+	background-image: linear-gradient(top,#086ed5,#055db5);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#086ed5', endColorstr='#055db5', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+	border-bottom: 1px solid #044e97;
+	box-shadow: 0 1px 2px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.15);
+}
+.nav > a {
+    display: inline-block;
+    width: 110px;
+    text-align: center;
+    color: #eaeaea;
+    font-weight: bolder;
+    line-height: 45px;
+}
+.nav > .cur {
+	background: #ffffff;
+	color: #000000;
+}
+.wrap {
+    position: relative;
+    top: 20px;
+    height: 500px;
+}

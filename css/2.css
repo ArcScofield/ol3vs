@@ -1,0 +1,87 @@
+.wrap {
+    margin: 0 auto;
+}
+.side {
+    width: 280px;
+    border: 1px solid #d8d8d8;
+}
+.main {
+    position: absolute;
+    left: 290px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    padding-left: 10px;
+}
+
+.box-player-vs {
+    background: #1d1d1d;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 100%;
+    z-index: 2;
+    display: none;
+    transition: left .3s linear;
+}
+.box-player-vs > .box-top-bar {
+    line-height: 35px;
+}
+.list-data > li {
+    line-height: 42px;
+}
+.list-data > li > span {
+    width: 25%;
+    float: left;
+}
+.t-c {
+    text-align: center;
+}
+@media (max-width:1189px) {
+    .wrap {
+        width: 980px;
+    }
+}
+@media (max-width:2090px) {
+    .wrap {
+        width: 1190px;
+    }
+}
+@media (max-width: 799px) {
+    .wrap {
+        width: 100%;
+    }
+    .side {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        border-radius: 0px;
+    }
+    .box-ad-search {
+        height: 0px;
+        overflow: hidden;
+        transition: left .3s linear;
+    }
+    .main {
+        float: none;
+        width: 100%;
+        border-radius: 0px;
+    }
+    .box-txt-search {
+        height: 35px;
+        padding: 5px 0;
+    }
+    #txtSearch {
+        height: 25px;
+        border-radius: 2px;
+    }
+}
+.list-ad-search > li {
+    padding: 10px 0px;
+}
+.list-ad-search > li > span {
+    width: 90px;
+    display: inline-block;
+    text-align: right;
+}
