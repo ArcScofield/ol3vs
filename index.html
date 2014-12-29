@@ -24,11 +24,11 @@
     <div class="side">
         <h3>战队系统</h3>
         <ul>
-            <li><a href="#">个人首页</a></li>
-            <li><a href="#">队内联赛</a></li>
-            <li><a href="#">队内杯赛</a></li>
-            <li><a href="#">队内数据</a></li>
-            <li><a href="#">个人设置</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-home"></span> 个人首页</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-tower"></span> 队内联赛</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-glass"></span> 队内杯赛</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-list"></span> 队内数据</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-cog"></span> 个人设置</a></li>
         </ul>
     </div>
     <div class="main">
@@ -195,7 +195,9 @@
             </table>
         </div>
         <div>
-            <h2>创建杯赛</h2>
+            <h2>创建杯赛<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      Launch demo modal
+    </button></h2>
             <form class="form-horizontal" role="form">
                 <div class="form-group">
                     <label for="txtMatchName" class="col-sm-2 control-label">比赛名称：</label>
@@ -248,7 +250,51 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">队员注册</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="txtMatchName" class="col-sm-4 control-label">账号：</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type="text" id="txtMatchName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtMatchStartTime" class="col-sm-4 control-label">密码：</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type="text" id="txtMatchStartTime">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtMatchEndTime" class="col-sm-4 control-label">确认密码：</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type="text" id="txtMatchEndTime">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtMatchEndTime" class="col-sm-4 control-label">游戏ID：</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type="text" id="txtMatchEndTime">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">注册</button>
+            </div>
+        </div>
+    </div>
+</div><!-- /.modal -->
 <script type="text/javascript" src="js/lib/jq/jquery.js"></script>
+<script type="text/javascript" src="js/lib/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/plug/btngroup/btngroup.js"></script>
 <script type="text/javascript">
 $(function () {
