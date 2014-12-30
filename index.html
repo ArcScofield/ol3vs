@@ -206,9 +206,9 @@
     </button></h2>
             <form class="form-horizontal" role="form">
                 <div class="form-group">
-                    <label for="txtMatchName" class="col-sm-2 control-label">比赛名称：</label>
+                    <label for="txtMatchTitle" class="col-sm-2 control-label">比赛名称：</label>
                     <div class="col-sm-5">
-                        <input class="form-control" type="text" id="txtMatchName">
+                        <input class="form-control" type="text" id="txtMatchTitle">
                     </div>
                 </div>
                 <div class="form-group">
@@ -334,7 +334,7 @@ $(function () {
     });
     $("#btnSaveMatch").click(function (e) {
         var data = {
-            "name": $("#txtMatchName").val(),
+            "title": $("#txtMatchTitle").val(),
             "start": $("#txtMatchStartTime").val(),
             "end": $("#txtMatchEndTime").val(),
             "type": $("#boxMatchType").btngroup("getValue")[0],
@@ -342,9 +342,10 @@ $(function () {
             "desc": $("#txtMatchDesc").val(),
             "reward": $("#txtMatchReward").val()
         }
-        e.stopPropagation();
+        $.post("module/module.php?act=add", data, function (resp, textStatus, xhr) {
+            
+        });
         e.preventDefault()
-        console.log(data);
     });
 });
 (function () {
