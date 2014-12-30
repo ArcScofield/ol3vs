@@ -103,6 +103,7 @@
             </div>
         </div>
         <div id="">
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Launch demo moda</button>
             <h2>战队杯赛<button type="button" class="btn btn-sm btn-primary">创建杯赛</button></h2>
             <div class="box-main-body">
                 <table class="tb-match">
@@ -273,30 +274,31 @@
                     <div class="form-group">
                         <label for="txtMatchName" class="col-sm-4 control-label">账号：</label>
                         <div class="col-sm-5">
-                            <input class="form-control" type="text" id="txtMatchName">
+                            <input class="form-control" type="text" id="txtUserName">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtMatchStartTime" class="col-sm-4 control-label">密码：</label>
                         <div class="col-sm-5">
-                            <input class="form-control" type="text" id="txtMatchStartTime">
+                            <input class="form-control" type="text" id="txtUserPwd">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtMatchEndTime" class="col-sm-4 control-label">确认密码：</label>
                         <div class="col-sm-5">
-                            <input class="form-control" type="text" id="txtMatchEndTime">
+                            <input class="form-control" type="text" id="txtUserConPwd">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtMatchEndTime" class="col-sm-4 control-label">游戏ID：</label>
                         <div class="col-sm-5">
-                            <input class="form-control" type="text" id="txtMatchEndTime">
+                            <input class="form-control" type="text" id="txtUserId">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtMatchEndTime" class="col-sm-4 control-label">验证码：</label>
                         <div class="col-sm-5">
+                            <input type="text" class="form-control" />
                             <img title="点击刷新" src="module/captcha.php" align="absbottom" onclick="this.src='module/captcha.php?'+Math.random();"/>
                         </div>
                     </div>
