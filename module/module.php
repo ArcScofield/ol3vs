@@ -13,7 +13,7 @@ switch ($act) {
 	
 		break;
 	case "add":
-		
+		mod ($db, "add");
 		break;
 	case "list":
 		listData($db, $_POST["id"]);
@@ -63,13 +63,13 @@ function mod ($db, $act) {
 		"start" => $start,
 		"end" => $end,
 		"type" => $type,
-		"num" => $num,
-		"desc" => $desc,
+		"nums" => $num,
+		"desp" => $desc,
 		"reward" => $reward,
 		"time" => date('Y-m-d H:i:s',time())
 	);
 	if ($act === "add") {
-		$data["author"] = $_SESSION["uid"];
+		$data["author"] = "sdada";
 		add($db, $data);
 	} else {
 		edit($db, $data, $id);
