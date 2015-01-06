@@ -298,7 +298,7 @@
                     <div class="form-group">
                         <label for="txtMatchEndTime" class="col-sm-4 control-label">验证码：</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" />
+                            <input type="text" class="form-control" id="txtVdReg" />
                             <img title="点击刷新" src="module/captcha.php" align="absbottom" onclick="this.src='module/captcha.php?'+Math.random();"/>
                         </div>
                     </div>
@@ -306,7 +306,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary">注册</button>
+                <button id="btnReg" type="button" class="btn btn-primary">注册</button>
             </div>
         </div>
     </div>
@@ -316,6 +316,17 @@
 <script type="text/javascript" src="js/plug/btngroup/btngroup.js"></script>
 <script type="text/javascript">
 $(function () {
+    $("#btnReg").click(function(event) {
+        var data = {
+            "username": $("#txtUserName").val(),
+            "userid": $("#txtUserId").val(),.
+            "pwd": $("#txtUserPwd").val(),
+            "vdcode": $("#txtVdReg").val(),
+        };
+        $.post('module/user.php?act=add', data, function(resp, textStatus, xhr) {
+            
+        });
+    });
     $("#boxMatchTeamNum").btngroup({
         items: [{
             "text": "8支",
@@ -359,8 +370,7 @@ $(function () {
         });
         e.preventDefault()
     });
-});
-(function () {
+
     var input = document.getElementById("txtPrice");
     var txtTax = document.getElementById("txtTax");
     var txtResult = document.getElementById("txtResult");
