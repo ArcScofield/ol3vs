@@ -319,7 +319,7 @@ $(function () {
     $("#btnReg").click(function(event) {
         var data = {
             "username": $("#txtUserName").val(),
-            "userid": $("#txtUserId").val(),.
+            "userid": $("#txtUserId").val(),
             "pwd": $("#txtUserPwd").val(),
             "vdcode": $("#txtVdReg").val(),
         };
@@ -377,11 +377,16 @@ $(function () {
 
     addChangeEvent(input, function () {
         var val = ~~input.value;
+        var tax = 0;
 
-        if (val > 128000) {
-            txtTax.innerHTML = (val * 0.3).toFixed(0);
-            txtResult.innerHTML = val - (val * 0.33).toFixed(0);
+        if (val <= 400000) {
+            num = (val * 0.3).toFixed(0);
+            txtTax.innerHTML = num
+        } else {
+            num = (400000 * 0.3 + (val - 400000) * 0.4).toFixed(0);
+            txtTax.innerHTML = num;
         }
+        txtResult.innerHTML = val - num;
     });
 
     /**
@@ -410,7 +415,7 @@ $(function () {
             el.addEventListener("blur", selectionchange);
         }
     }
-})();
+});
 </script>
 </body>
 </html>
