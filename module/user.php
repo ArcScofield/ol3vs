@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("../includes/db.php");
 $db = new DB();
 $act = $_GET["act"];
@@ -69,6 +70,8 @@ function add ($db, $data) {
 	$result = $db->insert("user", $data);
 	if ($result) {
 		$result = array("code"=> "ok", "desc"=> "注册用户成功！");
+		$_SESSION["username"] = $data["username"];
+		setcookie("username", $data["username"], time() + 3600 * 24 * 30);
 	} else {
 		$result = array("code"=> "error", "desc"=> "注册用户失败！");
 	}

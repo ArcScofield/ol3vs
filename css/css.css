@@ -44,20 +44,19 @@ h3 {
 .box-main-body {
     padding: 10px 15px;
 }
-#index {
-}
-#index li {
+
+.list-news > li {
     padding: 5px 0 5px 20px;
     margin: 0px;
 }
 .type {
     color: #bababa;
 }
-#index a {
+a {
 	color: #000;
     text-decoration: none;
 }
-#index a:hover {
+a:hover {
     text-decoration: underline;
 }
 .time {
@@ -90,6 +89,9 @@ h2 button {
    
 }
 
+.list-data > li {
+    padding: 6px 0px;
+}
 .list-data > li > span {
     display: inline-block;
     width: 24%;

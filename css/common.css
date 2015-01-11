@@ -43,3 +43,6 @@ li {
     top: 20px;
     height: 500px;
 }
+.box-main-item {
+	display: none;
+}

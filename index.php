@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,19 +27,74 @@
     <div class="side">
         <h3>战队系统</h3>
         <ul>
-            <li><a href="#"><span class="glyphicon glyphicon-home"></span> 个人首页</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-tower"></span> 队内联赛</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-glass"></span> 队内杯赛</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-list"></span> 队内数据</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-cog"></span> 个人设置</a></li>
+            <li><a href="javascript:;" id="btnGoHome"><span class="glyphicon glyphicon-home"></span> 战队首页</a></li>
+            <!--
+            <li><a href="javascript:;"><span class="glyphicon glyphicon-tower"></span> 队内联赛</a></li>
+            -->
+            <?php
+            if (isset($_SESSION['username'])) {
+            ?>
+            <li><a href="javascript:;" id="btnGoCup"><span class="glyphicon glyphicon-glass"></span> 队内杯赛</a></li>
+            <li><a href="javascript:;" id="btnGoTeamer"><span class="glyphicon glyphicon-list"></span> 队内数据</a></li>
+            <li><a href="javascript:;" id="btnGoSetting"><span class="glyphicon glyphicon-cog"></span> 个人设置</a></li>
+            <?php
+            }
+            ?>
         </ul>
     </div>
     <div class="main">
-        <div id="boxHome">
-            <div class="">
+        <div id="boxHome" class="box-main-item" style="display: block;">
+            <?php
+            if (!isset($_SESSION['username'])) {
+            ?>
+            <div>
+                <h2>队员注册</h2>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="txtMatchName" class="col-sm-2 control-label">账号：</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" id="txtUserName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtMatchStartTime" class="col-sm-2 control-label">密码：</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" id="txtUserPwd">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtMatchEndTime" class="col-sm-2 control-label">确认密码：</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" id="txtUserConPwd">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtMatchEndTime" class="col-sm-2 control-label">游戏ID：</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" id="txtUserId">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtMatchEndTime" class="col-sm-2 control-label">验证码：</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="txtVdReg" />
+                            <img title="点击刷新" src="module/captcha.php" align="absbottom" onclick="this.src='module/captcha.php?'+Math.random();"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary" id="btnSaveTeamer">注册</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <?php
+            }
+            ?>
+            <div>
                 <h2>FIFA OL3公告</h2>
                 <div class="box-main-body">
-                    <ul>
+                    <ul class="list-news">
                         <li>
                             <span class="type">[活动]</span>
                             <a href="#">年末狂欢宴 史上最强福利即将开启！</a>
@@ -70,6 +128,9 @@
                     </ul>
                 </div>
             </div>
+            <?php
+            if (isset($_SESSION['username'])) {
+            ?>
             <div>
                 <h2>个人战绩</h2>
                 <ul class="list-data">
@@ -93,6 +154,9 @@
                     </li>
                 </ul>
             </div>
+            <?php
+            }
+            ?>
             <div class="box-tool-tax">
                 <h2>税费计算器</h2>
                 <div>
@@ -102,7 +166,7 @@
                 </div>
             </div>
         </div>
-        <div id="boxListCup">
+        <div id="boxListCup" class="box-main-item">
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Launch demo moda</button>
             <h2>战队杯赛<button type="button" class="btn btn-sm btn-primary">创建杯赛</button></h2>
             <div class="box-main-body">
@@ -130,6 +194,10 @@
                     <tr>
                         <th>比赛奖励：</th>
                         <td>20QB</td>
+                    </tr>
+                    <tr>
+                        <th>杯赛状态：</th>
+                        <td>报名中</td>
                     </tr>
                     <tr>
                         <th></th>
@@ -201,7 +269,7 @@
                 </tr>
             </table>
         </div>
-        <div id="boxAddCup">
+        <div id="boxAddCup" class="box-main-item">
             <h2>创建杯赛</h2>
             <form class="form-horizontal" role="form">
                 <div class="form-group">
@@ -259,7 +327,7 @@
                 </div>
             </form>
         </div>
-        <div id="boxTeamers">
+        <div id="boxTeamer" class="box-main-item">
             <h2>战队成员</h2>
             <table class="tb-team table table-bordered">
                 <tr>
@@ -288,6 +356,47 @@
                 </tr>
             </table>
         </div>
+        <div id="boxSetting" class="box-main-item">
+            <h2>个人设置</h2>
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="txtMatchName" class="col-sm-2 control-label">账号：</label>
+                    <div class="col-sm-3">
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtMatchStartTime" class="col-sm-2 control-label">密码：</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" id="txtUserPwd">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtMatchEndTime" class="col-sm-2 control-label">确认密码：</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" id="txtUserConPwd">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtMatchEndTime" class="col-sm-2 control-label">游戏ID：</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" id="txtUserId">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtMatchEndTime" class="col-sm-2 control-label">验证码：</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtVdReg" />
+                        <img title="点击刷新" src="module/captcha.php" align="absbottom" onclick="this.src='module/captcha.php?'+Math.random();"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary" id="btnSaveTeamer">确定</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -299,39 +408,7 @@
                 <h4 class="modal-title">队员注册</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label for="txtMatchName" class="col-sm-4 control-label">账号：</label>
-                        <div class="col-sm-5">
-                            <input class="form-control" type="text" id="txtUserName">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="txtMatchStartTime" class="col-sm-4 control-label">密码：</label>
-                        <div class="col-sm-5">
-                            <input class="form-control" type="text" id="txtUserPwd">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="txtMatchEndTime" class="col-sm-4 control-label">确认密码：</label>
-                        <div class="col-sm-5">
-                            <input class="form-control" type="text" id="txtUserConPwd">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="txtMatchEndTime" class="col-sm-4 control-label">游戏ID：</label>
-                        <div class="col-sm-5">
-                            <input class="form-control" type="text" id="txtUserId">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="txtMatchEndTime" class="col-sm-4 control-label">验证码：</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" id="txtVdReg" />
-                            <img title="点击刷新" src="module/captcha.php" align="absbottom" onclick="this.src='module/captcha.php?'+Math.random();"/>
-                        </div>
-                    </div>
-                </form>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -353,6 +430,19 @@ seajs.config({
     }
 });
 seajs.use("./js/main");
+
+var viewModule = {
+    views: ["boxHome", "boxListCup", "boxAddCup", "boxTeamer", "boxSetting"],
+    curView: "boxHome",
+    gotoView: function (view) {
+        if (!view) {
+            return false;
+        }
+        $("#" + this.curView).hide();
+        this.curView = view;
+        $("#" + view).show();
+    }
+}
 </script>
 </body>
 </html>
