@@ -32,7 +32,7 @@
         </ul>
     </div>
     <div class="main">
-        <div id="index">
+        <div id="boxHome">
             <div class="">
                 <h2>FIFA OL3公告</h2>
                 <div class="box-main-body">
@@ -102,7 +102,7 @@
                 </div>
             </div>
         </div>
-        <div id="">
+        <div id="boxListCup">
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Launch demo moda</button>
             <h2>战队杯赛<button type="button" class="btn btn-sm btn-primary">创建杯赛</button></h2>
             <div class="box-main-body">
@@ -201,7 +201,7 @@
                 </tr>
             </table>
         </div>
-        <div>
+        <div id="boxAddCup">
             <h2>创建杯赛</h2>
             <form class="form-horizontal" role="form">
                 <div class="form-group">
@@ -343,108 +343,16 @@
 <script type="text/javascript" src="js/lib/jq/jquery.js"></script>
 <script type="text/javascript" src="js/lib/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/plug/btngroup/btngroup.js"></script>
+<script src="js/lib/seajs/sea.js"></script>
 <script type="text/javascript">
-$(function () {
-    $("#btnReg").click(function(event) {
-        var data = {
-            "username": $("#txtUserName").val(),
-            "userid": $("#txtUserId").val(),
-            "pwd": $("#txtUserPwd").val(),
-            "vdcode": $("#txtVdReg").val(),
-        };
-        $.post('module/user.php?act=add', data, function(resp, textStatus, xhr) {
-            
-        });
-    });
-    $("#boxMatchTeamNum").btngroup({
-        items: [{
-            "text": "8支",
-            "value": 1
-        }, {
-            "text": "16支",
-            "value": 2
-        }, {
-            "text": "32支",
-            "value": 3
-        }],
-        type: 1,
-        data: [3]
-    });
-    $("#boxMatchType").btngroup({
-        items: [{
-            "text": "1 VS 1",
-            "value": 1
-        }, {
-            "text": "2 VS 2",
-            "value": 2
-        }, {
-            "text": "3 VS 3",
-            "value": 3
-        }],
-        type: 1,
-        data: [1]
-    });
-    $("#btnSaveMatch").click(function (e) {
-        var data = {
-            "title": $("#txtMatchTitle").val(),
-            "start": $("#txtMatchStartTime").val(),
-            "end": $("#txtMatchEndTime").val(),
-            "type": ~~$("#boxMatchType").btngroup("getValue")[0],
-            "num": ~~$("#boxMatchTeamNum").btngroup("getValue")[0],
-            "desc": $("#txtMatchDesc").val(),
-            "reward": $("#txtMatchReward").val()
-        }
-        $.post("module/module.php?act=add", data, function (resp, textStatus, xhr) {
-
-        });
-        e.preventDefault()
-    });
-
-    var input = document.getElementById("txtPrice");
-    var txtTax = document.getElementById("txtTax");
-    var txtResult = document.getElementById("txtResult");
-
-    addChangeEvent(input, function () {
-        var val = ~~input.value;
-        var tax = 0;
-
-        if (val <= 400000) {
-            num = (val * 0.3).toFixed(0);
-            txtTax.innerHTML = num
-        } else {
-            num = (400000 * 0.3 + (val - 400000) * 0.4).toFixed(0);
-            txtTax.innerHTML = num;
-        }
-        txtResult.innerHTML = val - num;
-    });
-
-    /**
-    * 输入框变动事件
-    */
-    function addChangeEvent (el, callback) {
-        if (window.addEventListener) {  // 先执行W3C
-            el.addEventListener("input", callback);
-        } else {
-            el.attachEvent("onpropertychange", function(e) {
-                if (e.propertyName === "value") {
-                    callback(e);
-                }
-            });
-        }
-
-        if (document.documentMode === 9) {
-            var selectionchange = function (e) {
-                if (e.type === "focus") {
-                    document.addEventListener("selectionchange", callback);
-                } else {
-                    document.removeEventListener("selectionchange", callback);
-                }
-            }
-            el.addEventListener("focus", selectionchange);
-            el.addEventListener("blur", selectionchange);
-        }
+seajs.config({
+    base: "./js/lib/",
+    alias: {
+        "layout": "./layout.js",
+        "global": "./global.js"
     }
 });
+seajs.use("./js/main");
 </script>
 </body>
 </html>
