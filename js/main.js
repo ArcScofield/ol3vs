@@ -1,5 +1,13 @@
 define(function(require, exports, module) {
     $("#btnSaveTeamer").click(function(e) {
+    	if (!verif.check([
+    		{ele: $("#txtUserName"), text: "账号不能为空", type: 1},
+			{ele: $("#txtUserPwd"),text: "密码不能为空", type: 1},
+			{ele: $("#txtUserConPwd"), text: "确认密码不能为空", type: 1},
+			{ele: $("#txtUserConPwd"), text: "密码和确认密码不相同", vals: [$("#txtUserPwd").val(), $("#txtUserConPwd").val()], type: 3}
+		])) {
+			return false;
+		}
         var data = {
             "username": $("#txtUserName").val(),
             "userid": $("#txtUserId").val(),

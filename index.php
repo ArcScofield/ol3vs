@@ -53,31 +53,31 @@ $db = new DB();
                 <h2>队员注册</h2>
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
-                        <label for="txtMatchName" class="col-sm-2 control-label">账号：</label>
+                        <label for="txtUserName" class="col-sm-2 control-label">账号：</label>
                         <div class="col-sm-3">
                             <input class="form-control" type="text" id="txtUserName">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="txtMatchStartTime" class="col-sm-2 control-label">密码：</label>
+                        <label for="txtUserPwd" class="col-sm-2 control-label">密码：</label>
                         <div class="col-sm-3">
                             <input class="form-control" type="password" id="txtUserPwd">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="txtMatchEndTime" class="col-sm-2 control-label">确认密码：</label>
+                        <label for="txtUserConPwd" class="col-sm-2 control-label">确认密码：</label>
                         <div class="col-sm-3">
                             <input class="form-control" type="password" id="txtUserConPwd">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="txtMatchEndTime" class="col-sm-2 control-label">游戏ID：</label>
+                        <label for="txtUserId" class="col-sm-2 control-label">游戏ID：</label>
                         <div class="col-sm-3">
                             <input class="form-control" type="text" id="txtUserId">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="txtMatchEndTime" class="col-sm-2 control-label">验证码：</label>
+                        <label for="txtVdReg" class="col-sm-2 control-label">验证码：</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" id="txtVdReg" />
                             <img title="点击刷新" src="module/captcha.php" align="absbottom" onclick="this.src='module/captcha.php?'+Math.random();"/>
@@ -420,6 +420,8 @@ $db = new DB();
 <script type="text/javascript" src="js/lib/jq/jquery.js"></script>
 <script type="text/javascript" src="js/lib/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/plug/btngroup/btngroup.js"></script>
+<script type="text/javascript" src="js/plug/verif/verif.js"></script>
+<script type="text/javascript" src="js/plug/toptips/toptips.js"></script>
 <script src="js/lib/seajs/sea.js"></script>
 <script type="text/javascript">
 seajs.config({
