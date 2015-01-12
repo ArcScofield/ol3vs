@@ -1,6 +1,5 @@
 define(function(require, exports, module) {
     $("#btnSaveTeamer").click(function(e) {
-    	alert(1);
         var data = {
             "username": $("#txtUserName").val(),
             "userid": $("#txtUserId").val(),
@@ -8,7 +7,9 @@ define(function(require, exports, module) {
             "vdcode": $("#txtVdReg").val(),
         };
         $.post('module/user.php?act=add', data, function(resp, textStatus, xhr) {
-            
+            if (resp.code === "ok") {
+            	location.reload(true);
+            }
         });
         e.preventDefault();
     });

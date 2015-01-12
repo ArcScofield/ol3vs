@@ -37,9 +37,9 @@ function listData($db, $id = null) {
 	}
 
 	if (is_array($data)) {
-		$result = array("code"=> "ok", "desc"=> "读取文章数据成功！", "content"=> $data);
+		$result = array("code"=> "ok", "desc"=> "读取数据成功！", "content"=> $data);
 	} else {
-		$result = array("code"=> "error", "desc"=> "读取文章数据失败！");
+		$result = array("code"=> "error", "desc"=> "读取数据失败！");
 	}
 	echo json_encode($result);
 }

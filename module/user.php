@@ -32,7 +32,7 @@ function mod ($db, $act) {
 	$id = $_POST["id"];
 	$username = $_POST["username"];
 	$pwd = $_POST["pwd"];
-	$competence = $_POST["competence"];
+	$level = 0;
 
 	if (strlen($username) === 0 && $act === "add") {
 		echo json_encode(array("code"=> "error", "desc"=> "用户名不能为空"));
@@ -50,7 +50,7 @@ function mod ($db, $act) {
 
 	$data = array(
 		"pwd"=> $pwd,
-		"competence"=> $competence,
+		"level"=> $level,
 		"time"=> date('Y-m-d H:i:s',time())
 	);
 	if ($act === "add") {

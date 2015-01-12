@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once("includes/db.php");
+$db = new DB();
 ?>
 <!DOCTYPE html>
 <html>
@@ -59,13 +61,13 @@ session_start();
                     <div class="form-group">
                         <label for="txtMatchStartTime" class="col-sm-2 control-label">密码：</label>
                         <div class="col-sm-3">
-                            <input class="form-control" type="text" id="txtUserPwd">
+                            <input class="form-control" type="password" id="txtUserPwd">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtMatchEndTime" class="col-sm-2 control-label">确认密码：</label>
                         <div class="col-sm-3">
-                            <input class="form-control" type="text" id="txtUserConPwd">
+                            <input class="form-control" type="password" id="txtUserConPwd">
                         </div>
                     </div>
                     <div class="form-group">
@@ -331,8 +333,7 @@ session_start();
             <h2>战队成员</h2>
             <table class="tb-team table table-bordered">
                 <tr>
-                    <th width="5%">A组</th>
-                    <th>队员</th>
+                    <th>队员ID</th>
                     <th width="5%">出场</th>
                     <th width="5%">胜</th>
                     <th width="5%">平</th>
@@ -343,7 +344,6 @@ session_start();
                     <th width="5%">操作</th>
                 </tr>
                 <tr>
-                    <td></td>
                     <td>超毛</td>
                     <td>6</td>
                     <td>2</td>
