@@ -1,8 +1,8 @@
 define(function(require, exports, module) {
-    $("#btnSaveTeamer").click(function(e) {
+    $("#btnReg").click(function(e) {
     	if (!verif.check([
     		{ele: $("#txtUserName"), text: "账号不能为空", type: 1},
-			{ele: $("#txtUserPwd"),text: "密码不能为空", type: 1},
+			{ele: $("#txtUserPwd"), text: "密码不能为空", type: 1},
 			{ele: $("#txtUserConPwd"), text: "确认密码不能为空", type: 1},
 			{ele: $("#txtUserConPwd"), text: "密码和确认密码不相同", vals: [$("#txtUserPwd").val(), $("#txtUserConPwd").val()], type: 3}
 		])) {
@@ -12,11 +12,14 @@ define(function(require, exports, module) {
             "username": $("#txtUserName").val(),
             "userid": $("#txtUserId").val(),
             "pwd": $("#txtUserPwd").val(),
-            "vdcode": $("#txtVdReg").val(),
+            "vdcode": $("#txtVdReg").val()
         };
-        $.post('module/user.php?act=add', data, function(resp, textStatus, xhr) {
+        $.post('module/user.php?act=add', data, function(resp) {
+        	resp = $.parseJSON(resp);
             if (resp.code === "ok") {
             	location.reload(true);
+            } else {
+
             }
         });
         e.preventDefault();

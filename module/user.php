@@ -19,6 +19,12 @@ switch ($act) {
 		$page = $_POST["page"];
 		listData($db, $_POST["id"], $page);
 		break;
+	case "login":
+		login();
+		break;
+	case "loginout":
+		loginout();
+		break;
 	default:
 		break;
 }
@@ -32,6 +38,7 @@ function mod ($db, $act) {
 	$id = $_POST["id"];
 	$username = $_POST["username"];
 	$pwd = $_POST["pwd"];
+	$userid = $_POST["userid"];
 	$level = 0;
 
 	if (strlen($username) === 0 && $act === "add") {
@@ -48,9 +55,20 @@ function mod ($db, $act) {
 		$pwd = md5($pwd);
 	}
 
+	if ($act === "add") {
+		$sql = "select id, username, level from user where username = '".$username."'";
+		$tempdata = $db->get_one($sql);
+		if (is_array($tempdata) && count($tempdata) > 0) {
+			echo json_encode(array("code"=> "error", "desc"=> "账号已存在"));
+			exit();
+		}
+	}
+
 	$data = array(
 		"pwd"=> $pwd,
+		"userid"=> $userid,
 		"level"=> $level,
+		"cid"=> 1,
 		"time"=> date('Y-m-d H:i:s',time())
 	);
 	if ($act === "add") {
@@ -72,8 +90,40 @@ function add ($db, $data) {
 		$result = array("code"=> "ok", "desc"=> "注册用户成功！");
 		$_SESSION["username"] = $data["username"];
 		setcookie("username", $data["username"], time() + 3600 * 24 * 30);
+		setcookie("pwd", $data["pwd"], time() + 3600 * 24 * 30);
 	} else {
 		$result = array("code"=> "error", "desc"=> "注册用户失败！");
+	}
+	echo json_encode($result);
+}
+
+/**
+* 退出用户登陆
+*/
+function loginout () {
+	setcookie("username", "");
+	setcookie("pwd", "");
+	unset($_SESSION["username"]);
+	session_destroy();
+	header("Location: index.php");
+}
+
+/**
+* 用户登陆
+*/
+function login () {
+	$username = $_POST["username"];
+	$pwd = $_POST["pwd"];
+	$sql = "select id, level from user where username = '".$username."' and pwd = '" & $pwd & "'";
+	$tempdata = $db->get_one($sql);
+	if (is_array($tempdata) && count($tempdata) > 0) {
+		$result = array("code"=> "ok", "desc"=> "登陆成功");
+		$_SESSION["username"] = $username;
+		$_SESSION["level"] = $tempdata[0]["level"];
+		setcookie("username", $data["username"], time() + 3600 * 24 * 30);
+		setcookie("pwd", $data["pwd"], time() + 3600 * 24 * 30);
+	} else {
+		$result = array("code"=> "error", "desc"=> "账号或密码错误");
 	}
 	echo json_encode($result);
 }
@@ -116,10 +166,10 @@ function del($db, $id) {
 */
 function listData($db, $id = null, $page = 1) {
 	if (empty($id)) {
-		$sql = "select id, username, competence, time from user limit ".(($page - 1) * 1).",1";
+		$sql = "select id, username, level, time from user limit ".(($page - 1) * 1).",1";
 		$data = $db->get_all($sql);
 	} else {
-		$sql = "select id, username, competence from user where id = ".$id;
+		$sql = "select id, username, level from user where id = ".$id;
 		$data = $db->get_one($sql);
 	}
 

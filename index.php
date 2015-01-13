@@ -2,6 +2,8 @@
 session_start();
 require_once("includes/db.php");
 $db = new DB();
+
+echo $_COOKIE["username"];
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,6 +26,9 @@ $db = new DB();
 <div class="nav">
     <a class="nav-item" href="2.html">球员数据库</a>
     <a href="#" class="nav-item nav-item-cur">战队系统</a>
+    <a class="nav-item" href="#" data-toggle="modal" data-target="#loginModal">登陆</a>
+    <a class="nav-item" href="#" data-toggle="modal" data-target="#regModal">注册</a>
+    <a class="nav-item" href="module/user.php?act=loginout">退出</a>
 </div>
 <div class="wrap">
     <div class="side">
@@ -46,53 +51,6 @@ $db = new DB();
     </div>
     <div class="main">
         <div id="boxHome" class="box-main-item" style="display: block;">
-            <?php
-            if (!isset($_SESSION['username'])) {
-            ?>
-            <div>
-                <h2>队员注册</h2>
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label for="txtUserName" class="col-sm-2 control-label">账号：</label>
-                        <div class="col-sm-3">
-                            <input class="form-control" type="text" id="txtUserName">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="txtUserPwd" class="col-sm-2 control-label">密码：</label>
-                        <div class="col-sm-3">
-                            <input class="form-control" type="password" id="txtUserPwd">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="txtUserConPwd" class="col-sm-2 control-label">确认密码：</label>
-                        <div class="col-sm-3">
-                            <input class="form-control" type="password" id="txtUserConPwd">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="txtUserId" class="col-sm-2 control-label">游戏ID：</label>
-                        <div class="col-sm-3">
-                            <input class="form-control" type="text" id="txtUserId">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="txtVdReg" class="col-sm-2 control-label">验证码：</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control" id="txtVdReg" />
-                            <img title="点击刷新" src="module/captcha.php" align="absbottom" onclick="this.src='module/captcha.php?'+Math.random();"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary" id="btnSaveTeamer">注册</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <?php
-            }
-            ?>
             <div>
                 <h2>FIFA OL3公告</h2>
                 <div class="box-main-body">
@@ -169,7 +127,6 @@ $db = new DB();
             </div>
         </div>
         <div id="boxListCup" class="box-main-item">
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Launch demo moda</button>
             <h2>战队杯赛<button type="button" class="btn btn-sm btn-primary">创建杯赛</button></h2>
             <div class="box-main-body">
                 <table class="tb-match">
@@ -400,15 +357,47 @@ $db = new DB();
     </div>
 </div>
 
-<div class="modal fade" id="myModal">
+<div class="modal fade" id="regModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">队员注册</h4>
+                <h4 class="modal-title">用户注册</h4>
             </div>
             <div class="modal-body">
-                
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="txtUserName" class="col-sm-3 control-label">账号：</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" type="text" id="txtUserName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtUserPwd" class="col-sm-3 control-label">密码：</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" type="password" id="txtUserPwd">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtUserConPwd" class="col-sm-3 control-label">确认密码：</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" type="password" id="txtUserConPwd">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtUserId" class="col-sm-3 control-label">游戏ID：</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" type="text" id="txtUserId">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtVdReg" class="col-sm-3 control-label">验证码：</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="txtVdReg" />
+                            <img title="点击刷新" src="module/captcha.php" align="absbottom" onclick="this.src='module/captcha.php?'+Math.random();"/>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -416,7 +405,48 @@ $db = new DB();
             </div>
         </div>
     </div>
-</div><!-- /.modal -->
+</div>
+
+<div class="modal fade" id="loginModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">用户登陆</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="txtUserName" class="col-sm-3 control-label">账号：</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" type="text" id="txtUserName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtUserPwd" class="col-sm-3 control-label">密码：</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" type="password" id="txtUserPwd">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtVdReg" class="col-sm-3 control-label">验证码：</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="txtVdReg" />
+                            <img title="点击刷新" src="module/captcha.php" align="absbottom" onclick="this.src='module/captcha.php?'+Math.random();"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button id="btnLogin" type="button" class="btn btn-primary">登陆</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- /.modal -->
 <script type="text/javascript" src="js/lib/jq/jquery.js"></script>
 <script type="text/javascript" src="js/lib/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/plug/btngroup/btngroup.js"></script>
@@ -433,6 +463,7 @@ seajs.config({
 });
 seajs.use("./js/main");
 
+$('#loginModal').modal("show");
 var viewModule = {
     views: ["boxHome", "boxListCup", "boxAddCup", "boxTeamer", "boxSetting"],
     curView: "boxHome",

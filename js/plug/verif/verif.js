@@ -62,7 +62,7 @@
 		* @param {string}  direction  错误提示的显示方向
 		*/
 		var showTips = function (ele, alertStr, direction) {
-			direction = direction || "right"
+			direction = direction || "top"
 			ele.popover({
 				"placement": direction,
 				"trigger": "manual",
