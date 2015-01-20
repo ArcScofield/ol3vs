@@ -325,25 +325,25 @@ echo $_COOKIE["username"];
                 <div class="form-group">
                     <label for="txtMatchStartTime" class="col-sm-2 control-label">密码：</label>
                     <div class="col-sm-3">
-                        <input class="form-control" type="text" id="txtUserPwd">
+                        <input class="form-control" type="text" id="txtSetUserPwd">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="txtMatchEndTime" class="col-sm-2 control-label">确认密码：</label>
                     <div class="col-sm-3">
-                        <input class="form-control" type="text" id="txtUserConPwd">
+                        <input class="form-control" type="text" id="txtSetUserConPwd">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="txtMatchEndTime" class="col-sm-2 control-label">游戏ID：</label>
                     <div class="col-sm-3">
-                        <input class="form-control" type="text" id="txtUserId">
+                        <input class="form-control" type="text" id="txtSetUserId">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="txtMatchEndTime" class="col-sm-2 control-label">验证码：</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" id="txtVdReg" />
+                        <input type="text" class="form-control" id="txtSetVdReg" />
                         <img title="点击刷新" src="module/captcha.php" align="absbottom" onclick="this.src='module/captcha.php?'+Math.random();"/>
                     </div>
                 </div>
@@ -369,31 +369,31 @@ echo $_COOKIE["username"];
                     <div class="form-group">
                         <label for="txtUserName" class="col-sm-3 control-label">账号：</label>
                         <div class="col-sm-7">
-                            <input class="form-control" type="text" id="txtUserName">
+                            <input class="form-control" type="text" id="txtRegUserName">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtUserPwd" class="col-sm-3 control-label">密码：</label>
                         <div class="col-sm-7">
-                            <input class="form-control" type="password" id="txtUserPwd">
+                            <input class="form-control" type="password" id="txtRegUserPwd">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtUserConPwd" class="col-sm-3 control-label">确认密码：</label>
                         <div class="col-sm-7">
-                            <input class="form-control" type="password" id="txtUserConPwd">
+                            <input class="form-control" type="password" id="txtRegUserConPwd">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtUserId" class="col-sm-3 control-label">游戏ID：</label>
                         <div class="col-sm-7">
-                            <input class="form-control" type="text" id="txtUserId">
+                            <input class="form-control" type="text" id="txtRegUserId">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtVdReg" class="col-sm-3 control-label">验证码：</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="txtVdReg" />
+                            <input type="text" class="form-control" id="txtRegVdReg" />
                             <img title="点击刷新" src="module/captcha.php" align="absbottom" onclick="this.src='module/captcha.php?'+Math.random();"/>
                         </div>
                     </div>
@@ -419,19 +419,19 @@ echo $_COOKIE["username"];
                     <div class="form-group">
                         <label for="txtUserName" class="col-sm-3 control-label">账号：</label>
                         <div class="col-sm-7">
-                            <input class="form-control" type="text" id="txtUserName">
+                            <input class="form-control" type="text" id="txtLoginUserName">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtUserPwd" class="col-sm-3 control-label">密码：</label>
                         <div class="col-sm-7">
-                            <input class="form-control" type="password" id="txtUserPwd">
+                            <input class="form-control" type="password" id="txtLoginUserPwd">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtVdReg" class="col-sm-3 control-label">验证码：</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="txtVdReg" />
+                            <input type="text" class="form-control" id="txtLoginVdReg" />
                             <img title="点击刷新" src="module/captcha.php" align="absbottom" onclick="this.src='module/captcha.php?'+Math.random();"/>
                         </div>
                     </div>

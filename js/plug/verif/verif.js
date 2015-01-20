@@ -32,7 +32,7 @@
 					val = item.ele.val();
 					if (val.length === 0) {
 						showTips(item.ele, item.text);
-						item.ele.focus();
+						item.ele[0].focus();
 						return false;
 					}
 					break;
@@ -40,14 +40,14 @@
 					val = item.ele.val();
 					if (!val.reg.test(val)) {
 						showTips(item.ele, item.text);
-						item.ele.focus();
+						item.ele[0].focus();
 						return false;
 					}
 					break;
 				case 3:
 					if (item.vals[0] !== item.vals[1]) {
 						showTips(item.ele, item.text);
-						item.ele.focus();
+						item.ele[0].focus();
 						return false;
 					}
 					break;
