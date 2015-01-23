@@ -2,23 +2,36 @@
     margin: 0 auto;
 }
 .side {
-    width: 280px;
-    border: 1px solid #d8d8d8;
+    width: 300px;
+    border: 1px solid rgb(225, 225, 225);
+    background: #ffffff;
+    margin-top: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.13);
 }
 .main {
     position: absolute;
-    left: 290px;
-    right: 0px;
-    top: 0px;
-    bottom: 0px;
-    padding-left: 10px;
+    left: 320px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #ffffff;
+    border: 1px solid rgb(225, 225, 225);
+    box-shadow: 0 1px 3px rgba(0,0,0,.13);
+}
+.box-txt-search {
+    padding: 10px 0;
+    text-align: center;
+}
+.box-txt-search input {
+    line-height: 28px;
+    width: 80%;
 }
 
 .box-player-vs {
     background: #1d1d1d;
     width: 100%;
     position: absolute;
-    top: 0px;
+    top: 0;
     left: 100%;
     z-index: 2;
     display: none;
@@ -34,9 +47,8 @@
     width: 25%;
     float: left;
 }
-.t-c {
-    text-align: center;
-}
+
+
 @media (max-width:1189px) {
     .wrap {
         width: 980px;
@@ -53,20 +65,18 @@
     }
     .side {
         position: fixed;
-        top: 0px;
-        left: 0px;
+        top: 0;
+        left: 0;
         width: 100%;
-        border-radius: 0px;
     }
     .box-ad-search {
-        height: 0px;
+        height: 0;
         overflow: hidden;
         transition: left .3s linear;
     }
     .main {
         float: none;
         width: 100%;
-        border-radius: 0px;
     }
     .box-txt-search {
         height: 35px;
@@ -78,7 +88,7 @@
     }
 }
 .list-ad-search > li {
-    padding: 10px 0px;
+    padding: 10px 0;
 }
 .list-ad-search > li > span {
     width: 90px;

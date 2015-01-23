@@ -9,6 +9,12 @@
 <link href="css/common.css" rel="stylesheet" media="all">
 <link href="css/2.css" rel="stylesheet" media="all">
 <link href="css/plug.css" rel="stylesheet" media="all">
+<!--[if lt IE 9]>
+<script>
+(function(tags){for(var i=0; i<tags.length; i++)document.createElement(tags[i]);})(["article","aside","details","figcaption","figure","footer","header","hgroup","nav","section","video"]);
+</script>
+<![endif]-->
+
 <title>FIFA Online3数据库</title>
 <style type="text/css">
 
@@ -17,8 +23,16 @@
 
 <body>
 <div class="nav">
-    <a href="2.html" class="nav-item nav-item-cur">球员数据库</a>
-    <a href="index.html" class="nav-item">战队系统</a>
+    <div class="wrap">
+        <ul class="list-nav">
+            <li class="nav-item nav-item-cur">
+                <a href="2.html">球员数据库</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.html">战队系统</a>
+            </li>
+        </ul>
+    </div>
 </div>
 <div class="wrap">
     <div class="side">
@@ -128,7 +142,7 @@
                 <li>
                     <span>详细能力：</span>
                     <select>
-                        <option value="0">详细能力</option>
+                        <option value="">详细能力</option>
                         <option value="1">射术</option>
                         <option value="2">射门力量</option>
                         <option value="3">弧线</option>
@@ -300,10 +314,10 @@
         </div>
     </div>
     <div class="main">
-        <table class="tb-team table table-bordered">
+        <table class="tb-team table table-hover table-striped">
             <thead>
                 <tr>
-                    <th width="10%"></th>
+                    <th width="5%"></th>
                     <th>位置</th>
                     <th>球员名</th>
                     <th>能力</th>
@@ -312,28 +326,28 @@
             </thead>
             <tbody>
                 <tr>
-                    <td></td>
+                    <td class="td-c"><input type="checkbox"></td>
                     <td>CF</td>
                     <td>梅西</td>
                     <td>83</td>
                     <td>巴塞罗那</td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td class="td-c"><input type="checkbox"></td>
                     <td>ST</td>
                     <td>C.罗纳尔罗</td>
                     <td>82</td>
                     <td>皇家马德里</td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td class="td-c"><input type="checkbox"></td>
                     <td>CM</td>
                     <td>亚亚图雷</td>
                     <td>78</td>
                     <td>曼城</td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td class="td-c"><input type="checkbox"></td>
                     <td>ST</td>
                     <td>伊布拉希莫维奇</td>
                     <td>79</td>
@@ -343,6 +357,10 @@
         </table>
     </div>
 </div>
+<footer class="footer">
+    <p>关于我们</p>
+    <p>© 2015 ol3vs.com Inc. All rights reserved.</p>
+</footer>
 <div class="box-player-vs">
     <div class="box-top-bar">返回</div>
     <div class="wrap">
@@ -395,7 +413,7 @@
         </ul>
     </div>
 </div>
-<script type="text/javascript" src="js/lib/zepto/zepto.min.js"></script>
+<script type="text/javascript" src="js/lib/jq/jquery.js"></script>
 <script type="text/javascript" src="js/datas.js"></script>
 <script type="text/javascript">
 $(function () {
