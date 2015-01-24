@@ -65,6 +65,7 @@ li {
     background: #ffffff;
     border: 1px solid rgb(225, 225, 225);
     box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    margin-bottom: 15px;
 }
 .box-main-item {
     display: none;
@@ -73,16 +74,12 @@ li {
     margin-top: 20px;
     -webkit-box-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px 3px 0px inset;
     background-color: rgb(70, 70, 70);
-    border-top-color: rgb(56, 58, 61);
-    border-top-style: solid;
-    border-top-width: 1px;
+    border-top: 1px solid rgb(56, 58, 61);
     box-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px 3px 0px inset;
     color: rgb(171, 171, 171);
-    display: block;
     font-size: 12px;
-    height: 58px;
     line-height: 24px;
-    padding-bottom: 60px;
+    padding-bottom: 10px;
     padding-top: 32px;
     text-align: center;
     zoom: 1;

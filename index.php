@@ -40,7 +40,7 @@ echo $_COOKIE["username"];
     <a class="nav-item" href="module/user.php?act=loginout">退出</a>
     -->
 </div>
-<div class="wrap clearfix">
+<div class="wrap clearfix" style="height: 800px;">
     <div class="list-group side">
         <a href="javascript:;" class="list-group-item active" id="btnGoHome"><span class="glyphicon glyphicon-home"></span> 战队首页</a>
         <!--
@@ -134,126 +134,111 @@ echo $_COOKIE["username"];
             </div>
         </div>
         <div id="boxListCup" class="box-main-item">
-            <h2>战队杯赛<button type="button" class="btn btn-sm btn-primary">创建杯赛</button></h2>
-            <div class="box-main-body">
-                <table class="tb-match">
+            <div class="box-card">
+                <h2>战队杯赛<button type="button" class="btn btn-sm btn-primary">创建杯赛</button></h2>
+                <div class="box-main-body">
+                    <table class="tb-match">
+                        <tr>
+                            <th>比赛名称：</th>
+                            <td>大鸟杯</td>
+                        </tr>
+                        <tr>
+                            <th>比赛类型：</th>
+                            <td>3 VS 3</td>
+                        </tr>
+                        <tr>
+                            <th>比赛说明：</th>
+                            <td>杯赛说明杯赛说明杯赛说明杯赛说明杯赛说明杯赛说明杯赛说明杯赛说明杯赛说明</td>
+                        </tr>
+                        <tr>
+                            <th>比赛奖励：</th>
+                            <td>20QB</td>
+                        </tr>
+                        <tr>
+                            <th>杯赛状态：</th>
+                            <td>报名中</td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-primary">我要报名</button>
+                                <button type="button" class="btn btn-sm btn-primary">杯赛赛况</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="box-card">
+                <h2>杯赛赛况</h2>
+                <table class="tb-team table table-bordered">
                     <tr>
-                        <th>比赛名称：</th>
-                        <td>大鸟杯</td>
+                        <th width="5%">A组</th>
+                        <th>队员</th>
+                        <th width="5%">出场</th>
+                        <th width="5%">胜</th>
+                        <th width="5%">平</th>
+                        <th width="5%">负</th>
+                        <th width="5%">进球</th>
+                        <th width="5%">失球</th>
+                        <th width="7%">净胜球</th>
+                        <th width="5%">积分</th>
                     </tr>
                     <tr>
-                        <th>报名开始：</th>
-                        <td>2014-11-12</td>
+                        <td></td>
+                        <td>超毛</td>
+                        <td>6</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>10</td>
+                        <td>20</td>
+                        <td>20</td>
+                        <td>20</td>
                     </tr>
                     <tr>
-                        <th>报名结束：</th>
-                        <td>2014-12-13</td>
+                        <td></td>
+                        <td>超毛</td>
+                        <td>6</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>10</td>
+                        <td>20</td>
+                        <td>20</td>
+                        <td>20</td>
+                    </tr><tr>
+                        <td></td>
+                        <td>超毛</td>
+                        <td>6</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>10</td>
+                        <td>20</td>
+                        <td>20</td>
+                        <td>20</td>
                     </tr>
-                    <tr>
-                        <th>比赛类型：</th>
-                        <td>3 VS 3</td>
-                    </tr>
-                    <tr>
-                        <th>比赛说明：</th>
-                        <td>杯赛说明杯赛说明杯赛说明杯赛说明杯赛说明杯赛说明杯赛说明杯赛说明杯赛说明</td>
-                    </tr>
-                    <tr>
-                        <th>比赛奖励：</th>
-                        <td>20QB</td>
-                    </tr>
-                    <tr>
-                        <th>杯赛状态：</th>
-                        <td>报名中</td>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <td>
-                            <button type="button" class="btn btn-sm btn-primary">我要报名</button>
-                            <button type="button" class="btn btn-sm btn-primary">杯赛赛况</button></td>
+                    </tr><tr>
+                        <td></td>
+                        <td>超毛</td>
+                        <td>6</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>10</td>
+                        <td>20</td>
+                        <td>20</td>
+                        <td>20</td>
                     </tr>
                 </table>
             </div>
-            <table class="tb-team table table-bordered">
-                <tr>
-                    <th width="5%">A组</th>
-                    <th>队员</th>
-                    <th width="5%">出场</th>
-                    <th width="5%">胜</th>
-                    <th width="5%">平</th>
-                    <th width="5%">负</th>
-                    <th width="5%">进球</th>
-                    <th width="5%">失球</th>
-                    <th width="7%">净胜球</th>
-                    <th width="5%">积分</th>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>超毛</td>
-                    <td>6</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>10</td>
-                    <td>20</td>
-                    <td>20</td>
-                    <td>20</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>超毛</td>
-                    <td>6</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>10</td>
-                    <td>20</td>
-                    <td>20</td>
-                    <td>20</td>
-                </tr><tr>
-                    <td></td>
-                    <td>超毛</td>
-                    <td>6</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>10</td>
-                    <td>20</td>
-                    <td>20</td>
-                    <td>20</td>
-                </tr>
-                </tr><tr>
-                    <td></td>
-                    <td>超毛</td>
-                    <td>6</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>10</td>
-                    <td>20</td>
-                    <td>20</td>
-                    <td>20</td>
-                </tr>
-            </table>
         </div>
-        <div id="boxAddCup" class="box-main-item">
+        <div id="boxAddCup">
             <h2>创建杯赛</h2>
             <form class="form-horizontal" role="form">
                 <div class="form-group">
                     <label for="txtMatchTitle" class="col-sm-2 control-label">比赛名称：</label>
                     <div class="col-sm-5">
                         <input class="form-control" type="text" id="txtMatchTitle">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="txtMatchStartTime" class="col-sm-2 control-label">报名开始：</label>
-                    <div class="col-sm-3">
-                        <input class="form-control" type="text" id="txtMatchStartTime">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="txtMatchEndTime" class="col-sm-2 control-label">报名结束：</label>
-                    <div class="col-sm-3">
-                        <input class="form-control" type="text" id="txtMatchEndTime">
                     </div>
                 </div>
                 <div class="form-group">
@@ -294,72 +279,70 @@ echo $_COOKIE["username"];
             </form>
         </div>
         <div id="boxTeamer" class="box-main-item">
-            <h2>战队成员</h2>
-            <table class="tb-team table table-bordered">
-                <tr>
-                    <th>队员ID</th>
-                    <th width="5%">出场</th>
-                    <th width="5%">胜</th>
-                    <th width="5%">平</th>
-                    <th width="5%">负</th>
-                    <th width="5%">进球</th>
-                    <th width="5%">失球</th>
-                    <th width="7%">净胜球</th>
-                    <th width="5%">操作</th>
-                </tr>
-                <tr>
-                    <td>超毛</td>
-                    <td>6</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>10</td>
-                    <td>20</td>
-                    <td>20</td>
-                    <td>20</td>
-                </tr>
-            </table>
+            <div class="box-card">
+                <h2>战队成员</h2>
+                <table class="tb-team table">
+                    <tr>
+                        <th>队员ID</th>
+                        <th width="5%">出场</th>
+                        <th width="5%">胜</th>
+                        <th width="5%">平</th>
+                        <th width="5%">负</th>
+                        <th width="5%">进球</th>
+                        <th width="5%">失球</th>
+                        <th width="7%">净胜球</th>
+                        <th width="5%">操作</th>
+                    </tr>
+                    <tr>
+                        <td>超毛</td>
+                        <td>6</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>10</td>
+                        <td>20</td>
+                        <td>20</td>
+                        <td>20</td>
+                    </tr>
+                </table>
+            </div>
         </div>
         <div id="boxSetting" class="box-main-item">
-            <h2>个人设置</h2>
-            <form class="form-horizontal" role="form">
-                <div class="form-group">
-                    <label for="txtMatchName" class="col-sm-2 control-label">账号：</label>
-                    <div class="col-sm-3">
-                        
+            <div class="box-card">
+                <h2>个人设置</h2>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="txtMatchStartTime" class="col-sm-2 control-label">密码：</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" id="txtSetUserPwd">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="txtMatchStartTime" class="col-sm-2 control-label">密码：</label>
-                    <div class="col-sm-3">
-                        <input class="form-control" type="text" id="txtSetUserPwd">
+                    <div class="form-group">
+                        <label for="txtMatchEndTime" class="col-sm-2 control-label">确认密码：</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" id="txtSetUserConPwd">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="txtMatchEndTime" class="col-sm-2 control-label">确认密码：</label>
-                    <div class="col-sm-3">
-                        <input class="form-control" type="text" id="txtSetUserConPwd">
+                    <div class="form-group">
+                        <label for="txtMatchEndTime" class="col-sm-2 control-label">游戏ID：</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" id="txtSetUserId">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="txtMatchEndTime" class="col-sm-2 control-label">游戏ID：</label>
-                    <div class="col-sm-3">
-                        <input class="form-control" type="text" id="txtSetUserId">
+                    <div class="form-group">
+                        <label for="txtMatchEndTime" class="col-sm-2 control-label">验证码：</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="txtSetVdReg" />
+                            <img title="点击刷新" src="module/captcha.php" align="absbottom" onclick="this.src='module/captcha.php?'+Math.random();"/>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="txtMatchEndTime" class="col-sm-2 control-label">验证码：</label>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control" id="txtSetVdReg" />
-                        <img title="点击刷新" src="module/captcha.php" align="absbottom" onclick="this.src='module/captcha.php?'+Math.random();"/>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary" id="btnSaveTeamer">确定</button>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary" id="btnSaveTeamer">确定</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>

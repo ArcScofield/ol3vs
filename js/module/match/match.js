@@ -30,8 +30,6 @@ define(function(require, exports, module) {
     $("#btnSaveMatch").click(function (e) {
         var data = {
             "title": $("#txtMatchTitle").val(),
-            "start": $("#txtMatchStartTime").val(),
-            "end": $("#txtMatchEndTime").val(),
             "type": ~~$("#boxMatchType").btngroup("getValue")[0],
             "num": ~~$("#boxMatchTeamNum").btngroup("getValue")[0],
             "desc": $("#txtMatchDesc").val(),

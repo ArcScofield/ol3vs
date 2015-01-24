@@ -1,7 +1,6 @@
 .side {
-    float: left;
     width: 220px;
-    margin-bottom: 15px;
+    margin-top: 20px;
 }
 h3 {
 	padding: 8px 10px;
@@ -15,7 +14,11 @@ h3 {
 	border-bottom: 1px solid #eee;
 }
 .main {
-    float: right;
+    position: absolute;
+    left: 240px;
+    right: 0;
+    top: 20px;
+    bottom: 0;
 }
 
 .box-main-body {
@@ -41,17 +44,18 @@ a:hover {
     margin-left: 10px;
 }
 h2 {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ebebeb;
     font-size: 16px;
     color: #666;
-    padding: 8px 0 8px 20px;
+    margin-top: 0;
+    padding: 15px 0 10px 20px;
     font-weight: bold;
     position: relative;
 }
 h2 button {
     position: absolute;
     right: 10%;
-    top: 0px;
+    top: 6px;
 }
 .box-tool-tax .txt-item {
     display: inline-block;
@@ -84,5 +88,4 @@ h2 button {
 }
 .tb-team th, .tb-team td {
     text-align: center;
-    border: 1px solid #555;
 }

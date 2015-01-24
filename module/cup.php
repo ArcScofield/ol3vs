@@ -10,7 +10,7 @@ switch ($act) {
 		del($db, $id);
 		break;
 	case "mod":
-	
+		
 		break;
 	case "add":
 		mod ($db, "add");
@@ -51,8 +51,6 @@ function listData($db, $id = null) {
 */
 function mod ($db, $act) {
 	$title = $_POST["title"];
-	$start = $_POST["start"];
-	$end = $_POST["end"];
 	$type = $_POST["type"];
 	$num = $_POST["num"];
 	$desc = $_POST["desc"];
@@ -60,12 +58,12 @@ function mod ($db, $act) {
 
 	$data = array(
 		"title" => $title,
-		"start" => $start,
-		"end" => $end,
 		"type" => $type,
 		"nums" => $num,
 		"desp" => $desc,
 		"reward" => $reward,
+		"zid" => $zid,
+		"uid" => $uid,
 		"time" => date('Y-m-d H:i:s',time())
 	);
 	if ($act === "add") {
@@ -120,5 +118,12 @@ function del ($db, $id) {
 		$result = array("code"=> "error", "desc"=> "删除杯赛失败！");
 	}
 	echo json_encode($result);
+}
+
+/**
+* 批量添加小组数据
+*/
+function insertDefaultData () {
+	$sql = "inser"
 }
 ?>
