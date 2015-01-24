@@ -42,18 +42,29 @@ li {
     transition-property: all;
     transition-timing-function: ease-out;
     width: 98px;
+    color: #7c7c7c;
     text-decoration: none;
     zoom: 1;
+}
+.nav-item a:hover {
+    text-decoration: none;
+    color: #e7e7e7;
 }
 .nav-item-cur a {
     color: rgb(231, 231, 231);
     background-color: rgb(21, 21, 21);
     border: 1px solid rgb(13, 13, 13);
     border-radius: 3px;
-    box-shadow: rgba(255, 255, 255, 0.0980392) 0px 1px 0px 0px;
+    box-shadow: rgba(255, 255, 255, 0.0980392) 0 1px 0 0;
 }
 .wrap {
     position: relative;
+    margin: 0 auto;
+}
+.box-card {
+    background: #ffffff;
+    border: 1px solid rgb(225, 225, 225);
+    box-shadow: 0 1px 3px rgba(0,0,0,.13);
 }
 .box-main-item {
     display: none;
@@ -78,4 +89,42 @@ li {
 }
 .td-c {
     text-align: center;
+}
+@media (max-width:1189px) {
+    .wrap {
+        width: 980px;
+    }
+}
+@media (max-width:2090px) {
+    .wrap {
+        width: 1190px;
+    }
+}
+@media (max-width: 799px) {
+    .wrap {
+        width: 100%;
+    }
+    .side {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    .box-ad-search {
+        height: 0;
+        overflow: hidden;
+        transition: left .3s linear;
+    }
+    .main {
+        float: none;
+        width: 100%;
+    }
+    .box-txt-search {
+        height: 35px;
+        padding: 5px 0;
+    }
+    #txtSearch {
+        height: 25px;
+        border-radius: 2px;
+    }
 }

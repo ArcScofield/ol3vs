@@ -24,34 +24,41 @@ echo $_COOKIE["username"];
 
 <body>
 <div class="nav">
-    <a class="nav-item" href="2.html">球员数据库</a>
-    <a href="#" class="nav-item nav-item-cur">战队系统</a>
+    <div class="wrap">
+        <ul class="list-nav">
+            <li class="nav-item">
+                <a class="nav-item" href="2.html">球员数据库</a>
+            </li>
+            <li class="nav-item nav-item-cur">
+                <a href="#" class="nav-item nav-item-cur">战队系统</a>
+            <li>
+        </ul>
+    </div>
+    <!--
     <a class="nav-item" href="#" data-toggle="modal" data-target="#loginModal">登陆</a>
     <a class="nav-item" href="#" data-toggle="modal" data-target="#regModal">注册</a>
     <a class="nav-item" href="module/user.php?act=loginout">退出</a>
+    -->
 </div>
-<div class="wrap">
-    <div class="side">
-        <h3>战队系统</h3>
-        <ul>
-            <li><a href="javascript:;" id="btnGoHome"><span class="glyphicon glyphicon-home"></span> 战队首页</a></li>
-            <!--
-            <li><a href="javascript:;"><span class="glyphicon glyphicon-tower"></span> 队内联赛</a></li>
-            -->
-            <?php
-            if (isset($_SESSION['username'])) {
-            ?>
-            <li><a href="javascript:;" id="btnGoCup"><span class="glyphicon glyphicon-glass"></span> 队内杯赛</a></li>
-            <li><a href="javascript:;" id="btnGoTeamer"><span class="glyphicon glyphicon-list"></span> 队内数据</a></li>
-            <li><a href="javascript:;" id="btnGoSetting"><span class="glyphicon glyphicon-cog"></span> 个人设置</a></li>
-            <?php
-            }
-            ?>
-        </ul>
+<div class="wrap clearfix">
+    <div class="list-group side">
+        <a href="javascript:;" class="list-group-item active" id="btnGoHome"><span class="glyphicon glyphicon-home"></span> 战队首页</a>
+        <!--
+        <a href="javascript:;" class="list-group-item"><span class="glyphicon glyphicon-tower"></span> 队内联赛</a>
+        -->
+        <?php
+        // if (isset($_SESSION['username'])) {
+        ?>
+        <a href="javascript:;" class="list-group-item" id="btnGoCup"><span class="glyphicon glyphicon-glass"></span><span class="badge">2</span> 队内杯赛</a>
+        <a href="javascript:;" class="list-group-item" id="btnGoTeamer"><span class="glyphicon glyphicon-list"></span> 队内数据</a>
+        <a href="javascript:;" class="list-group-item" id="btnGoSetting"><span class="glyphicon glyphicon-cog"></span> 个人设置</a>
+        <?php
+        // }
+        ?>
     </div>
     <div class="main">
         <div id="boxHome" class="box-main-item" style="display: block;">
-            <div>
+            <div class="box-card">
                 <h2>FIFA OL3公告</h2>
                 <div class="box-main-body">
                     <ul class="list-news">
@@ -89,9 +96,9 @@ echo $_COOKIE["username"];
                 </div>
             </div>
             <?php
-            if (isset($_SESSION['username'])) {
+            // if (isset($_SESSION['username'])) {
             ?>
-            <div>
+            <div class="box-card">
                 <h2>个人战绩</h2>
                 <ul class="list-data">
                     <li>
@@ -115,9 +122,9 @@ echo $_COOKIE["username"];
                 </ul>
             </div>
             <?php
-            }
+            // }
             ?>
-            <div class="box-tool-tax">
+            <div class="box-tool-tax box-card">
                 <h2>税费计算器</h2>
                 <div>
                     <label>出售价格：<input maxlength="11" type="text" id="txtPrice"></label>
@@ -357,6 +364,11 @@ echo $_COOKIE["username"];
     </div>
 </div>
 
+<footer class="footer">
+    <p>关于我们</p>
+    <p>© 2015 ol3vs.com Inc. All rights reserved.</p>
+</footer>
+
 <div class="modal fade" id="regModal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -463,7 +475,7 @@ seajs.config({
 });
 seajs.use("./js/main");
 
-$('#loginModal').modal("show");
+// $('#loginModal').modal("show");
 var viewModule = {
     views: ["boxHome", "boxListCup", "boxAddCup", "boxTeamer", "boxSetting"],
     curView: "boxHome",

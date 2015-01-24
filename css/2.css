@@ -1,6 +1,3 @@
-.wrap {
-    margin: 0 auto;
-}
 .side {
     width: 300px;
     border: 1px solid rgb(225, 225, 225);
@@ -48,45 +45,6 @@
     float: left;
 }
 
-
-@media (max-width:1189px) {
-    .wrap {
-        width: 980px;
-    }
-}
-@media (max-width:2090px) {
-    .wrap {
-        width: 1190px;
-    }
-}
-@media (max-width: 799px) {
-    .wrap {
-        width: 100%;
-    }
-    .side {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-    }
-    .box-ad-search {
-        height: 0;
-        overflow: hidden;
-        transition: left .3s linear;
-    }
-    .main {
-        float: none;
-        width: 100%;
-    }
-    .box-txt-search {
-        height: 35px;
-        padding: 5px 0;
-    }
-    #txtSearch {
-        height: 25px;
-        border-radius: 2px;
-    }
-}
 .list-ad-search > li {
     padding: 10px 0;
 }
