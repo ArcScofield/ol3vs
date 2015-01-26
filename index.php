@@ -40,7 +40,7 @@ echo $_COOKIE["username"];
     <a class="nav-item" href="module/user.php?act=loginout">退出</a>
     -->
 </div>
-<div class="wrap clearfix" style="height: 800px;">
+<div class="wrap clearfix">
     <div class="list-group side">
         <a href="javascript:;" class="list-group-item active" id="btnGoHome"><span class="glyphicon glyphicon-home"></span> 战队首页</a>
         <!--

@@ -1,5 +1,6 @@
 .side {
     width: 220px;
+    float: left;
     margin-top: 20px;
 }
 h3 {
@@ -14,11 +15,8 @@ h3 {
 	border-bottom: 1px solid #eee;
 }
 .main {
-    position: absolute;
-    left: 240px;
-    right: 0;
-    top: 20px;
-    bottom: 0;
+    margin-left: 240px;
+    margin-top: 20px;
 }
 
 .box-main-body {
