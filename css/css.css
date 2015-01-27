@@ -55,6 +55,9 @@ h2 button {
     right: 10%;
     top: 6px;
 }
+.box-tool-tax {
+    padding: 10px 0 10px 30px;
+}
 .box-tool-tax .txt-item {
     display: inline-block;
     width: 180px;

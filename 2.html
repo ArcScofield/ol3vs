@@ -43,7 +43,7 @@
             <ul class="list-ad-search">
                 <li>
                     <span>位置：</span>
-                    <select>
+                    <select id="slPos">
                         <option>位置</option>
                         <optgroup label="FW">
                             <option value="CF">CF</option>
@@ -72,7 +72,7 @@
                 </li>
                 <li>
                     <span>赛季：</span>
-                    <select>
+                    <select id="slSeason">
                         <option value="0">赛季</option>
                         <option value="14">2014</option>
                         <option value="10">2010</option>
@@ -82,7 +82,7 @@
                 </li>
                 <li>
                     <span>能力：</span>
-                    <select>
+                    <select id="slMinCapacity">
                         <option value="">--</option>
                         <option value="65">65</option>
                         <option value="70">70</option>
@@ -92,7 +92,7 @@
                         <option value="90">90</option>
                     </select>
                      - 
-                    <select>
+                    <select id="slMaxCapacity">
                         <option value="">--</option>
                         <option value="65">65</option>
                         <option value="70">70</option>
@@ -141,7 +141,7 @@
                 </li>
                 <li>
                     <span>详细能力：</span>
-                    <select>
+                    <select id="slXx1">
                         <option value="">详细能力</option>
                         <option value="1">射术</option>
                         <option value="2">射门力量</option>
@@ -201,7 +201,7 @@
                 </li>
                 <li>
                     <span>花式动作：</span>
-                    <select>
+                    <select id="slMinHsdz">
                         <option value="">--</option>
                         <option value="1">1星</option>
                         <option value="2">2星</option>
@@ -210,7 +210,7 @@
                         <option value="5">5星</option>
                     </select>
                      - 
-                    <select>
+                    <select id="slMaxHsdz">
                         <option value="">--</option>
                         <option value="1">1星</option>
                         <option value="2">2星</option>
@@ -361,56 +361,120 @@
     <p>关于我们</p>
     <p>© 2015 ol3vs.com Inc. All rights reserved.</p>
 </footer>
-<div class="box-player-vs">
-    <div class="box-top-bar">返回</div>
-    <div class="wrap">
-        <div class="box-player-info">
-            <div class="box-head"></div>
-            <div>
-                <div>80KG 皇家马德里</div>
-                <div>1985.2.25</div>
-                <div></div>
+<div class="modal fade in">
+    <div class="box-player-vs box-card">
+        <div class="box-top-bar">返回</div>
+        <div class="wrap">
+            <div class="box-player-info">
+                <div class="box-head"></div>
+                <div>
+                    <div>80KG 皇家马德里</div>
+                    <div>1985.2.25</div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="box-player-info">
+                <div class="box-head"></div>
+                <div>
+                    <div>80KG 皇家马德里</div>
+                    <div>1985.2.25</div>
+                    <div></div>
+                </div>
             </div>
         </div>
-        <div class="box-player-info">
-            <div class="box-head"></div>
-            <div>
-                <div>80KG 皇家马德里</div>
-                <div>1985.2.25</div>
-                <div></div>
-            </div>
+        <div class="box-player-data">
+            <ul>
+                <li>总能力值</li>
+            </ul>
+            <table class="tb-team table table-hover table-striped">
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="data-item">盘带速度</span>
+                        </td>
+                        <td>
+                            <span class="data-player-f">84</span>
+                        </td>
+                        <td>
+                            <span class="data-player-s">86</span>
+                        </td>
+                        <td>
+                            <span class="data-diff">2</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="data-item">盘带速度</span>
+                        </td>
+                        <td>
+                            <span class="data-player-f">84</span>
+                        </td>
+                        <td>
+                            <span class="data-player-s">86</span>
+                        </td>
+                        <td>
+                            <span class="data-diff">2</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="data-item">盘带速度</span>
+                        </td>
+                        <td>
+                            <span class="data-player-f">84</span>
+                        </td>
+                        <td>
+                            <span class="data-player-s">86</span>
+                        </td>
+                        <td>
+                            <span class="data-diff">2</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="data-item">盘带速度</span>
+                        </td>
+                        <td>
+                            <span class="data-player-f">84</span>
+                        </td>
+                        <td>
+                            <span class="data-player-s">86</span>
+                        </td>
+                        <td>
+                            <span class="data-diff">2</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="data-item">盘带速度</span>
+                        </td>
+                        <td>
+                            <span class="data-player-f">84</span>
+                        </td>
+                        <td>
+                            <span class="data-player-s">86</span>
+                        </td>
+                        <td>
+                            <span class="data-diff">2</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="data-item">盘带速度</span>
+                        </td>
+                        <td>
+                            <span class="data-player-f">84</span>
+                        </td>
+                        <td>
+                            <span class="data-player-s">86</span>
+                        </td>
+                        <td>
+                            <span class="data-diff">2</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </div>
-    <div class="box-player-data">
-        <ul>
-            <li>总能力值</li>
-        </ul>
-        <ul class="list-data">
-            <li>
-                <span class="data-item">盘带速度</span>
-                <span class="data-player-f">84</span>
-                <span class="data-player-s">86</span>
-                <span class="data-diff">2</span>
-            </li>
-            <li>
-                <span class="data-item">视野</span>
-                <span class="data-player-f">84</span>
-                <span class="data-player-s">86</span>
-                <span class="data-diff">2</span>
-            </li>
-            <li>
-                <span class="data-item">抢断</span>
-                <span class="data-player-f">84</span>
-                <span class="data-player-s">86</span>
-                <span class="data-diff">2</span>
-            </li>
-            <li>
-                <span class="data-item">战术意识</span>
-                <span class="data-player-f">84</span>
-                <span class="data-player-s">86</span>
-                <span class="data-diff">2</span>
-            </li>
-        </ul>
     </div>
 </div>
 <script type="text/javascript" src="js/lib/jq/jquery.js"></script>

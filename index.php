@@ -124,9 +124,9 @@ echo $_COOKIE["username"];
             <?php
             // }
             ?>
-            <div class="box-tool-tax box-card">
+            <div class="box-card">
                 <h2>税费计算器</h2>
-                <div>
+                <div class="box-tool-tax">
                     <label>出售价格：<input maxlength="11" type="text" id="txtPrice"></label>
                     <span class="txt-item">手续费：<span id="txtTax"></span></span>
                     <span class="txt-item">获得：<span id="txtResult"></span></span>
@@ -135,7 +135,7 @@ echo $_COOKIE["username"];
         </div>
         <div id="boxListCup" class="box-main-item">
             <div class="box-card">
-                <h2>战队杯赛<button type="button" class="btn btn-sm btn-primary">创建杯赛</button></h2>
+                <h2>战队杯赛<button  data-toggle="modal" data-target="#cupModal" type="button" class="btn btn-sm btn-primary">创建杯赛</button></h2>
                 <div class="box-main-body">
                     <table class="tb-match">
                         <tr>
@@ -232,66 +232,20 @@ echo $_COOKIE["username"];
                 </table>
             </div>
         </div>
-        <div id="boxAddCup">
-            <h2>创建杯赛</h2>
-            <form class="form-horizontal" role="form">
-                <div class="form-group">
-                    <label for="txtMatchTitle" class="col-sm-2 control-label">比赛名称：</label>
-                    <div class="col-sm-5">
-                        <input class="form-control" type="text" id="txtMatchTitle">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">队伍数量：</label>
-                    <div class="col-sm-5">
-                        <div id="boxMatchTeamNum"></div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">比赛类型：</label>
-                    <div class="col-sm-5">
-                        <div id="boxMatchType"></div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="txtMatchDesc" class="col-sm-2 control-label">比赛奖励：</label>
-                    <div class="col-sm-8">
-                        <textarea class="form-control" id="txtMatchDesc"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="txtMatchReward" class="col-sm-2 control-label">比赛说明：</label>
-                    <div class="col-sm-8">
-                        <textarea class="form-control" id="txtMatchReward"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="txtMatchReward" class="col-sm-2 control-label">验证码：</label>
-                    <div class="col-sm-8">
-                        <img title="点击刷新" src="module/captcha.php" align="absbottom" onclick="this.src='module/captcha.php?'+Math.random();"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary" id="btnSaveMatch">保存</button>
-                    </div>
-                </div>
-            </form>
-        </div>
         <div id="boxTeamer" class="box-main-item">
             <div class="box-card">
                 <h2>战队成员</h2>
                 <table class="tb-team table">
                     <tr>
                         <th>队员ID</th>
-                        <th width="5%">出场</th>
-                        <th width="5%">胜</th>
-                        <th width="5%">平</th>
-                        <th width="5%">负</th>
-                        <th width="5%">进球</th>
-                        <th width="5%">失球</th>
+                        <th width="7%">出场</th>
+                        <th width="7%">胜</th>
+                        <th width="7%">平</th>
+                        <th width="7%">负</th>
+                        <th width="7%">进球</th>
+                        <th width="7%">失球</th>
                         <th width="7%">净胜球</th>
-                        <th width="5%">操作</th>
+                        <th width="7%">操作</th>
                     </tr>
                     <tr>
                         <td>超毛</td>
@@ -313,19 +267,19 @@ echo $_COOKIE["username"];
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
                         <label for="txtMatchStartTime" class="col-sm-2 control-label">密码：</label>
-                        <div class="col-sm-3">
+                        <div class="col-sm-5">
                             <input class="form-control" type="text" id="txtSetUserPwd">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtMatchEndTime" class="col-sm-2 control-label">确认密码：</label>
-                        <div class="col-sm-3">
+                        <div class="col-sm-5">
                             <input class="form-control" type="text" id="txtSetUserConPwd">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtMatchEndTime" class="col-sm-2 control-label">游戏ID：</label>
-                        <div class="col-sm-3">
+                        <div class="col-sm-5">
                             <input class="form-control" type="text" id="txtSetUserId">
                         </div>
                     </div>
@@ -435,6 +389,61 @@ echo $_COOKIE["username"];
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 <button id="btnLogin" type="button" class="btn btn-primary">登陆</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="cupModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">创建杯赛</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="txtMatchTitle" class="col-sm-3 control-label">杯赛名称：</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" type="text" id="txtMatchTitle">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">队伍数量：</label>
+                        <div class="col-sm-7">
+                            <div id="boxMatchTeamNum"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">比赛类型：</label>
+                        <div class="col-sm-7">
+                            <div id="boxMatchType"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtMatchDesc" class="col-sm-3 control-label">比赛奖励：</label>
+                        <div class="col-sm-7">
+                            <textarea class="form-control" id="txtMatchDesc"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtMatchReward" class="col-sm-3 control-label">比赛说明：</label>
+                        <div class="col-sm-7">
+                            <textarea class="form-control" id="txtMatchReward"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtMatchReward" class="col-sm-3 control-label">验证码：</label>
+                        <div class="col-sm-7">
+                            <img title="点击刷新" src="module/captcha.php" align="absbottom" onclick="this.src='module/captcha.php?'+Math.random();"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button id="btnLogin" type="button" class="btn btn-primary">确定</button>
             </div>
         </div>
     </div>

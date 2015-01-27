@@ -35,6 +35,8 @@ define(function(require, exports, module) {
 
     $("#btnGoCup").click(function () {
         viewModule.gotoView("boxListCup");
+        seajs.use("./js/module/match/match", function (cup) {
+        });
     });
 
     $("#btnGoTeamer").click(function () {
