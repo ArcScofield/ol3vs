@@ -30,7 +30,7 @@ echo $_COOKIE["username"];
                 <a class="nav-item" href="2.html">球员数据库</a>
             </li>
             <li class="nav-item nav-item-cur">
-                <a href="#" class="nav-item nav-item-cur">战队系统</a>
+                <a href="javascript:;" class="nav-item nav-item-cur">战队系统</a>
             <li>
         </ul>
     </div>
