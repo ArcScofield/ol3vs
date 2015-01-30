@@ -5,27 +5,102 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<link href="js/lib/bootstrap/css/bootstrap.css" rel="stylesheet" media="all">
-<link href="css/common.css" rel="stylesheet" media="all">
-<link href="css/2.css" rel="stylesheet" media="all">
-<link href="css/plug.css" rel="stylesheet" media="all">
-<title>FIFA Online3数据库</title>
-<style type="text/css">
-
-</style>
+<title>获取数据</title>
 </head>
 
 <body>
+<textarea id="aaa" style="height: 250px; width: 100%;"></textarea>
+<textarea id="bbb" style="height: 250px; width: 100%;"></textarea>
+<button id="">存储</button>
 <script type="text/javascript" src="js/lib/jq/jquery.js"></script>
-<script type="text/javascript" src="js/datas.js"></script>
 <script type="text/javascript">
-$(function () {
-    $.get("getData.php", {}, function (resp) {
-        if (resp) {
-            console.log($(resp).find("#stateSort li"));
-        }
-    });
+var aaa = document.getElementById("aaa");
+var bbb = document.getElementById("bbb");
+var data = {};
+
+addChangeEvent(aaa, function () {
+    var val = aaa.value.match(/\(.*\)/g);
+    if (val !== null) {
+        var tmpdata = eval(val[0]);
+        console.log(tmpdata.list[0]);
+        tmpdata = {
+            "name": ,  // 名字
+            "ename": ,  // 英文名字
+            "sj":   // 赛季
+            "bigtx":,   // 大头像
+            "smalltx":,  // 小头像
+            "sg":,   // 身高
+            "tz":,   // 体重
+            "gj":,  //国籍
+            "ls":,  // 联赛
+            "jlb":, // 俱乐部
+            "zj":,  // 左脚
+            "yj":, //右脚
+            "hs":   // 花式
+            "zp":  // 总评
+            "csnyr":  // 出生年月日
+            "ss": , // 射术
+            "smll": , // 射门力量
+            "hx":  // 弧线
+            "ys": // 远射
+            "lkcs": // 凌空抽射
+            "ryq": // 任意球
+            "fdq":  // 罚点球
+            "tq":  // 头球
+            "zw": // 站位
+            "sd":    // 速度
+            "js":   // 加速
+            "lh":  // 灵活
+            "fy":  // 反应
+            "tt":  // 弹跳
+            "tl":  // 体力
+            "qz":  // 强壮
+            "ph": //平衡
+            "dc": // 短传
+            "cc":  // 长传
+            "cz":  // 传中
+            "sy":  // 视野
+            "kq": // 控球
+            "pd": // 盘带
+            "pdsd": // 盘带速度
+            "rdr": // 人盯人
+            "qlx": // 侵略性
+            "zsys": //战术意识
+            "qd": //抢断
+            "cd": // 铲断
+            "gkpj": // GK扑救
+            "gkskq": // GK手控球
+            "gkfy": // GK反应
+            "gkfszw": // GK防守站位
+        };
+    }
 });
+
+
+
+function addChangeEvent (el, callback) {
+    if (window.addEventListener) {  // 先执行W3C
+        el.addEventListener("input", callback);
+    } else {
+        el.attachEvent("onpropertychange", function(e) {
+            if (e.propertyName === "value") {
+                callback(e);
+            }
+        });
+    }
+
+    if (document.documentMode === 9) {
+        var selectionchange = function (e) {
+            if (e.type === "focus") {
+                document.addEventListener("selectionchange", callback);
+            } else {
+                document.removeEventListener("selectionchange", callback);
+            }
+        };
+        el.addEventListener("focus", selectionchange);
+        el.addEventListener("blur", selectionchange);
+    }
+}
 </script>
 </body>
 </html>

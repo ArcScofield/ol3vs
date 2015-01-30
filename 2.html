@@ -548,7 +548,9 @@ $(function () {
         search();
     });
     $("#txtName").keypress(function(e) {
-        
+        if (e.keyCode === 13) {
+            search();
+        }
     });
 
     function search() {
