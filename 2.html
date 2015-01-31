@@ -477,12 +477,47 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="js/lib/jq/prototype.js"></script>
 <script type="text/javascript" src="js/lib/jq/jquery.js"></script>
 <script type="text/javascript" src="js/datas.js"></script>
 <script type="text/javascript">
 $(function () {
     var result = [];
+
+    var xx = [
+        {"name": "射术", "pos": "cam rw"},
+        {"name": "射门力量", "pos": "cam rw"},
+        {"name": "弧线", "pos": ""},
+        {"name": "远射", "pos": "cm cam rw"},
+        {"name": "凌空抽射", "pos": ""},
+        {"name": "任意球", "pos": ""},
+        {"name": "罚点球", "pos": ""},
+        {"name": "头球", "pos": "rb cb cdm cm cam"},
+        {"name": "站位", "pos": "rb cb cdm cm cam"},
+        {"name": "速度", "pos": "rb cb cdm cm cam rw"},
+        {"name": "加速", "pos": "rw"},
+        {"name": "灵活", "pos": "rw"},
+        {"name": "反应", "pos": "gk rb cb cdm cm cam rw"}
+        {"name": "弹跳", "pos": "gk cb"},
+        {"name": "体力", "pos": "rb cdm cm rw"},
+        {"name": "强壮", "pos": "rb cb cdm cm"},
+        {"name": "平衡", "pos": ""},
+        {"name": "短传", "pos": "rb cb cdm cm cam rw"},
+        {"name": "长传", "pos": "cdm cm cam rw"},
+        {"name": "传中", "pos": "rb rw"},
+        {"name": "控球", "pos": "rb cb cdm cm cam rw"},
+        {"name": "盘带", "pos": "cm cam rw"},
+        {"name": "战术意识", "pos": ""},
+        {"name": "视野", "pos": "cdm cm cam rw"},
+        {"name": "抢断", "pos": "rb cb cdm cm"},
+        {"name": "铲断", "pos": "rb cb cdm"},
+        {"name": "人盯人", "pos": "cb cdm"},
+        {"name": "侵略性", "pos": "rb cb cdm"},
+        {"name": "GK扑救", "pos": "gk"},
+        {"name": "GK手控球", "pos": "gk"},
+        {"name": "GK大脚开球", "pos": "gk"},
+        {"name": "GK反应", "pos": "gk"},
+        {"name": "GK防守站位", "pos": "gk"}
+    ];
 
     /**
     $.ajax({
@@ -534,6 +569,9 @@ $(function () {
         $("#selectTeam").empty()[0].appendChild(doc);
     });
 
+    /*
+    * 加载隐藏能力开始
+    */
     var doc = document.createDocumentFragment();
     var op = {};
     for (var i = 0; i < HdProp.length; i++) {
@@ -543,10 +581,16 @@ $(function () {
         doc.appendChild(op);
     }
     $("#selectHdProp")[0].appendChild(doc);
+    /*
+    * 加载隐藏能力完
+    */
+
+
 
     $("#btnSearch").click(function () {
         search();
     });
+
     $("#txtName").keypress(function(e) {
         if (e.keyCode === 13) {
             search();
@@ -555,7 +599,8 @@ $(function () {
 
     function search() {
         var data = {
-            name: $("#txtName").val().split(/[,，]/g)
+            "name": $("#txtName").val().split(/[,，]/g),
+            "sj": $("#slSeason").val()
         };
 
         $.post("module/search.php", data, function (resp) {
