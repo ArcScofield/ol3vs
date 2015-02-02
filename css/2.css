@@ -5,6 +5,24 @@
     margin-top: 20px;
     box-shadow: 0 1px 3px rgba(0,0,0,.13);
 }
+.box-txt-search {
+    padding: 10px 0;
+    text-align: center;
+}
+.box-txt-search input {
+    line-height: 28px;
+    width: 80%;
+}
+.list-ad-search > li {
+    padding: 10px 0;
+}
+.list-ad-search > li > span {
+    width: 90px;
+    display: inline-block;
+    text-align: right;
+}
+
+
 .main {
     position: absolute;
     left: 320px;
@@ -15,14 +33,27 @@
     border: 1px solid rgb(225, 225, 225);
     box-shadow: 0 1px 3px rgba(0,0,0,.13);
 }
-.box-txt-search {
-    padding: 10px 0;
-    text-align: center;
+.main .label {
+    font-size: 10px;
 }
-.box-txt-search input {
-    line-height: 28px;
-    width: 80%;
+.icon-sj {
+    display: inline-block;
+    height: 18px;
+    width: 18px;
 }
+.icon-sj-14 {
+    background: url("../img/icon/icon_18x18_2014.png") no-repeat;
+}
+.icon-sj-10 {
+    background: url("../img/icon/icon_18x18_2010.png") no-repeat;
+}
+.icon-sj-w {
+    background: url("../img/icon/icon_18x18_w.png") no-repeat;
+}
+.icon-sj-06 {
+    background: url("../img/icon/icon_18x18_2006.png") no-repeat;
+}
+
 
 .box-player-vs {
     background: #ffffff;
@@ -31,18 +62,10 @@
     top:100px;
     padding: 10px;
     right: 200px;
+    display: none;
     z-index: 2;
     transition: left .3s linear;
 }
 .box-player-vs > .box-top-bar {
     line-height: 35px;
-}
-
-.list-ad-search > li {
-    padding: 10px 0;
-}
-.list-ad-search > li > span {
-    width: 90px;
-    display: inline-block;
-    text-align: right;
 }

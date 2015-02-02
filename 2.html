@@ -314,10 +314,11 @@
         </div>
     </div>
     <div class="main">
-        <table class="tb-team table table-hover table-striped">
+        <table class="tb-team table table-hover table-striped" id="listPlayer">
             <thead>
                 <tr>
                     <th width="5%"></th>
+                    <th>赛季</th>
                     <th>位置</th>
                     <th>球员名</th>
                     <th>能力</th>
@@ -325,43 +326,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="td-c"><input type="checkbox"></td>
-                    <td>CF</td>
-                    <td>梅西</td>
-                    <td>83</td>
-                    <td>巴塞罗那</td>
-                </tr>
-                <tr>
-                    <td class="td-c"><input type="checkbox"></td>
-                    <td>ST</td>
-                    <td>C.罗纳尔罗</td>
-                    <td>82</td>
-                    <td>皇家马德里</td>
-                </tr>
-                <tr>
-                    <td class="td-c"><input type="checkbox"></td>
-                    <td>CM</td>
-                    <td>亚亚图雷</td>
-                    <td>78</td>
-                    <td>曼城</td>
-                </tr>
-                <tr>
-                    <td class="td-c"><input type="checkbox"></td>
-                    <td>ST</td>
-                    <td>伊布拉希莫维奇</td>
-                    <td>79</td>
-                    <td>巴黎圣日耳曼</td>
-                </tr>
             </tbody>
         </table>
     </div>
 </div>
 <footer class="footer">
-    <p>关于我们</p>
     <p>© 2015 ol3vs.com Inc. All rights reserved.</p>
 </footer>
-<div class="modal fade in">
+
+<div class="">
     <div class="box-player-vs box-card">
         <div class="box-top-bar">返回</div>
         <div class="wrap">
@@ -386,139 +359,101 @@
             <ul>
                 <li>总能力值</li>
             </ul>
-            <table class="tb-team table table-hover table-striped">
+            <table id="listPlayerVs" class="tb-team table table-hover table-striped">
                 <tbody>
-                    <tr>
-                        <td>
-                            <span class="data-item">盘带速度</span>
-                        </td>
-                        <td>
-                            <span class="data-player-f">84</span>
-                        </td>
-                        <td>
-                            <span class="data-player-s">86</span>
-                        </td>
-                        <td>
-                            <span class="data-diff">2</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="data-item">盘带速度</span>
-                        </td>
-                        <td>
-                            <span class="data-player-f">84</span>
-                        </td>
-                        <td>
-                            <span class="data-player-s">86</span>
-                        </td>
-                        <td>
-                            <span class="data-diff">2</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="data-item">盘带速度</span>
-                        </td>
-                        <td>
-                            <span class="data-player-f">84</span>
-                        </td>
-                        <td>
-                            <span class="data-player-s">86</span>
-                        </td>
-                        <td>
-                            <span class="data-diff">2</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="data-item">盘带速度</span>
-                        </td>
-                        <td>
-                            <span class="data-player-f">84</span>
-                        </td>
-                        <td>
-                            <span class="data-player-s">86</span>
-                        </td>
-                        <td>
-                            <span class="data-diff">2</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="data-item">盘带速度</span>
-                        </td>
-                        <td>
-                            <span class="data-player-f">84</span>
-                        </td>
-                        <td>
-                            <span class="data-player-s">86</span>
-                        </td>
-                        <td>
-                            <span class="data-diff">2</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="data-item">盘带速度</span>
-                        </td>
-                        <td>
-                            <span class="data-player-f">84</span>
-                        </td>
-                        <td>
-                            <span class="data-player-s">86</span>
-                        </td>
-                        <td>
-                            <span class="data-diff">2</span>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 <script type="text/javascript" src="js/lib/jq/jquery.js"></script>
+<script type="text/javascript" src="js/lib/handlebars/handlebars.js"></script>
 <script type="text/javascript" src="js/datas.js"></script>
+<script id="playerTpl" type="text/x-handlebars-template">
+{{#each players}}
+    <tr>
+        <td class="td-c"><input type="checkbox" id="{{id}}"></td>
+        <td><span class="icon-sj icon-sj-{{sj}}"></span></td>
+        <td><span class="label {{#cls}}{{pos}}{{/cls}}">{{pos}}</span></td>
+        <td>{{name}}</td>
+        <td>{{zp}}</td>
+        <td>{{jlb}}</td>
+    </tr>
+{{/each}}
+</script>
+<script id="vsTpl" type="text/x-handlebars-template">
+{{#each people}}
+    <tr class="{{pos}}">
+        <td>
+            <span class="data-item">{{name}}</span>
+        </td>
+        <td>
+            <span class="data-player-f">{{item.[0]}}</span>
+        </td>
+        <td>
+            <span class="data-player-s">{{item.[1]}}</span>
+        </td>
+        <td>
+            <span class="data-diff">{{item.[0]/item.[1]}}</span>
+        </td>
+    </tr>
+{{/each}}
+</script>
 <script type="text/javascript">
 $(function () {
-    var result = [];
+    Handlebars.registerHelper('cls', function(item, options) {
+        var cls = {
+            "LW": "label-success"
+        };
+        console.log(item, options);
+        return "label-success";
+    });
+    var source   = $("#playerTpl").html();
+    var template = Handlebars.compile(source);
+    var html = template(defaultPlayers);
+    $("#listPlayer").find("tbody").html(html);
 
-    var xx = [
-        {"name": "射术", "pos": "cam rw cf st"},
-        {"name": "射门力量", "pos": "cam rw cf st"},
-        {"name": "弧线", "pos": ""},
-        {"name": "远射", "pos": "cm cam rw cf st rm"},
-        {"name": "凌空抽射", "pos": "cf st"},
-        {"name": "任意球", "pos": ""},
-        {"name": "罚点球", "pos": ""},
-        {"name": "头球", "pos": "rb cb cdm cm cam cf st"},
-        {"name": "站位", "pos": "rb cb cdm cm cam rm"},
-        {"name": "速度", "pos": "rb cb cdm cm cam rw cf st rm"},
-        {"name": "加速", "pos": "rw cf st rm"},
-        {"name": "灵活", "pos": "rw rm"},
-        {"name": "反应", "pos": "gk rb cb cdm cm cam rw cf st rm"}
-        {"name": "弹跳", "pos": "gk cb"},
-        {"name": "体力", "pos": "rb cdm cm rw rm"},
-        {"name": "强壮", "pos": "rb cb cdm cm cf st"},
-        {"name": "平衡", "pos": ""},
-        {"name": "短传", "pos": "rb cb cdm cm cam rw cf st rm"},
-        {"name": "长传", "pos": "cdm cm cam rw rm"},
-        {"name": "传中", "pos": "rb rw cf rm"},
-        {"name": "控球", "pos": "rb cb cdm cm cam rw cf st rm"},
-        {"name": "盘带", "pos": "cm cam rw cf st rm"},
-        {"name": "战术意识", "pos": ""},
-        {"name": "视野", "pos": "cdm cm cam rw rm"},
-        {"name": "抢断", "pos": "rb cb cdm cm"},
-        {"name": "铲断", "pos": "rb cb cdm"},
-        {"name": "人盯人", "pos": "cb cdm"},
-        {"name": "侵略性", "pos": "rb cb cdm"},
-        {"name": "GK扑救", "pos": "gk"},
-        {"name": "GK手控球", "pos": "gk"},
-        {"name": "GK大脚开球", "pos": "gk"},
-        {"name": "GK反应", "pos": "gk"},
-        {"name": "GK防守站位", "pos": "gk"}
-    ];
-
+    var xx = {
+        "people": [
+            {"name": "射术", "pos": "cam rw cf st", "item": [86, 80]},
+            {"name": "射门力量", "pos": "cam rw cf st", "item": "smll"},
+            {"name": "弧线", "pos": "", "item": "hx"},
+            {"name": "远射", "pos": "cm cam rw cf st rm", "item": "ys"},
+            {"name": "凌空抽射", "pos": "cf st", "item": "lkcs"},
+            {"name": "任意球", "pos": "", "item": "ryq"},
+            {"name": "罚点球", "pos": "", "item": "fdq"},
+            {"name": "头球", "pos": "rb cb cdm cm cam cf st", "item": "tq"},
+            {"name": "站位", "pos": "rb cb cdm cm cam rm", "item": "zw"},
+            {"name": "速度", "pos": "rb cb cdm cm cam rw cf st rm", "item": "sd"},
+            {"name": "加速", "pos": "rw cf st rm", "item": "js"},
+            {"name": "灵活", "pos": "rw rm", "item": "lh"},
+            {"name": "反应", "pos": "gk rb cb cdm cm cam rw cf st rm", "item": "fy"},
+            {"name": "弹跳", "pos": "gk cb", "item": "tt"},
+            {"name": "体力", "pos": "rb cdm cm rw rm", "item": "tl"},
+            {"name": "强壮", "pos": "rb cb cdm cm cf st", "item": "qz"},
+            {"name": "平衡", "pos": "", "item": "ph"},
+            {"name": "短传", "pos": "rb cb cdm cm cam rw cf st rm", "item": "dc"},
+            {"name": "长传", "pos": "cdm cm cam rw rm", "item": "cc"},
+            {"name": "传中", "pos": "rb rw cf rm", "item": "cz"},
+            {"name": "控球", "pos": "rb cb cdm cm cam rw cf st rm", "item": "kq"},
+            {"name": "盘带", "pos": "cm cam rw cf st rm", "item": "pd"},
+            {"name": "战术意识", "pos": "", "item": "zsys"},
+            {"name": "视野", "pos": "cdm cm cam rw rm", "item": "sy"},
+            {"name": "抢断", "pos": "rb cb cdm cm", "item": "qd"},
+            {"name": "铲断", "pos": "rb cb cdm", "item": "cd"},
+            {"name": "人盯人", "pos": "cb cdm", "item": "rdr"},
+            {"name": "侵略性", "pos": "rb cb cdm", "item": "qnx"},
+            {"name": "GK扑救", "pos": "gk", "item": "gkpj"},
+            {"name": "GK手控球", "pos": "gk", "item": "gkskq"},
+            {"name": "GK大脚开球", "pos": "gk", "item": "gkdjkq"},
+            {"name": "GK反应", "pos": "gk", "item": "gkfy"},
+            {"name": "GK防守站位", "pos": "gk", "item": "gkfszw"}
+        ]
+    };
+    var source   = $("#vsTpl").html();
+    var template = Handlebars.compile(source);
+    var html = template(xx);
+    $("#listPlayerVs").find("tbody").html(html);
     /**
     $.ajax({
         url: "js/1.json",
