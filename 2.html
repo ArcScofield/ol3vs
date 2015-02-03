@@ -358,6 +358,8 @@
         <div class="box-player-data">
             <ul>
                 <li>总能力值</li>
+                <li></li>
+
             </ul>
             <table id="listPlayerVs" class="tb-team table table-hover table-striped">
                 <tbody>
@@ -372,7 +374,7 @@
 <script id="playerTpl" type="text/x-handlebars-template">
 {{#each players}}
     <tr>
-        <td class="td-c"><input type="checkbox" id="{{id}}"></td>
+        <td class="td-c"><input type="checkbox" data-id="{{id}}"></td>
         <td><span class="icon-sj icon-sj-{{sj}}"></span></td>
         <td><span class="label {{#cls}}{{pos}}{{/cls}}">{{pos}}</span></td>
         <td>{{name}}</td>
@@ -401,12 +403,24 @@
 </script>
 <script type="text/javascript">
 $(function () {
-    Handlebars.registerHelper('cls', function(item, options) {
+    Handlebars.registerHelper('cls', function(options) {
         var cls = {
-            "LW": "label-success"
+            "ST": "label-danger",
+            "CF": "label-danger",
+            "LW": "label-danger",
+            "RW": "label-danger",
+            "CAM": "label-success",
+            "CM": "label-success",
+            "LM": "label-success",
+            "RM": "label-success",
+            "CDM": "label-success",
+            "LB": "label-primary",
+            "RB": "label-primary",
+            "CB": "label-primary",
+            "GK": "label-warning"
         };
-        console.log(item, options);
-        return "label-success";
+
+        return cls[options.fn(this)];
     });
     var source   = $("#playerTpl").html();
     var template = Handlebars.compile(source);
@@ -542,6 +556,17 @@ $(function () {
             console.log(resp);
         });
     }
+
+    $("#listPlayer").on("click", "tr", function () {
+        var cbox = $(this).children().find("input");
+        if (cbox.prop("checked")) {
+            cbox.prop("checked", false);
+        } else {
+            cbox.prop("checked", true);
+        }
+    }).on("click", "input", function (e) {
+        e.stopPropagation();
+    });
 });
 </script>
 </body>
