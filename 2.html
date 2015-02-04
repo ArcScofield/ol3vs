@@ -337,17 +337,24 @@
 <div class="">
     <div class="box-player-vs box-card">
         <div class="box-top-bar">返回</div>
-        <div class="wrap">
+        <div>
             <div class="box-player-info">
-                <div class="box-head"></div>
+                <div class="box-head">
+                    <img src="img/p2702.png" />
+                </div>
                 <div>
                     <div>80KG 皇家马德里</div>
                     <div>1985.2.25</div>
                     <div></div>
                 </div>
+                <div>
+                    <span>查看能力值：</span>
+                </div>
             </div>
             <div class="box-player-info">
-                <div class="box-head"></div>
+                <div class="box-head">
+                    <img src="img/p2702.png" />
+                </div>
                 <div>
                     <div>80KG 皇家马德里</div>
                     <div>1985.2.25</div>
@@ -356,11 +363,13 @@
             </div>
         </div>
         <div class="box-player-data">
-            <ul>
-                <li>总能力值</li>
-                <li></li>
-
-            </ul>
+            <div>
+                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-default">总能力</button>
+                    <button type="button" class="btn btn-default">CF</button>
+                    <button type="button" class="btn btn-default">ST</button>
+                </div>
+            </div>
             <table id="listPlayerVs" class="tb-team table table-hover table-striped">
                 <tbody>
                 </tbody>
@@ -386,7 +395,7 @@
 <script id="vsTpl" type="text/x-handlebars-template">
 {{#each people}}
     <tr class="{{pos}}">
-        <td>
+        <td width="200px">
             <span class="data-item">{{name}}</span>
         </td>
         <td>
@@ -419,7 +428,7 @@ $(function () {
             "CB": "label-primary",
             "GK": "label-warning"
         };
-
+        console.log(options.fn(this));
         return cls[options.fn(this)];
     });
     var source   = $("#playerTpl").html();
