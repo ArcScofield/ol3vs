@@ -37,6 +37,7 @@
     display: inline-block;
     height: 18px;
     width: 18px;
+    vertical-align: middle;
 }
 .icon-sj-14 {
     background: url("../img/icon/icon_18x18_2014.png") no-repeat;
@@ -51,18 +52,6 @@
     background: url("../img/icon/icon_18x18_2006.png") no-repeat;
 }
 
-
-.box-player-vs {
-    background: #ffffff;
-    width: 600px;
-    position: absolute;
-    top: 100px;
-    padding: 10px;
-    left: 50%;
-    margin-left: -300px;
-    z-index: 2;
-    transition: left .3s linear;
-}
 .box-player-vs > .box-top-bar {
     line-height: 35px;
 }
