@@ -36,6 +36,7 @@
 </div>
 <div class="wrap">
     <div class="side">
+        <h4>搜索球员</h4>
         <div class="box-txt-search">
             <input type="input" placeholder="逗号分隔搜索多名球员" id="txtName">
         </div>
@@ -328,6 +329,25 @@
             <tbody>
             </tbody>
         </table>
+        <nav class="nav-page">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
 <footer class="footer">
@@ -343,28 +363,32 @@
             </div>
             <div class="modal-body">
                 <div class="box-player-vs box-card">
-                    <div>
+                    <div class="clearfix">
                         <div class="box-player-info">
-                            <div class="box-head">
-                                <img src="img/p2702.png" />
-                                <div><span class="icon-sj icon-sj-06"></span>阿毛里</div>
-                            </div>
-                            <div>
-                                <ul class="list-player-info">
-                                    <li>186CM 80KG</li>
-                                    <li>1985.2.25</li>
-                                    <li>意大利</li>
-                                    <li>皇家马德里</li>
-                                </ul>
+                            <div class="clearfix">
+                                <div class="box-head">
+                                    <img src="img/p2702.png" />
+                                    <div class="box-head-name">
+                                        <span class="icon-sj icon-sj-06"></span> 阿毛里
+                                    </div>
+                                </div>
                                 <div>
-                                    <ul class="list-player-pos">
-                                        <li><span>ST</span>80</li>
-                                        <li><span>CF</span>80</li>
-                                        <li><span>CAM</span>80</li>
+                                    <ul class="list-player-info">
+                                        <li>186CM 80KG</li>
+                                        <li>1985.2.25</li>
+                                        <li>意大利</li>
+                                        <li>皇家马德里</li>
                                     </ul>
+                                    <div>
+                                        <ul class="list-player-pos">
+                                            <li><span class="label-pos label label-danger">ST</span>80</li>
+                                            <li><span class="label-pos label label-danger">CF</span>80</li>
+                                            <li><span class="label-pos label label-danger">CAM</span>80</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="clearfix">
+                            <div class="box-level-change">
                                 <span>查看能力：</span>
                                 <select>
                                     <option value="1">强化</option>
@@ -405,13 +429,67 @@
                             </div>
                         </div>
                         <div class="box-player-info">
-                            <div class="box-head">
-                                <img src="img/p2702.png" />
+                            <div class="clearfix">
+                                <div class="box-head">
+                                    <img src="img/p2702.png" />
+                                    <div class="box-head-name">
+                                        <span class="icon-sj icon-sj-10"></span> 阿毛里
+                                    </div>
+                                </div>
+                                <div>
+                                    <ul class="list-player-info">
+                                        <li>186CM 80KG</li>
+                                        <li>1985.2.25</li>
+                                        <li>意大利</li>
+                                        <li>皇家马德里</li>
+                                    </ul>
+                                    <div>
+                                        <ul class="list-player-pos">
+                                            <li><span class="label-pos">ST</span>80</li>
+                                            <li><span class="label-pos">CF</span>80</li>
+                                            <li><span class="label-pos">CAM</span>80</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <div>80KG 皇家马德里</div>
-                                <div>1985.2.25</div>
-                                <div></div>
+                            <div class="box-level-change">
+                                <span>查看能力：</span>
+                                <select>
+                                    <option value="1">强化</option>
+                                    <option value="1">强化+1</option>
+                                    <option value="2">强化+2</option>
+                                    <option value="3">强化+3</option>
+                                    <option value="4">强化+4</option>
+                                    <option value="5">强化+5</option>
+                                    <option value="6">强化+6</option>
+                                    <option value="7">强化+7</option>
+                                    <option value="8">强化+8</option>
+                                    <option value="9">强化+9</option>
+                                    <option value="10">强化+10</option>
+                                </select>
+                                <select>
+                                    <option value="1">等级</option>
+                                    <option value="1">1级</option>
+                                    <option value="2">2级</option>
+                                    <option value="3">3级</option>
+                                    <option value="4">4级</option>
+                                    <option value="5">5级</option>
+                                    <option value="6">6级</option>
+                                    <option value="7">7级</option>
+                                    <option value="8">8级</option>
+                                    <option value="9">9级</option>
+                                    <option value="10">10级</option>
+                                    <option value="11">11级</option>
+                                    <option value="12">12级</option>
+                                    <option value="13">13级</option>
+                                    <option value="14">14级</option>
+                                    <option value="15">15级</option>
+                                    <option value="16">16级</option>
+                                    <option value="17">17级</option>
+                                    <option value="18">18级</option>
+                                    <option value="19">19级</option>
+                                    <option value="20">20级</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -487,7 +565,6 @@ $(function () {
             "CB": "label-primary",
             "GK": "label-warning"
         };
-        console.log(options.fn(this));
         return cls[options.fn(this)];
     });
     var source   = $("#playerTpl").html();
@@ -635,6 +712,8 @@ $(function () {
     }).on("click", "input", function (e) {
         e.stopPropagation();
     });
+
+
 });
 </script>
 </body>
