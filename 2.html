@@ -478,13 +478,19 @@
     </div>
 </div>
 <script type="text/javascript" src="js/lib/jq/jquery.js"></script>
+<script type="text/javascript" src="js/lib/handlebars/handlebars.js"></script>
 <script type="text/javascript" src="js/datas.js"></script>
+<script id="entry-template" type="text/x-handlebars-template">
+<tr>
+
+</tr>
+</script>
 <script type="text/javascript">
 $(function () {
     var result = [];
 
     var xx = [
-        {"name": "射术", "pos": "cam rw cf st"},
+        {"name": "射术", "pos": "cam rw cf st", "item": ""},
         {"name": "射门力量", "pos": "cam rw cf st"},
         {"name": "弧线", "pos": ""},
         {"name": "远射", "pos": "cm cam rw cf st rm"},
@@ -496,7 +502,7 @@ $(function () {
         {"name": "速度", "pos": "rb cb cdm cm cam rw cf st rm"},
         {"name": "加速", "pos": "rw cf st rm"},
         {"name": "灵活", "pos": "rw rm"},
-        {"name": "反应", "pos": "gk rb cb cdm cm cam rw cf st rm"}
+        {"name": "反应", "pos": "gk rb cb cdm cm cam rw cf st rm"},
         {"name": "弹跳", "pos": "gk cb"},
         {"name": "体力", "pos": "rb cdm cm rw rm"},
         {"name": "强壮", "pos": "rb cb cdm cm cf st"},
