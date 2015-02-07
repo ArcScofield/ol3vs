@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<link href="js/lib/bootstrap/css/bootstrap.css" rel="stylesheet" media="all">
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" media="all">
 <link href="css/common.css" rel="stylesheet" media="all">
 <link href="css/2.css" rel="stylesheet" media="all">
 <link href="css/plug.css" rel="stylesheet" media="all">
@@ -512,15 +512,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="js/lib/jq/jquery.js"></script>
-<<<<<<< HEAD
-<script type="text/javascript" src="js/lib/handlebars/handlebars.js"></script>
-<script type="text/javascript" src="js/datas.js"></script>
-<script id="entry-template" type="text/x-handlebars-template">
-<tr>
-
-</tr>
-=======
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/lib/handlebars/handlebars.js"></script>
 <script type="text/javascript" src="js/datas.js"></script>
@@ -549,54 +541,14 @@
             <span class="data-player-s">{{item.[1]}}</span>
         </td>
         <td>
-            <span class="data-diff">{{item.[0]/item.[1]}}</span>
+            <span class="data-diff">{{#diff}}{{item.[0]}}-{{item.[1]}}{{/diff}}</span>
         </td>
     </tr>
 {{/each}}
->>>>>>> e2e98f126d5d6c297daa3c2f979ed826f77b0fa8
 </script>
 <script type="text/javascript">
 $('#vsModal').modal("show");
 $(function () {
-<<<<<<< HEAD
-    var result = [];
-
-    var xx = [
-        {"name": "射术", "pos": "cam rw cf st", "item": ""},
-        {"name": "射门力量", "pos": "cam rw cf st"},
-        {"name": "弧线", "pos": ""},
-        {"name": "远射", "pos": "cm cam rw cf st rm"},
-        {"name": "凌空抽射", "pos": "cf st"},
-        {"name": "任意球", "pos": ""},
-        {"name": "罚点球", "pos": ""},
-        {"name": "头球", "pos": "rb cb cdm cm cam cf st"},
-        {"name": "站位", "pos": "rb cb cdm cm cam rm"},
-        {"name": "速度", "pos": "rb cb cdm cm cam rw cf st rm"},
-        {"name": "加速", "pos": "rw cf st rm"},
-        {"name": "灵活", "pos": "rw rm"},
-        {"name": "反应", "pos": "gk rb cb cdm cm cam rw cf st rm"},
-        {"name": "弹跳", "pos": "gk cb"},
-        {"name": "体力", "pos": "rb cdm cm rw rm"},
-        {"name": "强壮", "pos": "rb cb cdm cm cf st"},
-        {"name": "平衡", "pos": ""},
-        {"name": "短传", "pos": "rb cb cdm cm cam rw cf st rm"},
-        {"name": "长传", "pos": "cdm cm cam rw rm"},
-        {"name": "传中", "pos": "rb rw cf rm"},
-        {"name": "控球", "pos": "rb cb cdm cm cam rw cf st rm"},
-        {"name": "盘带", "pos": "cm cam rw cf st rm"},
-        {"name": "战术意识", "pos": ""},
-        {"name": "视野", "pos": "cdm cm cam rw rm"},
-        {"name": "抢断", "pos": "rb cb cdm cm"},
-        {"name": "铲断", "pos": "rb cb cdm"},
-        {"name": "人盯人", "pos": "cb cdm"},
-        {"name": "侵略性", "pos": "rb cb cdm"},
-        {"name": "GK扑救", "pos": "gk"},
-        {"name": "GK手控球", "pos": "gk"},
-        {"name": "GK大脚开球", "pos": "gk"},
-        {"name": "GK反应", "pos": "gk"},
-        {"name": "GK防守站位", "pos": "gk"}
-    ];
-=======
     Handlebars.registerHelper('cls', function(options) {
         var cls = {
             "ST": "label-danger",
@@ -611,51 +563,127 @@ $(function () {
             "LB": "label-primary",
             "RB": "label-primary",
             "CB": "label-primary",
+            "SW": "label-primary",
             "GK": "label-warning"
         };
         return cls[options.fn(this)];
+    });
+
+    Handlebars.registerHelper('diff', function(options) {
+        var arr = options.fn(this).split("-");
+        return arr[0] - arr[1];
     });
     var source   = $("#playerTpl").html();
     var template = Handlebars.compile(source);
     var html = template(defaultPlayers);
     $("#listPlayer").find("tbody").html(html);
->>>>>>> e2e98f126d5d6c297daa3c2f979ed826f77b0fa8
 
+    var players = [
+        {
+            "ss": 70,
+            "smll": 13,
+            "hx": 40,
+            "ys": 50,
+            "lkcs": 60,
+            "ryq": 67,
+            "fdq": 79,
+            "tq": 80,
+            "zw": 70,
+            "sd": 80,
+            "js": 98,
+            "lh": 67,
+            "fy": 87,
+            "tt": 89,
+            "tl": 98,
+            "qz": 78,
+            "ph": 65,
+            "dc": 89,
+            "cc": 67,
+            "cz": 78,
+            "kq": 91,
+            "pd": 92,
+            "zsys": 56,
+            "sy": 86,
+            "qd": 82,
+            "cd": 81,
+            "rdr": 85,
+            "qnx": 92,
+            "gkpj": 93,
+            "gkskq": 68,
+            "gkdjkq": 78,
+            "gkfy": 99,
+            "gkfszw": 100
+        },{
+            "ss": 70,
+            "smll": 13,
+            "hx": 40,
+            "ys": 50,
+            "lkcs": 60,
+            "ryq": 67,
+            "fdq": 79,
+            "tq": 80,
+            "zw": 70,
+            "sd": 80,
+            "js": 98,
+            "lh": 67,
+            "fy": 87,
+            "tt": 89,
+            "tl": 98,
+            "qz": 78,
+            "ph": 65,
+            "dc": 89,
+            "cc": 67,
+            "cz": 78,
+            "kq": 91,
+            "pd": 92,
+            "zsys": 56,
+            "sy": 86,
+            "qd": 82,
+            "cd": 81,
+            "rdr": 85,
+            "qnx": 92,
+            "gkpj": 93,
+            "gkskq": 68,
+            "gkdjkq": 78,
+            "gkfy": 99,
+            "gkfszw": 100
+        }
+    ];
     var xx = {
         "people": [
-            {"name": "射术", "pos": "cam rw cf st", "item": [86, 80]},
-            {"name": "射门力量", "pos": "cam rw cf st", "item": "smll"},
-            {"name": "弧线", "pos": "", "item": "hx"},
-            {"name": "远射", "pos": "cm cam rw cf st rm", "item": "ys"},
-            {"name": "凌空抽射", "pos": "cf st", "item": "lkcs"},
-            {"name": "任意球", "pos": "", "item": "ryq"},
-            {"name": "罚点球", "pos": "", "item": "fdq"},
-            {"name": "头球", "pos": "rb cb cdm cm cam cf st", "item": "tq"},
-            {"name": "站位", "pos": "rb cb cdm cm cam rm", "item": "zw"},
-            {"name": "速度", "pos": "rb cb cdm cm cam rw cf st rm", "item": "sd"},
-            {"name": "加速", "pos": "rw cf st rm", "item": "js"},
-            {"name": "灵活", "pos": "rw rm", "item": "lh"},
-            {"name": "反应", "pos": "gk rb cb cdm cm cam rw cf st rm", "item": "fy"},
-            {"name": "弹跳", "pos": "gk cb", "item": "tt"},
-            {"name": "体力", "pos": "rb cdm cm rw rm", "item": "tl"},
-            {"name": "强壮", "pos": "rb cb cdm cm cf st", "item": "qz"},
-            {"name": "平衡", "pos": "", "item": "ph"},
-            {"name": "短传", "pos": "rb cb cdm cm cam rw cf st rm", "item": "dc"},
-            {"name": "长传", "pos": "cdm cm cam rw rm", "item": "cc"},
-            {"name": "传中", "pos": "rb rw cf rm", "item": "cz"},
-            {"name": "控球", "pos": "rb cb cdm cm cam rw cf st rm", "item": "kq"},
-            {"name": "盘带", "pos": "cm cam rw cf st rm", "item": "pd"},
-            {"name": "战术意识", "pos": "", "item": "zsys"},
-            {"name": "视野", "pos": "cdm cm cam rw rm", "item": "sy"},
-            {"name": "抢断", "pos": "rb cb cdm cm", "item": "qd"},
-            {"name": "铲断", "pos": "rb cb cdm", "item": "cd"},
-            {"name": "人盯人", "pos": "cb cdm", "item": "rdr"},
-            {"name": "侵略性", "pos": "rb cb cdm", "item": "qnx"},
-            {"name": "GK扑救", "pos": "gk", "item": "gkpj"},
-            {"name": "GK手控球", "pos": "gk", "item": "gkskq"},
-            {"name": "GK大脚开球", "pos": "gk", "item": "gkdjkq"},
-            {"name": "GK反应", "pos": "gk", "item": "gkfy"},
-            {"name": "GK防守站位", "pos": "gk", "item": "gkfszw"}
+            {"name": "射术", "pos": "cam rw cf st", "item": [players[0].ss, players[1].ss]},
+            {"name": "射门力量", "pos": "cam rw cf st", "item": [players[0].smll, players[1].smll]},
+            {"name": "弧线", "pos": "", "item": [players[0].hx, players[1].hx]},
+            {"name": "远射", "pos": "cm cam rw cf st rm", "item": [players[0].ys, players[1].ys]},
+            {"name": "凌空抽射", "pos": "cf st", "item": [players[0].lkcs, players[1].lkcs]},
+            {"name": "任意球", "pos": "", "item": [players[0].ryq, players[1].ryq]},
+            {"name": "罚点球", "pos": "", "item": [players[0].fdq, players[1].fdq]},
+            {"name": "头球", "pos": "rb cb cdm cm cam cf st", "item": [players[0].tq, players[1].tq]},
+            {"name": "站位", "pos": "rb cb cdm cm cam rm", "item": [players[0].zw, players[1].zw]},
+            {"name": "速度", "pos": "rb cb cdm cm cam rw cf st rm", "item": [players[0].sd, players[1].sd]},
+            {"name": "加速", "pos": "rw cf st rm", "item": [players[0].js, players[1].js]},
+            {"name": "灵活", "pos": "rw rm", "item": [players[0].lh, players[1].lh]},
+            {"name": "反应", "pos": "gk rb cb cdm cm cam rw cf st rm", "item": [players[0].fy, players[1].fy]},
+            {"name": "弹跳", "pos": "gk cb", "item": [players[0].tt, players[1].tt]},
+            {"name": "体力", "pos": "rb cdm cm rw rm", "item": [players[0].tl, players[1].tl]},
+            {"name": "强壮", "pos": "rb cb cdm cm cf st", "item": [players[0].qz, players[1].qz]},
+            {"name": "平衡", "pos": "", "item": [players[0].ph, players[1].ph]},
+            {"name": "短传", "pos": "rb cb cdm cm cam rw cf st rm", "item": [players[0].dc, players[1].dc]},
+            {"name": "长传", "pos": "cdm cm cam rw rm", "item": [players[0].cc, players[1].cc]},
+            {"name": "传中", "pos": "rb rw cf rm", "item": [players[0].cz, players[1].cz]},
+            {"name": "控球", "pos": "rb cb cdm cm cam rw cf st rm", "item": [players[0].kq, players[1].kq]},
+            {"name": "盘带", "pos": "cm cam rw cf st rm", "item": [players[0].pd, players[1].pd]},
+            {"name": "战术意识", "pos": "", "item": [players[0].zsys, players[1].zsys]},
+            {"name": "视野", "pos": "cdm cm cam rw rm", "item": [players[0].sy, players[1].sy]},
+            {"name": "抢断", "pos": "rb cb cdm cm", "item": [players[0].qd, players[1].qd]},
+            {"name": "铲断", "pos": "rb cb cdm", "item": [players[0].cd, players[1].cd]},
+            {"name": "人盯人", "pos": "cb cdm", "item": [players[0].rdr, players[1].rdr]},
+            {"name": "侵略性", "pos": "rb cb cdm", "item": [players[0].qnx, players[1].qnx]},
+            {"name": "GK扑救", "pos": "gk", "item": [players[0].gkpj, players[1].gkpj]},
+            {"name": "GK手控球", "pos": "gk", "item": [players[0].gkskq, players[1].gkskq]},
+            {"name": "GK大脚开球", "pos": "gk", "item": [players[0].gkdjkq, players[1].gkdjkq]},
+            {"name": "GK反应", "pos": "gk", "item": [players[0].gkfy, players[1].gkfy]},
+            {"name": "GK防守站位", "pos": "gk", "item": [players[0].gkfszw, players[1].gkfszw]}
         ]
     };
     var source   = $("#vsTpl").html();
