@@ -76,7 +76,10 @@
     line-height: 22px;
 }
 .box-level-change {
-    padding: 8px 10px;
+    width: 50%;
+    float: left;
+    padding: 10px 0;
+    text-align: center;
 }
 .label-pos {
     display: inline-block;

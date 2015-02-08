@@ -501,9 +501,7 @@
                 </ul>
                 <div>
                     <ul class="list-player-pos">
-                        <li><span class="label-pos label label-danger">ST</span>80</li>
-                        <li><span class="label-pos label label-danger">CF</span>80</li>
-                        <li><span class="label-pos label label-danger">CAM</span>80</li>
+                        {{#poslist}}{{poses}}{{/poslist}}
                     </ul>
                 </div>
             </div>
@@ -688,6 +686,21 @@ $(function () {
 
     Handlebars.registerHelper('bbb', function(options) {
         return vs.players[1][options.fn(this)];
+    });
+
+    Handlebars.registerHelper('poslist', function(options) {
+        var str = options.fn(this);
+        var arr = str.split("|");
+        var html = "";
+
+        for (var  i = 0; i < arr.length; i++) {
+            html += "<li><span class=\"label-pos label label-danger\">";
+            html += arr[i].split(":")[0];
+            html += "</span>";
+            html += arr[i].split(":")[1];
+            html += "</li>";
+        }
+        return html;
     });
 
     Handlebars.registerHelper('diff', function(options) {
