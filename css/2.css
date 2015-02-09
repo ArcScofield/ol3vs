@@ -75,6 +75,9 @@
 .list-player-info {
     line-height: 22px;
 }
+.list-player-pos {
+    line-height: 22px;
+}
 .box-level-change {
     width: 50%;
     float: left;

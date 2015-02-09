@@ -368,9 +368,9 @@
                     <div class="clearfix">
                         <div class="box-level-change">
                             <span>查看能力：</span>
-                            <select>
+                            <select id="slQh1">
                                 <option value="1">强化</option>
-                                <option value="1">+0</option>
+                                <option value="0">+0</option>
                                 <option value="1">+1</option>
                                 <option value="2">+2</option>
                                 <option value="3">+3</option>
@@ -382,7 +382,7 @@
                                 <option value="9">+9</option>
                                 <option value="10">+10</option>
                             </select>
-                            <select>
+                            <select id="slLv1">
                                 <option value="1">等级</option>
                                 <option value="1">Lv.1</option>
                                 <option value="2">Lv.2</option>
@@ -408,9 +408,9 @@
                         </div>
                         <div class="box-level-change">
                             <span>查看能力：</span>
-                            <select>
+                            <select id="slQh2">
                                 <option value="1">强化</option>
-                                <option value="1">+0</option>
+                                <option value="0">+0</option>
                                 <option value="1">+1</option>
                                 <option value="2">+2</option>
                                 <option value="3">+3</option>
@@ -422,7 +422,7 @@
                                 <option value="9">+9</option>
                                 <option value="10">+10</option>
                             </select>
-                            <select>
+                            <select id="slLv2">
                                 <option value="1">等级</option>
                                 <option value="1">Lv.1</option>
                                 <option value="2">Lv.2</option>
@@ -799,6 +799,65 @@ $(function () {
     }).on("change", "input", function (e) {
         console.log($(this));
     });
+
+    $("#slQh1").change(function(event) {
+        var xx = vs.players[0];
+        var qh = ~~$(this).val();
+        var curQh = 1;
+        var diff = 0;
+
+        if (xx.qh !== undefined) {
+            curQh = xx.qh
+        }
+        diff = getQhDiff(qh) - getQhDiff(curQh);
+        console.log(diff);
+        for (var i in xx) {
+            if (typeof xx[i] === "number") {
+                xx[i] = xx[i] + diff;
+            }
+        }
+        xx.qh = qh;
+        var source   = $("#vsTpl").html();
+        var template = Handlebars.compile(source);
+        var html = template(vs);
+        $("#listPlayerVs").find("tbody").html(html);
+    });
+
+    $("#slLv1").change(function(event) {
+        var xx = vs.players[0];
+        var lv = ~~$(this).val();
+        var curLv = 1;
+        var diff = 0;
+
+        if (xx.lv !== undefined) {
+            curLv = xx.lv
+        }
+        diff = lv - curLv;
+        for (var i in xx) {
+            if (typeof xx[i] === "number") {
+                xx[i] = xx[i] + diff;
+            }
+        }
+        xx.lv = lv;
+        var source   = $("#vsTpl").html();
+        var template = Handlebars.compile(source);
+        var html = template(vs);
+        $("#listPlayerVs").find("tbody").html(html);
+    });
+
+    function getQhDiff (qh) {
+        var num = 0;
+        if (qh === 0) {
+            num = -5;
+        } else if (qh < 5) {
+            num = qh - 1
+        } else if (qh < 8) {
+            num = 5 + (qh - 5) * 2;
+        } else if (qh <= 10) {
+            num = 12 + (qh - 8) * 3;
+        }
+        return num;
+    }
 });
 </script>
 </body>
