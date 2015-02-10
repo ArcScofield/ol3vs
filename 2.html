@@ -354,7 +354,7 @@
     <p>© 2015 ol3vs.com Inc. All rights reserved.</p>
 </footer>
 
-<div class="modal fade" id="vsModal">
+<div class="modal" id="vsModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -528,7 +528,6 @@
 {{/each}}
 </script>
 <script type="text/javascript">
-$('#vsModal').modal("show");
 $(function () {
     Handlebars.registerHelper('cls', function(options) {
         var cls = {
@@ -797,8 +796,16 @@ $(function () {
     }).on("click", "input", function (e) {
         e.stopPropagation();
     }).on("change", "input", function (e) {
-        console.log($(this));
+        var len = $("#listPlayer").find("input:checked").length;
+        if (len === 2) {
+            $('#vsModal').modal("show");
+        }
     });
+
+    $('#vsModal').on('hide.bs.modal', function () {
+        $("#listPlayer").find("input:checked").prop("checked", false);
+    })
+    
 
     $("#slQh1").change(function(event) {
         var xx = vs.players[0];
