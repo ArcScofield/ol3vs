@@ -83,8 +83,8 @@
                 </li>
                 <li>
                     <span>能力：</span>
-                    <select id="slMinCapacity">
-                        <option value="">--</option>
+                    <select id="slMinZp">
+                        <option value="0">--</option>
                         <option value="65">65</option>
                         <option value="70">70</option>
                         <option value="75">75</option>
@@ -93,8 +93,8 @@
                         <option value="90">90</option>
                     </select>
                      - 
-                    <select id="slMaxCapacity">
-                        <option value="">--</option>
+                    <select id="slMaxZp">
+                        <option value="100">--</option>
                         <option value="65">65</option>
                         <option value="70">70</option>
                         <option value="75">75</option>
@@ -105,7 +105,7 @@
                 </li>
                 <li>
                     <span>联赛：</span>
-                    <select id="selectMatch">
+                    <select id="slMatch">
                         <option value="">联赛</option>
                         <option value="1">西班牙足球甲级联赛</option>
                         <option value="2">德国足球甲级联赛</option>
@@ -136,7 +136,7 @@
                 </li>
                 <li>
                     <span>球队：</span>
-                    <select id="selectTeam">
+                    <select id="slTeam">
                         <option>球队</option>
                     </select>
                 </li>
@@ -179,18 +179,57 @@
                         <option value="33">GK反应</option>
                         <option value="34">GK防守站位</option>
                     </select>
+                    <input type="text" id="" style="width: 50px;" />
                 </li>
                 <li>
-                    <span>习惯脚：</span>
+                    <span></span>
+                    <select id="slXx1">
+                        <option value="">详细能力</option>
+                        <option value="1">射术</option>
+                        <option value="2">射门力量</option>
+                        <option value="3">弧线</option>
+                        <option value="4">远射</option>
+                        <option value="5">凌空抽射</option>
+                        <option value="6">任意球</option>
+                        <option value="7">罚点球</option>
+                        <option value="8">头球</option>
+                        <option value="9">站位</option>
+                        <option value="10">速度</option>
+                        <option value="11">加速</option>
+                        <option value="12">灵活</option>
+                        <option value="13">反应</option>
+                        <option value="14">弹跳</option>
+                        <option value="15">体力</option>
+                        <option value="16">强壮</option>
+                        <option value="17">平衡</option>
+                        <option value="18">短传</option>
+                        <option value="19">长传</option>
+                        <option value="20">传中</option>
+                        <option value="21">控球</option>
+                        <option value="22">盘带</option>
+                        <option value="23">盘带速度</option>
+                        <option value="24">战术意识</option>
+                        <option value="25">视野</option>
+                        <option value="26">抢断</option>
+                        <option value="27">铲断</option>
+                        <option value="28">人盯人</option>
+                        <option value="29">侵虐性</option>
+                        <option value="30">GK扑救</option>
+                        <option value="31">GK手控球</option>
+                        <option value="32">GK大脚开球</option>
+                        <option value="33">GK反应</option>
+                        <option value="34">GK防守站位</option>
+                    </select>
+                    <input type="text" id="" style="width: 50px;" />
+                </li>
+                <li>
+                    <span>逆足脚：</span>
                     <select>
                         <option value="">习惯脚</option>
                         <option value="">左脚</option>
                         <option value="">右脚</option>
                         <option value="">左右脚</option>
                     </select>
-                </li>
-                <li>
-                    <span>逆足脚：</span>
                     <select>
                         <option value="">--</option>
                         <option value="1">1</option>
@@ -203,15 +242,6 @@
                 <li>
                     <span>花式动作：</span>
                     <select id="slMinHsdz">
-                        <option value="">--</option>
-                        <option value="1">1星</option>
-                        <option value="2">2星</option>
-                        <option value="3">3星</option>
-                        <option value="4">4星</option>
-                        <option value="5">5星</option>
-                    </select>
-                     - 
-                    <select id="slMaxHsdz">
                         <option value="">--</option>
                         <option value="1">1星</option>
                         <option value="2">2星</option>
@@ -258,28 +288,6 @@
                         <option value="75">75</option>
                         <option value="80">80</option>
                         <option value="85">85</option>
-                    </select>
-                </li>
-                <li>
-                    <span>体型：</span>
-                    <select>
-                        <option value="">--</option>
-                        <option value="65">65</option>
-                        <option value="70">70</option>
-                        <option value="75">75</option>
-                        <option value="80">80</option>
-                        <option value="85">85</option>
-                        <option value="90">90</option>
-                    </select>
-                     - 
-                    <select>
-                        <option value="">--</option>
-                        <option value="65">65</option>
-                        <option value="70">70</option>
-                        <option value="75">75</option>
-                        <option value="80">80</option>
-                        <option value="85">85</option>
-                        <option value="90">90</option>
                     </select>
                 </li>
                 <li>
@@ -714,20 +722,9 @@ $(function () {
     var template = Handlebars.compile(source);
     var html = template(vs);
     $("#listPlayerVs").find("tbody").html(html);
-    /**
-    $.ajax({
-        url: "js/1.json",
-        dataType: "json",
-        success: function (resp) {
-            if (resp && resp.code === "ok") {
-                result = resp.data;
-                renderList(result);
-            }
-        }
-    });
-    */
 
-    $("#selectMatch").change(function () {
+
+    $("#slMatch").change(function () {
         var val = $(this)[0].selectedIndex;
         var doc = document.createDocumentFragment();
         var datas = Matches[val - 1].team;
@@ -742,11 +739,11 @@ $(function () {
             op.value = datas[i].id;
             doc.appendChild(op);
         }
-        $("#selectTeam").empty()[0].appendChild(doc);
+        $("#slTeam").empty()[0].appendChild(doc);
     });
 
     /*
-    * 加载隐藏能力开始
+    * 加载隐藏能力
     */
     var doc = document.createDocumentFragment();
     var op = {};
@@ -757,9 +754,6 @@ $(function () {
         doc.appendChild(op);
     }
     $("#selectHdProp")[0].appendChild(doc);
-    /*
-    * 加载隐藏能力完
-    */
 
 
 
@@ -775,8 +769,10 @@ $(function () {
 
     function search() {
         var data = {
-            "name": $("#txtName").val().split(/[,，]/g),
-            "sj": $("#slSeason").val()
+            "name": $("#txtName").val().split(/[,，]/g),  // 名字
+            "pos": $("#slPos").val(),  // 球员位置
+            "sj": $("#slSeason").val(),   // 赛季
+            "zp": $("#slMinZp").val()
         };
 
         $.post("module/search.php", data, function (resp) {
@@ -792,7 +788,6 @@ $(function () {
             cbox.prop("checked", true);
         }
         cbox.trigger("change");
-
     }).on("click", "input", function (e) {
         e.stopPropagation();
     }).on("change", "input", function (e) {
@@ -817,7 +812,6 @@ $(function () {
             curQh = xx.qh
         }
         diff = getQhDiff(qh) - getQhDiff(curQh);
-        console.log(diff);
         for (var i in xx) {
             if (typeof xx[i] === "number") {
                 xx[i] = xx[i] + diff;
@@ -852,6 +846,9 @@ $(function () {
         $("#listPlayerVs").find("tbody").html(html);
     });
 
+    /*
+    * 获取强化能力差
+    */
     function getQhDiff (qh) {
         var num = 0;
         if (qh === 0) {
