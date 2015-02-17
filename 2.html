@@ -45,7 +45,7 @@
                 <li>
                     <span>位置：</span>
                     <select id="slPos">
-                        <option>位置</option>
+                        <option value="">位置</option>
                         <optgroup label="FW">
                             <option value="CF">CF</option>
                             <option value="RW">RW</option>
@@ -74,7 +74,7 @@
                 <li>
                     <span>赛季：</span>
                     <select id="slSeason">
-                        <option value="0">赛季</option>
+                        <option value="">赛季</option>
                         <option value="14">2014</option>
                         <option value="10">2010</option>
                         <option value="w">WC</option>
@@ -310,6 +310,15 @@
                     </select>
                 </li>
                 <li>
+                    <span>体型：</span>
+                    <select id="slTx">
+                        <option value="">--</option>
+                        <option value="1">肥胖</option>
+                        <option value="2">普通</option>
+                        <option value="3">瘦弱</option>
+                    </select>
+                </li>
+                <li>
                     <span>隐藏能力：</span>
                     <select id="slHdProp"></select>
                 </li>
@@ -483,7 +492,7 @@
         <td class="td-c"><input type="checkbox" data-id="{{id}}"></td>
         <td><span class="label {{#cls}}{{pos}}{{/cls}}">{{pos}}</span></td>
         <td><span class="icon-sj icon-sj-{{sj}}"></span></td>
-        <td>{{name}}</td>
+        <td><span class="" data-hashid={{hashid}}>{{name}}</span></td>
         <td>{{zp}}</td>
         <td>{{jlb}}</td>
     </tr>
@@ -781,6 +790,7 @@ $(function () {
             "maxSg": $("#slMaxSg").val(),
             "minCsnf": $("#slMinCsnf").val(),
             "maxCsnf": $("#slMaxCsnf").val(),
+            "tx": $("#slTx").val(),  // 体型
             "hsdz": $("#slHsdz").val(),
             "ycnl": $("#slHdProp").val()
         };
@@ -803,8 +813,10 @@ $(function () {
     $("#listPlayer").on("click", "tr", function () {
         var cbox = $(this).children().find("input");
         if (cbox.prop("checked")) {
+            $(this).removeClass("success");
             cbox.prop("checked", false);
         } else {
+            $(this).addClass("success");
             cbox.prop("checked", true);
         }
         cbox.trigger("change");

@@ -19,19 +19,50 @@ $act = $_GET["act"];
 
 if ($act === "list") {
 	$pos = $_POST["pos"];
-	$ls = $_POST["ls"];
-	$sj = $_POST["sj"];
-	$hsdz = $_POST["hsdz"];
+	$ls = $_POST["ls"]; // 联赛
+	$jlb = $_POST["jlb"]; // 俱乐部
+	$sj = $_POST["sj"]; // 赛季
+	$minZp = $_POST["minZp"];
+	$maxZp = $_POST["maxZp"];
+	$minTz = $_POST["minTz"];
+	$maxTz = $_POST["maxTz"];
+	$minSg = $_POST["minSg"];
+	$maxSg = $_POST["maxSg"];
+	$minCsnf = $_POST["minCsnf"];
+	$maxCsnf = $_POST["maxCsnf"];
+	$tx = $_POST["tx"];  // 体型
+	$hsdz = $_POST["hsdz"]; // 花式动作
 
-	$sql = "select player.sj, player.pos, player.gj, player.zp, player.jlb, player.name, hashid from player";
-	if (isset($pos)) {
-		$sql = $sql." pos='".$pos."'";
+	$sql = "select player.sj, player.pos, player.gj, player.zp, player.jlb, player.name, player.hashid from player where 1 = 1";
+	if (!empty($pos)) {
+		$sql = $sql." and pos='$pos'";
 	}
-	if (isset($ls)) {
-		$sql = $sql." ls=".$ls;
+	if (!empty($ls)) {
+		$sql = $sql." and ls=$ls";
 	}
-	if (isset($sj)) {
-		$sql = $sql." sj='".$sj."'";
+	if (!empty($jlb)) {
+		$sql = $sql." and jlb=$jlb";
+	}
+	if (!empty($sj)) {
+		$sql = $sql." and sj='$sj'";
+	}
+	if (!empty($minZp)) {
+		$sql = $sql." and zp > $minZp"
+	}
+	if (!empty($maxZp)) {
+		$sql = $sql." and zp < $maxZp"
+	}
+	if (!empty($minSg)) {
+		$sql = $sql." and sg > $minSg"
+	}
+	if (!empty($maxSg)) {
+		$sql = $sql." and sg < $maxSg"
+	}
+	if (!empty($tx)) {
+		$sql = $sql." and tx = $tx";
+	}
+	if (!empty($hsdz)) {
+		$sql = $sql." and hsdz = $hsdz";
 	}
 
 	$data = $db->get_all($sql);
