@@ -47,16 +47,16 @@ if ($act === "list") {
 		$sql = $sql." and sj='$sj'";
 	}
 	if ( !empty($minZp) && is_numeric($minZp) ) {
-		$sql = $sql." and zp > $minZp"
+		$sql = $sql." and zp > $minZp";
 	}
 	if ( !empty($maxZp) && is_numeric($maxZp) ) {
-		$sql = $sql." and zp < $maxZp"
+		$sql = $sql." and zp < $maxZp";
 	}
 	if ( !empty($minSg) && is_numeric($minSg) ) {
-		$sql = $sql." and sg > $minSg"
+		$sql = $sql." and sg > $minSg";
 	}
 	if ( !empty($maxSg) && is_numeric($maxSg) ) {
-		$sql = $sql." and sg < $maxSg"
+		$sql = $sql." and sg < $maxSg";
 	}
 	if ( !empty($tx) && is_numeric($tx) ) {
 		$sql = $sql." and tx = $tx";
@@ -68,7 +68,7 @@ if ($act === "list") {
 	$data = $db->get_all($sql);
 
 	if (is_array($data)) {
-		$result = array("code"=> "ok", "desc"=> "读取数据成功！", "content"=> $data);
+		$result = array("code"=> "ok", "desc"=> "读取数据成功！", "players"=> $data);
 	} else {
 		$result = array("code"=> "error", "desc"=> "读取数据失败！");
 	}
@@ -78,7 +78,7 @@ if ($act === "list") {
 	$data = $db->get_one($sql);
 
 	if (is_array($data)) {
-		$result = array("code"=> "ok", "desc"=> "读取数据成功！", "content"=> $data);
+		$result = array("code"=> "ok", "desc"=> "读取数据成功！", "players"=> $data);
 	} else {
 		$result = array("code"=> "error", "desc"=> "读取数据失败！");
 	}

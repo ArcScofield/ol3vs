@@ -94,7 +94,7 @@
                     </select>
                      - 
                     <select id="slMaxZp">
-                        <option value="100">--</option>
+                        <option value="">--</option>
                         <option value="65">65</option>
                         <option value="70">70</option>
                         <option value="75">75</option>
@@ -335,8 +335,8 @@
             <thead>
                 <tr>
                     <th width="5%"></th>
-                    <th>赛季</th>
                     <th>位置</th>
+                    <th>赛季</th>
                     <th>球员名</th>
                     <th>能力</th>
                     <th>俱乐部</th>
@@ -489,7 +489,7 @@
 <script id="playerTpl" type="text/x-handlebars-template">
 {{#each players}}
     <tr>
-        <td class="td-c"><input type="checkbox" data-id="{{id}}"></td>
+        <td class="td-c"><input type="checkbox" data-id="{{hashid}}"></td>
         <td><span class="label {{#cls}}{{pos}}{{/cls}}">{{pos}}</span></td>
         <td><span class="icon-sj icon-sj-{{sj}}"></span></td>
         <td><span class="item-player" data-hashid={{hashid}}>{{name}}</span></td>
@@ -562,13 +562,17 @@ $(function () {
             "SW": "label-primary",
             "GK": "label-warning"
         };
-        return cls[options.fn(this)];
+        return cls[options.fn(this).toUpperCase()];
     });
+    renderPlayer();
 
-    var source   = $("#playerTpl").html();
-    var template = Handlebars.compile(source);
-    var html = template(defaultPlayers);
-    $("#listPlayer").find("tbody").html(html);
+    function renderPlayer (data) {
+        var data = data || defaultPlayers;
+        var source   = $("#playerTpl").html();
+        var template = Handlebars.compile(source);
+        var html = template(data);
+        $("#listPlayer").find("tbody").html(html);
+    }
 
     var vs = {
         "players": [{
@@ -806,7 +810,10 @@ $(function () {
         }
 
         $.post("module/search.php?act=list", data, function (resp) {
-            console.log(resp);
+            var resp = $.parseJSON(resp);
+            if (resp.code === "ok") {
+                renderPlayer(resp);
+            }
         });
     }
 

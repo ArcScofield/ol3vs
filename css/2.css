@@ -31,6 +31,10 @@
     text-align: right;
 }
 
+.item-player {
+    cursor: pointer;
+}
+
 
 .main {
     position: absolute;
