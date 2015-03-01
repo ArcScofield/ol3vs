@@ -32,6 +32,11 @@ if ($act === "list") {
 	$maxCsnf = $_POST["maxCsnf"];
 	$tx = $_POST["tx"];  // 体型
 	$hsdz = $_POST["hsdz"]; // 花式动作
+	
+	$xx1 = $_POST["xx1"]; // 详细字段1
+	$xx1val = $_POST["xx1val"];  // 详细字段1的值
+	$xx2 = $_POST["xx2"];  // 详细字段2
+	$xx2val = $_POST["xx2val"]; // 详细字段2的值
 
 	$sql = "select player.sj, player.pos, player.gj, player.zp, player.jlb, player.name, player.hashid from player where 1 = 1";
 	if (!empty($pos)) {
@@ -53,16 +58,22 @@ if ($act === "list") {
 		$sql = $sql." and zp < $maxZp";
 	}
 	if ( !empty($minSg) && is_numeric($minSg) ) {
-		$sql = $sql." and sg > $minSg";
+		$sql .= " and sg > $minSg";
 	}
 	if ( !empty($maxSg) && is_numeric($maxSg) ) {
-		$sql = $sql." and sg < $maxSg";
+		$sql .= " and sg < $maxSg";
 	}
 	if ( !empty($tx) && is_numeric($tx) ) {
-		$sql = $sql." and tx = $tx";
+		$sql .= " and tx = $tx";
 	}
 	if ( !empty($hsdz) && is_numeric($hsdz) ) {
-		$sql = $sql." and hsdz > $hsdz";
+		$sql .= " and hsdz > $hsdz";
+	}
+	if ( !empty($xx1) && is_numeric($xx1val)) {
+		$sql .= " and $xx1 > $xx1val";
+	}
+	if ( !empty($xx2) && is_numeric($xx2val)) {
+		$sql .= " and $xx2 > $xx2val";
 	}
 
 	$data = $db->get_all($sql);

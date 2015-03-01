@@ -737,10 +737,10 @@ $(function () {
 
 
     $("#slMatch").change(function () {
-        var val = $(this)[0].selectedIndex;
-        var doc = document.createDocumentFragment();
+        var val   = $(this)[0].selectedIndex;
+        var doc   = document.createDocumentFragment();
         var datas = Matches[val - 1].team;
-        var op = document.createElement("option");
+        var op    = document.createElement("option");
 
         op.text = "球队";
         op.value = 0;

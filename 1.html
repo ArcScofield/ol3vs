@@ -10,8 +10,8 @@
 
 <body>
 <textarea id="aaa" style="height: 250px; width: 100%;"></textarea>
-<textarea id="bbb" style="height: 250px; width: 100%;"></textarea>
-<button id="">存储</button>
+<input type="text" id="bbb" >
+<button id="btnSave">存储</button>
 <script type="text/javascript" src="js/lib/jq/jquery.js"></script>
 <script type="text/javascript">
 var aaa = document.getElementById("aaa");
@@ -21,63 +21,79 @@ var data = {};
 addChangeEvent(aaa, function () {
     var val = aaa.value.match(/\(.*\)/g);
     if (val !== null) {
-        var tmpdata = eval(val[0]);
-        console.log(tmpdata.list[0]);
-        /*
-        tmpdata = {
-            "name": ,  // 名字
-            "ename": ,  // 英文名字
-            "sj":   // 赛季
-            "bigtx":,   // 大头像
-            "smalltx":,  // 小头像
-            "sg":,   // 身高
-            "tz":,   // 体重
-            "gj":,  //国籍
-            "ls":,  // 联赛
-            "jlb":, // 俱乐部
-            "zj":,  // 左脚
-            "yj":, //右脚
-            "hs":   // 花式
-            "zp":  // 总评
-            "csnyr":  // 出生年月日
-            "ss": , // 射术
-            "smll": , // 射门力量
-            "hx":  // 弧线
-            "ys": // 远射
-            "lkcs": // 凌空抽射
-            "ryq": // 任意球
-            "fdq":  // 罚点球
-            "tq":  // 头球
-            "zw": // 站位
-            "sd":    // 速度
-            "js":   // 加速
-            "lh":  // 灵活
-            "fy":  // 反应
-            "tt":  // 弹跳
-            "tl":  // 体力
-            "qz":  // 强壮
-            "ph": //平衡
-            "dc": // 短传
-            "cc":  // 长传
-            "cz":  // 传中
-            "sy":  // 视野
-            "kq": // 控球
-            "pd": // 盘带
-            "pdsd": // 盘带速度
-            "rdr": // 人盯人
-            "qlx": // 侵略性
-            "zsys": //战术意识
-            "qd": //抢断
-            "cd": // 铲断
-            "gkpj": // GK扑救
-            "gkskq": // GK手控球
-            "gkfy": // GK反应
-            "gkfszw": // GK防守站位
+        var d = eval(val[0]).list[0];
+        data = {
+            "name": d["球员名"],  // 名字
+            "ename": "",  // 英文名字
+            "sj": d["赛季"],  // 赛季
+            "tx": d["头像"],   // 大头像
+            "sg": ~~d["身高"],   // 身高
+            "tz": ~~d["体重"],   // 体重
+            "gj": d["国籍"],  //国籍
+            "ls": d["联赛"],  // 联赛
+            "jlb": d["球队"], // 俱乐部
+            "pos": d["角色"], //最佳位置
+            "poses": getPoses(d["首选位置"], d),
+            "zj": ~~d["左脚"],  // 左脚
+            "yj": ~~d["右脚"], //右脚
+            "hs": ~~d["花式动作"],  // 花式
+            "zp": ~~d["综合能力值"], // 总评
+            "csnyr": d["生日"], // 出生年月日
+            "ss": ~~d["射术"], // 射术
+            "smll": ~~d["射门力量"], // 射门力量
+            "hx": ~~d["弧线"], // 弧线
+            "ys": ~~d["远射"], // 远射
+            "lkcs": ~~d["凌空抽射"], // 凌空抽射
+            "ryq": ~~d["任意球"],
+            "fdq": ~~d["罚点球"],
+            "tq":  ~~d["头球"], // 头球
+            "zw": ~~d["站位"], 
+            "sd": ~~d["速度"],
+            "js": ~~d["加速"],
+            "lh": ~~d["灵活"],
+            "fy": ~~d["反应"],
+            "tt": ~~d["弹跳"],
+            "tl": ~~d["体力"],
+            "qz": ~~d["强壮"],
+            "ph": ~~d["平衡"],
+            "dc": ~~d["短传"],
+            "cc": ~~d["长传"],
+            "cz": ~~d["传中"],
+            "sy": ~~d["视野"],
+            "kq": ~~d["控球"],
+            "pd": ~~d["盘带"],
+            "pdsd": ~~d["盘带速度"],
+            "rdr": ~~d["人盯人"],
+            "qlx": ~~d["侵略性"],
+            "zsys": ~~d["战术意识"],
+            "qd": ~~d["抢断"],
+            "cd": ~~d["铲断"],
+            "gkpj": ~~d["GK扑救"],  // GK扑救
+            "gkskq": ~~d["GK手控球"], // GK手控球
+            "gkfy": ~~d["GK反应"],  // GK反应
+            "gkfszw": ~~d["GK防守站位"],  // GK防守站位
+            "ycnl": d["隐藏能力值"]
         };
-        */
     }
 });
 
+$("#btnSave").click(function () {
+    $.post("module/data.php", {"data": data}, function (resp) {
+        console.log(resp);
+    });
+});
+
+function getPoses (poses, data) {
+    var poses = poses.split(",");
+    var str = "";
+    for (var i = 0, len = poses.length; i < len; i++) {
+        str += poses[i] + ":" + data[poses[i]];
+        if (i + 1 !== len) {
+            str += "|";
+        }
+    }
+    return str; 
+}
 
 
 function addChangeEvent (el, callback) {
