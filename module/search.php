@@ -35,34 +35,34 @@ if ($act === "list") {
 
 	$sql = "select player.sj, player.pos, player.gj, player.zp, player.jlb, player.name, player.hashid from player where 1 = 1";
 	if (!empty($pos)) {
-		$sql = $sql." and pos='$pos'";
+		$sql = $sql." and pos like '%$pos%'";
 	}
-	if (!empty($ls)) {
+	if (!empty($ls) && is_numeric($ls) ) {
 		$sql = $sql." and ls=$ls";
 	}
-	if (!empty($jlb)) {
+	if (!empty($jlb) && is_numeric($jlb) ) {
 		$sql = $sql." and jlb=$jlb";
 	}
 	if (!empty($sj)) {
 		$sql = $sql." and sj='$sj'";
 	}
-	if (!empty($minZp)) {
+	if ( !empty($minZp) && is_numeric($minZp) ) {
 		$sql = $sql." and zp > $minZp"
 	}
-	if (!empty($maxZp)) {
+	if ( !empty($maxZp) && is_numeric($maxZp) ) {
 		$sql = $sql." and zp < $maxZp"
 	}
-	if (!empty($minSg)) {
+	if ( !empty($minSg) && is_numeric($minSg) ) {
 		$sql = $sql." and sg > $minSg"
 	}
-	if (!empty($maxSg)) {
+	if ( !empty($maxSg) && is_numeric($maxSg) ) {
 		$sql = $sql." and sg < $maxSg"
 	}
-	if (!empty($tx)) {
+	if ( !empty($tx) && is_numeric($tx) ) {
 		$sql = $sql." and tx = $tx";
 	}
-	if (!empty($hsdz)) {
-		$sql = $sql." and hsdz = $hsdz";
+	if ( !empty($hsdz) && is_numeric($hsdz) ) {
+		$sql = $sql." and hsdz > $hsdz";
 	}
 
 	$data = $db->get_all($sql);
@@ -74,7 +74,7 @@ if ($act === "list") {
 	}
 	echo json_encode($result);
 } else if ($act === "xx") {
-	$sql = "select * from cup where id = ".$id;
+	$sql = "select * from player where id = ".$id;
 	$data = $db->get_one($sql);
 
 	if (is_array($data)) {

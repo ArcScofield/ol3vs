@@ -492,7 +492,7 @@
         <td class="td-c"><input type="checkbox" data-id="{{id}}"></td>
         <td><span class="label {{#cls}}{{pos}}{{/cls}}">{{pos}}</span></td>
         <td><span class="icon-sj icon-sj-{{sj}}"></span></td>
-        <td><span class="" data-hashid={{hashid}}>{{name}}</span></td>
+        <td><span class="item-player" data-hashid={{hashid}}>{{name}}</span></td>
         <td>{{zp}}</td>
         <td>{{jlb}}</td>
     </tr>
@@ -780,19 +780,19 @@ $(function () {
             "name": $("#txtName").val().split(/[,，]/g),  // 名字
             "pos": $("#slPos").val(),  // 球员位置
             "sj": $("#slSeason").val(),   // 赛季
-            "ls": $("#slMatch").val(),
-            "jlb": $("#slJlb").val(),
+            "ls": $("#slMatch").val(),  // 联赛
+            "jlb": $("#slJlb").val(),   // 俱乐部
             "minZp": $("#slMinZp").val(),
             "maxZp": $("#slMaxZp").val(),
             "minTz": $("#slMinTz").val(),
             "maxTz": $("#slMaxTz").val(),
             "minSg": $("#slMinSg").val(),
             "maxSg": $("#slMaxSg").val(),
-            "minCsnf": $("#slMinCsnf").val(),
-            "maxCsnf": $("#slMaxCsnf").val(),
+            "minCsnf": $("#slMinCsnf").val(), // 出生年份
+            "maxCsnf": $("#slMaxCsnf").val(),  // 出生年份
             "tx": $("#slTx").val(),  // 体型
-            "hsdz": $("#slHsdz").val(),
-            "ycnl": $("#slHdProp").val()
+            "hsdz": $("#slHsdz").val(), // 花式动作
+            "ycnl": $("#slHdProp").val()  // 隐藏属性
         };
 
         if ($("#slXx1").val().length !== 0) {
