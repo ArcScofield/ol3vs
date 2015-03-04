@@ -10,18 +10,22 @@
 
 <body>
 <textarea id="aaa" style="height: 250px; width: 100%;"></textarea>
-<input type="text" id="bbb" >
+国籍：<input type="text" id="txtGj" ><br/>
+联赛： <input type="text" id="txtLs" ><br/>
+俱乐部： <input type="text" id="txtJlb" >   
 <button id="btnSave">存储</button>
 <script type="text/javascript" src="js/lib/jq/jquery.js"></script>
 <script type="text/javascript">
 var aaa = document.getElementById("aaa");
-var bbb = document.getElementById("bbb");
 var data = {};
 
 addChangeEvent(aaa, function () {
     var val = aaa.value.match(/\(.*\)/g);
     if (val !== null) {
         var d = eval(val[0]).list[0];
+        $("#txtGj").val(d["国籍"]);
+        $("#txtLs").val(d["联赛"]);
+        $("#txtJlb").val(d["球队"]);
         data = {
             "name": d["球员名"],  // 名字
             "ename": "",  // 英文名字
@@ -78,6 +82,9 @@ addChangeEvent(aaa, function () {
 });
 
 $("#btnSave").click(function () {
+    data.gj = $("#txtGj").val();
+    data.ls = $("#txtLs").val();
+    data.jlb = $("#txtJlb").val();
     $.post("module/data.php", {"data": data}, function (resp) {
         console.log(resp);
     });
