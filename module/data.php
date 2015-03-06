@@ -5,7 +5,7 @@ $db = new DB();
 $d = $_POST["data"];
 
 $hashid = time().rand(1000,9999);
-$data1 = array(
+$data = array(
     "name"=> $d["name"],  // 名字
     "sj"=> $d["sj"],  // 赛季
     "tx"=> $d["tx"],   // 大头像
@@ -21,10 +21,7 @@ $data1 = array(
     "csnyr"=> $d["csnyr"], // 出生年月日
     "pos"=> $d["pos"],  // max位置
     "poses"=> $d["poses"],  // 各个位置
-    "hashid" => $hashid   // 随机IE
-);
-
-$data2 = array(
+    "hashid" => $hashid,   // 随机IE
     "ss"=> $d["ss"], // 射术
     "smll"=> $d["smll"], // 射门力量
     "hx"=> $d["hx"], // 弧线
@@ -58,31 +55,23 @@ $data2 = array(
     "gkskq"=> $d["gkskq"], // GK手控球
     "gkfy"=> $d["gkfy"], // GK反应
     "gkfszw"=> $d["gkfszw"], // GK防守站位
-    "ycnl"=> $d["ycnl"], // 隐藏能力
-    "hashid" => $hashid   // 随机ID
+    "ycnl"=> $d["ycnl"] // 隐藏能力
 );
 
-//开始一个事务
-mysql_query("BEGIN"); //或者mysql_query("START TRANSACTION");
-$res1 = $db->insert("player", $data1);
-$res2 = $db->insert("playerxx", $data2);
+$res = $db->insert("player", $data);
 
-if ($res1 && $res1) {
-    mysql_query("COMMIT");
+if ($res) {
     $result = array("code"=> "ok", "desc"=> "插入数据成功！");
 } else {
-    mysql_query("ROLLBACK");
     $result = array("code"=> "error", "desc"=> "插入数据失败！");
 }
-mysql_query("END");
 echo json_encode($result);
 
 $url = "http://eafifa.tgbus.com/theme/eafifa/player_img/".$d["tx"];
 getImage($url, "../tx/", $d["tx"]);
 
-
 // 获取头像
-function getImage ($url, $save_dir='', $filename='', $type = 0) {
+function getImage ($url, $save_dir='', $filename='', $type = 1) {
     if ( trim($url) == '' ) {
         return array('file_name'=>'', 'save_path'=>'', 'error'=>1); 
     } 
