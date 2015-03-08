@@ -370,6 +370,9 @@
     <p>© 2015 ol3vs.com Inc. All rights reserved.</p>
 </footer>
 
+<div class="playerinfo">
+    
+</div>
 <div class="modal" id="vsModal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -542,6 +545,17 @@
         </td>
     </tr>
 {{/each}}
+</script>
+<script id="vsTpl" type="text/x-handlebars-template">
+<div><div>
+<ul>
+{{#each xx}}
+<li><span>{{#item}}</span><span>{{#val}}</span></li>
+{{/each}}
+</ul>
+<div>
+<span></span>
+</div>
 </script>
 <script type="text/javascript">
 $(function () {
@@ -834,6 +848,20 @@ $(function () {
         if (len === 2) {
             $('#vsModal').modal("show");
         }
+    }).on("mouseover", ".item-player", function () {
+        var hashid = $(this).attr("data-hashid");
+        if (hashid) {
+            if ($("#player" + hashid).length > 0) {
+                $("#player" + hashid).show();
+            } else {
+                var tips = document.createElement("div");
+                tips.id = "#player" + hashid;
+                document.body.appendChild(tips);
+                $.post("getdata.php?", {"hashid": hashid}, function () {
+
+                });
+            }
+        }
     });
 
     $('#vsModal').on('hide.bs.modal', function () {
@@ -887,6 +915,8 @@ $(function () {
 
     /*
     * 获取强化能力差
+    * @param {number}  qh 强化等级
+    * return number
     */
     function getQhDiff (qh) {
         var num = 0;

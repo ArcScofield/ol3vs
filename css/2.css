@@ -35,6 +35,16 @@
     cursor: pointer;
 }
 
+.playerinfo {
+    top: 100px;
+    left: 20px;
+    position: absolute;
+    box-shadow: 3px 3px 5px 1px #111111;
+    height: 400px;
+    width: 400px;
+    background: #1a1a1a;
+}
+
 
 .main {
     position: absolute;
