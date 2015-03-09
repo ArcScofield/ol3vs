@@ -31,6 +31,7 @@ $(function () {
     var vs = {
         "players": [{
             "name": "亨利",
+            "tx": "p6009676.png",
             "sj": "06",
             "sg": 180,
             "tz": 80,
@@ -184,10 +185,16 @@ $(function () {
     var template = Handlebars.compile(source);
     var html = template(vs);
     $("#boxPlayerInfo").html(html);
+
     var source   = $("#vsTpl").html();
     var template = Handlebars.compile(source);
     var html = template(vs);
     $("#listPlayerVs").find("tbody").html(html);
+
+    var source   = $("#playerInfoTpl").html();
+    var template = Handlebars.compile(source);
+    var html = template(vs.players[0]);
+    $(".tip-player-info").html(html);
 
 
     // 加载联赛球队

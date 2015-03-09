@@ -35,14 +35,16 @@
     cursor: pointer;
 }
 
-.playerinfo {
+.tip-player-info {
     top: 100px;
     left: 500px;
     position: absolute;
-    box-shadow: 3px 3px 5px 1px #111111;
+    border-radius: 3px;
+    box-shadow: 3px 3px 5px 1px #ccc;
     height: 400px;
     width: 400px;
-    background: #1a1a1a;
+    background: #fff;
+    border: 1px solid #eaeaea;
 }
 
 
@@ -74,7 +76,9 @@
 .icon-sj-06 {
     background: url("../img/icon/icon_18x18_2006.png") no-repeat;
 }
-
+.tip-player-info > .box-player-info {
+    width: 100%;
+}
 .box-player-info {
     float: left;
     width: 50%;
