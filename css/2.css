@@ -1,3 +1,25 @@
+.dib-wrap {
+    font-size:0;/* 所有浏览器 */
+    *word-spacing:-1px;/* IE6、7 */
+}
+.dib-wrap .dib {
+    font-size: 12px;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align:top;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    /* firefox 中 letter-spacing 会导致脱离普通流的元素水平位移 */
+    .dib-wrap{
+        letter-spacing:-5px;/* Safari 等不支持字体大小为 0 的浏览器, N 根据父级字体调节*/
+    }
+}
+.dib {
+    display: inline-block;
+    *display:inline;
+    *zoom:1;
+}
+
 .side {
     width: 300px;
     border: 1px solid rgb(225, 225, 225);
@@ -41,10 +63,20 @@
     position: absolute;
     border-radius: 3px;
     box-shadow: 3px 3px 5px 1px #ccc;
-    height: 400px;
+    height: 450px;
     width: 400px;
     background: #fff;
+    font-size: 12px;
     border: 1px solid #eaeaea;
+}
+.tr {
+    text-align: right;
+}
+.list-xx-items {
+    line-height: 22px;
+}
+.list-xx-items > li > .dib {
+    width: 80px;
 }
 
 

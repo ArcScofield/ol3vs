@@ -191,6 +191,14 @@ $(function () {
     var html = template(vs);
     $("#listPlayerVs").find("tbody").html(html);
 
+    Handlebars.registerHelper('color', function(options) {
+        var val = ~~options.fn(this);
+        var str = "<span ";
+        
+        str += ">" + cls + "</span>";
+        return str;
+    });
+
     var source   = $("#playerInfoTpl").html();
     var template = Handlebars.compile(source);
     var html = template(vs.players[0]);

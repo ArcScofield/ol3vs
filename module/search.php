@@ -3,7 +3,6 @@ require_once("../includes/db.php");
 $db = new DB();
 
 // 检查是否直接访问本页面
-/*
 if( isset($_SERVER['HTTP_REFERER']) ) {
     $url_array = explode('http://', $_SERVER['HTTP_REFERER']);
     $url = explode('/', $url_array[1]);
@@ -13,7 +12,6 @@ if( isset($_SERVER['HTTP_REFERER']) ) {
 } else {
 	exit('Access Denied! Please do not load this page directly.');
 }
-*/
 
 $act = $_GET["act"];
 
@@ -85,7 +83,8 @@ if ($act === "list") {
 	}
 	echo json_encode($result);
 } else if ($act === "xx") {
-	$sql = "select * from player where id = ".$id;
+	$hashid = $_POST["hashid"];
+	$sql = "select * from player where hashid = ".$hashid;
 	$data = $db->get_one($sql);
 
 	if (is_array($data)) {
