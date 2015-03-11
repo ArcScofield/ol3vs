@@ -72,7 +72,8 @@ $(function () {
             "gkskq": 68,
             "gkdjkq": 78,
             "gkfy": 99,
-            "gkfszw": 100
+            "gkfszw": 100,
+            "ycnl": "领导力，进攻组织者"
         },{
             "name": "罗纳尔迪尼奥",
             "sj": "06",
@@ -193,16 +194,16 @@ $(function () {
 
     Handlebars.registerHelper('color', function(options) {
         var val = ~~options.fn(this);
-        var str = "<span ";
-        
-        str += ">" + cls + "</span>";
+        var str = "<span class='";
+        var cls = "";
+
+        if (val < 60) {
+            cls = "items-val-60";
+        }
+
+        str += cls + "''>" + val + "</span>";
         return str;
     });
-
-    var source   = $("#playerInfoTpl").html();
-    var template = Handlebars.compile(source);
-    var html = template(vs.players[0]);
-    $(".tip-player-info").html(html);
 
 
     // 加载联赛球队
@@ -311,10 +312,14 @@ $(function () {
                 $("#player" + hashid).show();
             } else {
                 var tips = document.createElement("div");
+                tips.className = "";
                 tips.id = "#player" + hashid;
                 document.body.appendChild(tips);
-                $.post("getdata.php?", {"hashid": hashid}, function () {
-
+                $.post("getdata.php?", {"hashid": hashid}, function (resp) {
+                    var source   = $("#playerInfoTpl").html();
+                    var template = Handlebars.compile(source);
+                    var html = template(vs.players[0]);
+                    $(".tip-player-info").html(html);
                 });
             }
         }

@@ -483,7 +483,6 @@
         </div>
     </div>
 </div>
-
 <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/lib/handlebars/handlebars.js"></script>
@@ -547,13 +546,13 @@
 {{/each}}
 </script>
 <script id="playerInfoTpl" type="text/x-handlebars-template">
-<div class="box-player-info">
+<div class="box-player-head">
+    <span class="icon-sj icon-sj-{{sj}}"></span> {{name}}
+</div>
+<div class="box-player-info clearfix">
     <div class="clearfix">
         <div class="box-head">
             <img src="tx/{{tx}}" />
-            <div class="box-head-name">
-                <span class="icon-sj icon-sj-{{sj}}"></span> {{name}}
-            </div>
         </div>
         <div>
             <ul class="list-player-info">
@@ -570,21 +569,48 @@
         </div>
     </div>
 </div>
-<ul class="list-xx-items">
-    <li><span class="dib tr">射术：</span>{{#color}}{{ss}}{{/color}}</li>
-    <li><span class="dib tr">射门力量：</span>{{#color}}{{smll}}{{/color}}</li>
-    <li><span class="dib tr">弧线：</span>{{#color}}{{hx}}{{/color}}</li>
-    <li><span class="dib tr">凌空抽射：</span>{{#color}}{{lkcs}}{{/color}}</li>
-    <li><span class="dib tr">任意球：</span>{{#color}}{{ryq}}{{/color}}</li>
-    <li><span class="dib tr">罚点球：</span>{{#color}}{{fdq}}{{/color}}</li>
-    <li><span class="dib tr">头球：</span>{{#color}}{{tq}}{{/color}}</li>
-    <li><span class="dib tr">站位：</span>{{#color}}{{zw}}{{/color}}</li>
-    <li><span class="dib tr">速度：</span>{{#color}}{{sd}}{{/color}}</li>
-    <li><span class="dib tr">加速：</span>{{#color}}{{js}}{{/color}}</li>
-    <li><span class="dib tr">灵活：</span>{{#color}}{{lh}}{{/color}}</li>
-    <li><span class="dib tr">反应：</span>{{#color}}{{fy}}{{/color}}</li>
-</ul>
-<div class="clearfix">
+<div class="box-player-xx clearfix">
+    <ul class="list-xx-items">
+        <li><span class="dib tr">射术：</span>{{#color}}{{ss}}{{/color}}</li>
+        <li><span class="dib tr">射门力量：</span>{{#color}}{{smll}}{{/color}}</li>
+        <li><span class="dib tr">弧线：</span>{{#color}}{{hx}}{{/color}}</li>
+        <li><span class="dib tr">凌空抽射：</span>{{#color}}{{lkcs}}{{/color}}</li>
+        <li><span class="dib tr">任意球：</span>{{#color}}{{ryq}}{{/color}}</li>
+        <li><span class="dib tr">罚点球：</span>{{#color}}{{fdq}}{{/color}}</li>
+        <li><span class="dib tr">头球：</span>{{#color}}{{tq}}{{/color}}</li>
+        <li><span class="dib tr">站位：</span>{{#color}}{{zw}}{{/color}}</li>
+        <li><span class="dib tr">速度：</span>{{#color}}{{sd}}{{/color}}</li>
+        <li><span class="dib tr">加速：</span>{{#color}}{{js}}{{/color}}</li>
+        <li><span class="dib tr">灵活：</span>{{#color}}{{lh}}{{/color}}</li>
+        <li><span class="dib tr">反应：</span>{{#color}}{{fy}}{{/color}}</li>
+    </ul>
+    <ul class="list-xx-items">
+        <li><span class="dib tr">弹跳：</span>{{#color}}{{ss}}{{/color}}</li>
+        <li><span class="dib tr">体力：</span>{{#color}}{{smll}}{{/color}}</li>
+        <li><span class="dib tr">强壮：</span>{{#color}}{{hx}}{{/color}}</li>
+        <li><span class="dib tr">平衡：</span>{{#color}}{{lkcs}}{{/color}}</li>
+        <li><span class="dib tr">短传：</span>{{#color}}{{ryq}}{{/color}}</li>
+        <li><span class="dib tr">长传：</span>{{#color}}{{fdq}}{{/color}}</li>
+        <li><span class="dib tr">传中：</span>{{#color}}{{tq}}{{/color}}</li>
+        <li><span class="dib tr">视野：</span>{{#color}}{{zw}}{{/color}}</li>
+        <li><span class="dib tr">控球：</span>{{#color}}{{sd}}{{/color}}</li>
+        <li><span class="dib tr">盘带：</span>{{#color}}{{js}}{{/color}}</li>
+        <li><span class="dib tr">盘带速度：</span>{{#color}}{{lh}}{{/color}}</li>
+        <li><span class="dib tr">人盯人：</span>{{#color}}{{fy}}{{/color}}</li>
+    </ul>
+    <ul class="list-xx-items">
+        <li><span class="dib tr">侵略性：</span>{{#color}}{{ss}}{{/color}}</li>
+        <li><span class="dib tr">战术意识：</span>{{#color}}{{smll}}{{/color}}</li>
+        <li><span class="dib tr">抢断：</span>{{#color}}{{hx}}{{/color}}</li>
+        <li><span class="dib tr">铲断：</span>{{#color}}{{lkcs}}{{/color}}</li>
+        <li><span class="dib tr">GK扑救：</span>{{#color}}{{ryq}}{{/color}}</li>
+        <li><span class="dib tr">GK手控球：</span>{{#color}}{{fdq}}{{/color}}</li>
+        <li><span class="dib tr">GK大脚开球：</span>{{#color}}{{tq}}{{/color}}</li>
+        <li><span class="dib tr">GK反应：</span>{{#color}}{{zw}}{{/color}}</li>
+        <li><span class="dib tr">GK防守站位：</span>{{#color}}{{sd}}{{/color}}</li>
+    </ul>
+</div>
+<div class="box-player-ycnl">
     <span>隐藏能力：</span>{{ycnl}}
 </div>
 </script>

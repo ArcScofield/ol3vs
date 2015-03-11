@@ -1,6 +1,6 @@
 .dib-wrap {
-    font-size:0;/* 所有浏览器 */
-    *word-spacing:-1px;/* IE6、7 */
+    font-size: 0;/* 所有浏览器 */
+    *word-spacing: -1px;/* IE6、7 */
 }
 .dib-wrap .dib {
     font-size: 12px;
@@ -57,17 +57,64 @@
     cursor: pointer;
 }
 
+.layout {
+    background-color: rgb(0, 0, 0);
+    box-sizing: border-box;
+    color: rgb(51, 51, 51);
+    display: block;
+    left: 0px;
+    opacity: 0.5;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 1;
+    transition-delay: 0s;
+    transition-duration: 0.15s;
+    transition-property: opacity;
+    transition-timing-function: linear;
+}
 .tip-player-info {
     top: 100px;
     left: 500px;
     position: absolute;
     border-radius: 3px;
-    box-shadow: 3px 3px 5px 1px #ccc;
-    height: 450px;
-    width: 400px;
+    box-shadow: 2px 2px 2px 1px #ccc;
+    width: 430px;
     background: #fff;
     font-size: 12px;
     border: 1px solid #eaeaea;
+    z-index: 2;
+}
+.box-player-head {
+    position: relative;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 7px 0 7px 23px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #4f9cee;
+}
+.box-player-head:before {
+    content: "";
+    display: block;
+    background: #4f9cee;
+    position: absolute;
+    width: 7px;
+    height: 18px;
+    left: 8px;
+    top: 9px;
+}
+.box-player-info {
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 10px;
+}
+.box-player-xx {
+    border-bottom: 1px solid #e8e8e8;
+    padding: 10px 0;
+}
+.list-xx-items {
+    float: left;
+    width: 33%;
 }
 .tr {
     text-align: right;
@@ -77,6 +124,13 @@
 }
 .list-xx-items > li > .dib {
     width: 80px;
+}
+.items-val-60 {
+    color: #cccccc;
+}
+.box-player-ycnl {
+    padding: 10px;
+    line-height: 20px;
 }
 
 
@@ -110,6 +164,7 @@
 }
 .tip-player-info > .box-player-info {
     width: 100%;
+    float: none;
 }
 .box-player-info {
     float: left;
@@ -121,6 +176,11 @@
 }
 .box-head {
     float: left;
+}
+.box-head > img {
+    box-shadow: 0 0 5px #ddd;
+    padding: 8px;
+    margin: 8px; 
 }
 .list-player-info {
     line-height: 22px;
