@@ -85,6 +85,29 @@
     z-index: 2;
     display: none;
 }
+.box-tips-trigon {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 20px;
+    left: -30px; 
+}
+.tips-trigon {
+    border-left: 15px solid transparent;
+    border-top: 15px solid transparent;
+    border-right: 15px solid #eaeaea;
+    border-bottom: 15px solid transparent;
+    height: 0px;
+    width: 0px;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.tips-trigon-2 {
+    border-right: 15px solid #ffffff;
+    left: 1px;
+}
 .box-player-head {
     position: relative;
     border-bottom: 1px solid #e8e8e8;

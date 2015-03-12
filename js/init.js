@@ -310,7 +310,7 @@ $(function () {
     }).on("mouseover", ".item-player", function () {
         var hashid = $(this).attr("data-hashid");
         if (hashid) {
-            if ($("#player" + hashid).length > 0) {
+            if (playersCache[hashid]) {
                 $("#player" + hashid).show();
             } else {
                 var offset = $(this).offset();
@@ -318,17 +318,22 @@ $(function () {
                 var tips = document.createElement("div");
                 tips.className = "tip-player-info";
                 tips.id = "player" + hashid;
-                tips.style.left = offset.left + width + "px";
-                tips.style.top = offset.top + "px";
+                tips.style.left = offset.left + width + 20 + "px";
+                tips.style.top = offset.top - 27 + "px";
                 tips.style.display = "block";
                 document.body.appendChild(tips);
-                // $.post("getdata.php?", {"hashid": hashid}, function (resp) {
-                    var source   = $("#playerInfoTpl").html();
-                    var template = Handlebars.compile(source);
-                    var html = template(vs.players[0]);
-                    $(tips).html(html);
-                    document.body.appendChild(tips);
-                // });
+                $.post("search.php?act=xx", {"hashid": hashid}, function (resp) {
+                    var resp = $.parseJSON(resp);
+                    if (resp.code === "ok") {
+                        var data = resp.players;
+                        playersCache[hashid] = data;
+                        var source   = $("#playerInfoTpl").html();
+                        var template = Handlebars.compile(source);
+                        var html = template(vs.players[0]);
+                        $(tips).html(html);
+                        document.body.appendChild(tips);
+                    }
+                });
             }
         }
     }).on("mouseleave", ".item-player", function () {

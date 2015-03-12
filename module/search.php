@@ -84,7 +84,7 @@ if ($act === "list") {
 	echo json_encode($result);
 } else if ($act === "xx") {
 	$hashid = $_POST["hashid"];
-	$sql = "select * from player where hashid = ".$hashid;
+	$sql = "select * from player where hashid = '".$hashid."'";
 	$data = $db->get_one($sql);
 
 	if (is_array($data)) {
