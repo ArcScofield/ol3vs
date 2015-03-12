@@ -1,4 +1,6 @@
 $(function () {
+    // 球员缓存
+    var playersCache = {};
     var cls = {
         "ST": "label-danger",
         "CF": "label-danger",
@@ -311,17 +313,28 @@ $(function () {
             if ($("#player" + hashid).length > 0) {
                 $("#player" + hashid).show();
             } else {
+                var offset = $(this).offset();
+                var width = $(this).width();
                 var tips = document.createElement("div");
-                tips.className = "";
-                tips.id = "#player" + hashid;
+                tips.className = "tip-player-info";
+                tips.id = "player" + hashid;
+                tips.style.left = offset.left + width + "px";
+                tips.style.top = offset.top + "px";
+                tips.style.display = "block";
                 document.body.appendChild(tips);
-                $.post("getdata.php?", {"hashid": hashid}, function (resp) {
+                // $.post("getdata.php?", {"hashid": hashid}, function (resp) {
                     var source   = $("#playerInfoTpl").html();
                     var template = Handlebars.compile(source);
                     var html = template(vs.players[0]);
-                    $(".tip-player-info").html(html);
-                });
+                    $(tips).html(html);
+                    document.body.appendChild(tips);
+                // });
             }
+        }
+    }).on("mouseleave", ".item-player", function () {
+        var hashid = $(this).attr("data-hashid");
+        if (hashid) {
+            $("#player" + hashid).hide();
         }
     });
 

@@ -75,8 +75,6 @@
     transition-timing-function: linear;
 }
 .tip-player-info {
-    top: 100px;
-    left: 500px;
     position: absolute;
     border-radius: 3px;
     box-shadow: 2px 2px 2px 1px #ccc;
@@ -85,6 +83,7 @@
     font-size: 12px;
     border: 1px solid #eaeaea;
     z-index: 2;
+    display: none;
 }
 .box-player-head {
     position: relative;

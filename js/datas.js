@@ -94,7 +94,8 @@ var defaultPlayers = {
             "name": "梅西",
             "pos": "CF",
             "zp": 85,
-            "jlb": "巴塞罗那"
+            "jlb": "巴塞罗那",
+            "hashid": "11111"
         }, {
             "id": 2,
             "sj": "w",
