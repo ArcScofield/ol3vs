@@ -370,8 +370,6 @@
     <p>© 2015 ol3vs.com Inc. All rights reserved.</p>
 </footer>
 
-<div class="tip-player-info"></div>
-
 <div class="modal" id="vsModal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -380,104 +378,7 @@
                 <h4 class="modal-title">球员对比</h4>
             </div>
             <div class="modal-body">
-                <div class="box-player-vs box-card">
-                    <div class="clearfix" id="boxPlayerInfo">
-                    </div>
-                    <div class="clearfix">
-                        <div class="box-level-change">
-                            <span>查看能力：</span>
-                            <select id="slQh1">
-                                <option value="1">强化</option>
-                                <option value="0">+0</option>
-                                <option value="1">+1</option>
-                                <option value="2">+2</option>
-                                <option value="3">+3</option>
-                                <option value="4">+4</option>
-                                <option value="5">+5</option>
-                                <option value="6">+6</option>
-                                <option value="7">+7</option>
-                                <option value="8">+8</option>
-                                <option value="9">+9</option>
-                                <option value="10">+10</option>
-                            </select>
-                            <select id="slLv1">
-                                <option value="1">等级</option>
-                                <option value="1">Lv.1</option>
-                                <option value="2">Lv.2</option>
-                                <option value="3">Lv.3</option>
-                                <option value="4">Lv.4</option>
-                                <option value="5">Lv.5</option>
-                                <option value="6">Lv.6</option>
-                                <option value="7">Lv.7</option>
-                                <option value="8">Lv.8</option>
-                                <option value="9">Lv.9</option>
-                                <option value="10">Lv.10</option>
-                                <option value="11">Lv.11</option>
-                                <option value="12">Lv.12</option>
-                                <option value="13">Lv.13</option>
-                                <option value="14">Lv.14</option>
-                                <option value="15">Lv.15</option>
-                                <option value="16">Lv.16</option>
-                                <option value="17">Lv.17</option>
-                                <option value="18">Lv.18</option>
-                                <option value="19">Lv.19</option>
-                                <option value="20">Lv.20</option>
-                            </select>
-                        </div>
-                        <div class="box-level-change">
-                            <span>查看能力：</span>
-                            <select id="slQh2">
-                                <option value="1">强化</option>
-                                <option value="0">+0</option>
-                                <option value="1">+1</option>
-                                <option value="2">+2</option>
-                                <option value="3">+3</option>
-                                <option value="4">+4</option>
-                                <option value="5">+5</option>
-                                <option value="6">+6</option>
-                                <option value="7">+7</option>
-                                <option value="8">+8</option>
-                                <option value="9">+9</option>
-                                <option value="10">+10</option>
-                            </select>
-                            <select id="slLv2">
-                                <option value="1">等级</option>
-                                <option value="1">Lv.1</option>
-                                <option value="2">Lv.2</option>
-                                <option value="3">Lv.3</option>
-                                <option value="4">Lv.4</option>
-                                <option value="5">Lv.5</option>
-                                <option value="6">Lv.6</option>
-                                <option value="7">Lv.7</option>
-                                <option value="8">Lv.8</option>
-                                <option value="9">Lv.9</option>
-                                <option value="10">Lv.10</option>
-                                <option value="11">Lv.11</option>
-                                <option value="12">Lv.12</option>
-                                <option value="13">Lv.13</option>
-                                <option value="14">Lv.14</option>
-                                <option value="15">Lv.15</option>
-                                <option value="16">Lv.16</option>
-                                <option value="17">Lv.17</option>
-                                <option value="18">Lv.18</option>
-                                <option value="19">Lv.19</option>
-                                <option value="20">Lv.20</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="box-player-data clearfix">
-                        <div>
-                            <div class="btn-group btn-group-sm" role="group">
-                                <button type="button" class="btn btn-default">总能力</button>
-                                <button type="button" class="btn btn-default">CF</button>
-                                <button type="button" class="btn btn-default">ST</button>
-                            </div>
-                        </div>
-                        <table id="listPlayerVs" class="tb-team table table-hover table-striped">
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="box-player-vs box-card" id="boxPlayerVs">
                 </div>
             </div>
         </div>
@@ -500,32 +401,102 @@
     </tr>
 {{/each}}
 </script>
+
 <script id="vsPlayerInfoTpl" type="text/x-handlebars-template">
+<div class="clearfix">
 {{#each players}}
     <div class="box-player-info">
         <div class="clearfix">
-            <div class="box-head">
+            <div class="box-player-tx">
                 <img src="img/p2702.png" />
                 <div class="box-head-name">
                     <span class="icon-sj icon-sj-{{sj}}"></span> {{name}}
                 </div>
             </div>
-            <div>
+            <div class="box-player-other">
                 <ul class="list-player-info">
-                    <li>{{sg}}CM {{tz}}KG</li>
+                    <li>{{sg}}cm/{{tz}}kg</li>
                     <li>{{sr}}</li>
-                    <li>意大利</li>
+                    <li>{{gj}}</li>
                     <li>{{jlb}}</li>
                 </ul>
-                <div>
-                    <ul class="list-player-pos">
-                        {{#poslist}}{{poses}}{{/poslist}}
-                    </ul>
-                </div>
+                <ul class="list-player-pos">
+                    {{#poslist}}{{poses}}{{/poslist}}
+                </ul>
             </div>
+        </div>
+        <div class="box-level-change">
+            <span>查看能力：</span>
+            <select id="slQh1">
+                <option value="1">强化</option>
+                <option value="0">+0</option>
+                <option value="1">+1</option>
+                <option value="2">+2</option>
+                <option value="3">+3</option>
+                <option value="4">+4</option>
+                <option value="5">+5</option>
+                <option value="6">+6</option>
+                <option value="7">+7</option>
+                <option value="8">+8</option>
+                <option value="9">+9</option>
+                <option value="10">+10</option>
+            </select>
+            <select id="slLv1">
+                <option value="1">等级</option>
+                <option value="1">Lv.1</option>
+                <option value="2">Lv.2</option>
+                <option value="3">Lv.3</option>
+                <option value="4">Lv.4</option>
+                <option value="5">Lv.5</option>
+                <option value="6">Lv.6</option>
+                <option value="7">Lv.7</option>
+                <option value="8">Lv.8</option>
+                <option value="9">Lv.9</option>
+                <option value="10">Lv.10</option>
+                <option value="11">Lv.11</option>
+                <option value="12">Lv.12</option>
+                <option value="13">Lv.13</option>
+                <option value="14">Lv.14</option>
+                <option value="15">Lv.15</option>
+                <option value="16">Lv.16</option>
+                <option value="17">Lv.17</option>
+                <option value="18">Lv.18</option>
+                <option value="19">Lv.19</option>
+                <option value="20">Lv.20</option>
+            </select>
         </div>
     </div>
 {{/each}}
+</div>
+<div class="box-player-data clearfix">
+    <div>
+        <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-default">总能力</button>
+            <button type="button" class="btn btn-default">CF</button>
+            <button type="button" class="btn btn-default">ST</button>
+        </div>
+    </div>
+    <table id="listPlayerVs" class="tb-team table table-hover table-striped">
+        <tbody>
+            {{#each people}}
+                <tr class="{{pos}}">
+                    <td width="200px">
+                        <span class="data-item">{{name}}</span>
+                    </td>
+                    <td>
+                        <span class="data-player-f">{{#aaa}}{{item}}{{/aaa}}</span>
+                    </td>
+                    <td>
+                        <span class="data-player-s">{{#bbb}}{{item}}{{/bbb}}</span>
+                    </td>
+                    <td>
+                        <span class="data-diff">{{#diff}}{{item}}{{/diff}}</span>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
 </script>
 <script id="vsTpl" type="text/x-handlebars-template">
 {{#each people}}
@@ -555,21 +526,19 @@
 </div>
 <div class="box-player-info clearfix">
     <div class="clearfix">
-        <div class="box-head">
+        <div class="box-player-tx">
             <img src="tx/{{tx}}" />
         </div>
-        <div>
+        <div class="box-player-other">
             <ul class="list-player-info">
-                <li>{{sg}}CM {{tz}}KG</li>
+                <li>{{sg}}cm/{{tz}}kg</li>
                 <li>{{sr}}</li>
                 <li>{{gj}}</li>
                 <li>{{jlb}}</li>
             </ul>
-            <div>
-                <ul class="list-player-pos">
-                    {{#poslist}}{{poses}}{{/poslist}}
-                </ul>
-            </div>
+            <ul class="list-player-pos">
+                {{#poslist}}{{poses}}{{/poslist}}
+            </ul>
         </div>
     </div>
 </div>

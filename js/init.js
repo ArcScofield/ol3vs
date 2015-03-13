@@ -39,6 +39,7 @@ $(function () {
             "tz": 80,
             "sr": "1980-08-08",
             "jlb": "阿森纳",
+            "gj": "法国",
             "pos": "ST",
             "poses": "cf:80|st:82|cam:80",
             "zp": 81,
@@ -83,6 +84,7 @@ $(function () {
             "tz": 80,
             "sr": "1980-08-08",
             "jlb": "阿森纳",
+            "gj": "法国",
             "pos": "ST",
             "poses": "cf:80|st:82",
             "zp": 81,
@@ -187,12 +189,7 @@ $(function () {
     var source   = $("#vsPlayerInfoTpl").html();
     var template = Handlebars.compile(source);
     var html = template(vs);
-    $("#boxPlayerInfo").html(html);
-
-    var source   = $("#vsTpl").html();
-    var template = Handlebars.compile(source);
-    var html = template(vs);
-    $("#listPlayerVs").find("tbody").html(html);
+    $("#boxPlayerVs").html(html);
 
     Handlebars.registerHelper('color', function(options) {
         var val = ~~options.fn(this);
@@ -321,8 +318,7 @@ $(function () {
                 tips.style.left = offset.left + width + 20 + "px";
                 tips.style.top = offset.top - 27 + "px";
                 tips.style.display = "block";
-                document.body.appendChild(tips);
-                $.post("search.php?act=xx", {"hashid": hashid}, function (resp) {
+                $.post("module/search.php?act=xx", {"hashid": hashid}, function (resp) {
                     var resp = $.parseJSON(resp);
                     if (resp.code === "ok") {
                         var data = resp.players;

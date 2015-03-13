@@ -184,6 +184,10 @@
 .icon-sj-06 {
     background: url("../img/icon/icon_18x18_2006.png") no-repeat;
 }
+
+.box-player-vs {
+    width: 700px;
+}
 .tip-player-info > .box-player-info {
     width: 100%;
     float: none;
@@ -196,13 +200,17 @@
 .box-head-name {
     text-align: center;
 }
-.box-head {
+.box-player-tx {
     float: left;
 }
-.box-head > img {
+.box-player-tx > img {
     box-shadow: 0 0 5px #ddd;
     padding: 8px;
     margin: 8px; 
+}
+.box-player-other {
+    text-align: right;
+    padding-right: 10px;
 }
 .list-player-info {
     line-height: 22px;
@@ -211,8 +219,6 @@
     line-height: 22px;
 }
 .box-level-change {
-    width: 50%;
-    float: left;
     padding: 10px 0;
     text-align: center;
 }
