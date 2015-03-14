@@ -79,6 +79,7 @@ $(function () {
             "ycnl": "领导力，进攻组织者"
         },{
             "name": "罗纳尔迪尼奥",
+            "tx": "p6009676.png",
             "sj": "06",
             "sg": 180,
             "tz": 80,
@@ -86,7 +87,7 @@ $(function () {
             "jlb": "阿森纳",
             "gj": "法国",
             "pos": "ST",
-            "poses": "cf:80|st:82",
+            "poses": "cf:80|st:82|cb:70",
             "zp": 81,
             "ss": 72,
             "smll": 13,
@@ -181,6 +182,21 @@ $(function () {
         }
         return html;
     });
+
+    Handlebars.registerHelper("posUnion", function(options) {
+        var obj = {};
+        var html = "";
+        var posStr = vs.players[0].poses + "|" + vs.players[1].poses;
+        posStr.replace(/[a-z]{2,3}/g, function (a) {
+            if (!obj[a]) {
+                html += '<li data-pos="' + a + '">' + a + '</li>';
+                obj[a] = true;
+            }
+        });
+        delete obj;
+        return html;
+    });
+    
 
     Handlebars.registerHelper('diff', function(options) {
         return vs.players[0][options.fn(this)] - vs.players[1][options.fn(this)];

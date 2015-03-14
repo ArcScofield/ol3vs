@@ -408,7 +408,7 @@
     <div class="box-player-info">
         <div class="clearfix">
             <div class="box-player-tx">
-                <img src="img/p2702.png" />
+                <img src="tx/{{tx}}" />
                 <div class="box-head-name">
                     <span class="icon-sj icon-sj-{{sj}}"></span> {{name}}
                 </div>
@@ -472,8 +472,7 @@
     <div>
         <div class="btn-group btn-group-sm" role="group">
             <button type="button" class="btn btn-default">总能力</button>
-            <button type="button" class="btn btn-default">CF</button>
-            <button type="button" class="btn btn-default">ST</button>
+            {{#posUnion}}{{/posUnion}}
         </div>
     </div>
     <table id="listPlayerVs" class="tb-team table table-hover table-striped">
