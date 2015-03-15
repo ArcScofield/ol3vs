@@ -1,6 +1,7 @@
 $(function () {
     // 球员缓存
     var playersCache = {};
+    
     var cls = {
         "ST": "label-danger",
         "CF": "label-danger",

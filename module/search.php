@@ -20,14 +20,14 @@ if ($act === "list") {
 	$ls = $_POST["ls"]; // 联赛
 	$jlb = $_POST["jlb"]; // 俱乐部
 	$sj = $_POST["sj"]; // 赛季
-	$minZp = $_POST["minZp"];
-	$maxZp = $_POST["maxZp"];
-	$minTz = $_POST["minTz"];
-	$maxTz = $_POST["maxTz"];
-	$minSg = $_POST["minSg"];
-	$maxSg = $_POST["maxSg"];
-	$minCsnf = $_POST["minCsnf"];
-	$maxCsnf = $_POST["maxCsnf"];
+	$minZp = $_POST["minZp"]; // 总评下限
+	$maxZp = $_POST["maxZp"]; // 总评上限
+	$minTz = $_POST["minTz"]; // 体重下限
+	$maxTz = $_POST["maxTz"]; // 体重上限
+	$minSg = $_POST["minSg"]; // 身高下限
+	$maxSg = $_POST["maxSg"]; // 身高上限
+	$minCsnf = $_POST["minCsnf"]; // 出生年份下限
+	$maxCsnf = $_POST["maxCsnf"]; // 出生年份上限
 	$tx = $_POST["tx"];  // 体型
 	$hsdz = $_POST["hsdz"]; // 花式动作
 	
@@ -36,7 +36,7 @@ if ($act === "list") {
 	$xx2 = $_POST["xx2"];  // 详细字段2
 	$xx2val = $_POST["xx2val"]; // 详细字段2的值
 
-	$sql = "select player.sj, player.pos, player.gj, player.zp, player.jlb, player.name, player.hashid from player where 1 = 1";
+	$sql = "select sj, pos, gj, zp, player.jlb, name, hashid from player where 1 = 1";
 	if (!empty($pos)) {
 		$sql = $sql." and pos like '%$pos%'";
 	}
@@ -50,7 +50,7 @@ if ($act === "list") {
 		$sql = $sql." and sj='$sj'";
 	}
 	if ( !empty($minZp) && is_numeric($minZp) ) {
-		$sql = $sql." and zp > $minZp";
+		$sql = $sql." and zp >= $minZp";
 	}
 	if ( !empty($maxZp) && is_numeric($maxZp) ) {
 		$sql = $sql." and zp < $maxZp";
@@ -73,6 +73,8 @@ if ($act === "list") {
 	if ( !empty($xx2) && is_numeric($xx2val)) {
 		$sql .= " and $xx2 > $xx2val";
 	}
+
+	$sql .="limit 0, 200";
 
 	$data = $db->get_all($sql);
 
