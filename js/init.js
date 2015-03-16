@@ -43,7 +43,10 @@ $(function () {
             "gj": "法国",
             "pos": "ST",
             "poses": "cf:80|st:82|cam:80",
+            "zj": 3,
+            "yj": 4,
             "zp": 81,
+            "hsdz": 5,
             "ss": 70,
             "smll": 13,
             "hx": 40,
@@ -81,6 +84,8 @@ $(function () {
         },{
             "name": "罗纳尔迪尼奥",
             "tx": "p6009676.png",
+            "zj": 3,
+            "yj": 4,
             "sj": "06",
             "sg": 180,
             "tz": 80,
@@ -90,6 +95,7 @@ $(function () {
             "pos": "ST",
             "poses": "cf:80|st:82|cb:70",
             "zp": 81,
+            "hsdz":4,
             "ss": 72,
             "smll": 13,
             "hx": 40,
@@ -125,6 +131,7 @@ $(function () {
             "gkfszw": 100
         }],
         "people": [
+            {"name": "花式动作", "pos": "", "item": "hsdz"},
             {"name": "射术", "pos": "cam rw cf st", "item": "ss"},
             {"name": "射门力量", "pos": "cam rw cf st", "item": "smll"},
             {"name": "弧线", "pos": "", "item": "hx"},
