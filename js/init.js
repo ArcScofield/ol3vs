@@ -197,7 +197,7 @@ $(function () {
         var posStr = vs.players[0].poses + "|" + vs.players[1].poses;
         posStr.replace(/[a-z]{2,3}/g, function (a) {
             if (!obj[a]) {
-                html += '<li data-pos="' + a + '">' + a + '</li>';
+                html += '<li data-pos="' + a + '">' + a.toUpperCase() + '</li>\n';
                 obj[a] = true;
             }
         });
@@ -365,8 +365,22 @@ $(function () {
 
     $('#vsModal').on('hide.bs.modal', function () {
         $("#listPlayer").find("input:checked").prop("checked", false);
-    })
+    });
     
+    $(".list-union-pos").on("click", "li", function () {
+        var pos = $(this).attr("data-pos");
+        if (pos === "all") {
+            $("#listPlayerVs").find("tr").show();
+        } else {
+            $("#listPlayerVs").find("tr").each(function (index, item) {
+                if ($(item).hasClass(pos)) {
+                    $(item).show();
+                } else {
+                    $(item).hide();
+                }
+            });
+        }
+    });
 
     $("#slQh1").change(function(event) {
         var xx = vs.players[0];

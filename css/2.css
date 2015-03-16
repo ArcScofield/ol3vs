@@ -225,6 +225,18 @@
     padding: 10px 0;
     text-align: center;
 }
+.list-union-pos {
+    padding-left: 10px;
+}
+.list-union-pos > li {
+    display: inline-block;
+    padding: 5px 8px;
+    width: 70px;
+    text-align: center;
+    border: 1px solid #dddddd;
+    border-bottom: none;
+    cursor: pointer;
+}
 .label-pos {
     display: inline-block;
     width: 42px;
