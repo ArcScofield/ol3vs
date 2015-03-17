@@ -25,7 +25,7 @@ define(function(require, exports, module) {
         e.preventDefault();
     });
 
-    seajs.use("./js/module/home/home", function (home) {
+    seajs.use("./static/js/module/home/home", function (home) {
         home.init();
     });
 
@@ -35,7 +35,7 @@ define(function(require, exports, module) {
 
     $("#btnGoCup").click(function () {
         viewModule.gotoView("boxListCup");
-        seajs.use("./js/module/match/match", function (cup) {
+        seajs.use("./static/js/module/match/match", function (cup) {
         });
     });
 

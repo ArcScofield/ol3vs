@@ -6,9 +6,8 @@
 <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" media="all">
-<link href="css/common.css" rel="stylesheet" media="all">
-<link href="css/2.css" rel="stylesheet" media="all">
-<link href="css/plug.css" rel="stylesheet" media="all">
+<link href="static/css/common.css" rel="stylesheet" media="all">
+<link href="static/css/index.css" rel="stylesheet" media="all">
 <!--[if lt IE 9]>
 <script>
 (function(tags){for(var i=0; i<tags.length; i++)document.createElement(tags[i]);})(["article","aside","details","figcaption","figure","footer","header","hgroup","nav","section","video"]);
@@ -29,7 +28,7 @@
                 <a href="javascript:;">球员数据库</a>
             </li>
             <li class="nav-item">
-                <a href="index.php">战队系统</a>
+                <a href="match.php">战队系统</a>
             </li>
         </ul>
     </div>
@@ -77,6 +76,7 @@
                         <option value="">赛季</option>
                         <option value="14">2014</option>
                         <option value="10">2010</option>
+                        <option value="6">2006</option>
                         <option value="w">WC</option>
                         <option value="l">传奇</option>
                     </select>
@@ -106,7 +106,7 @@
                 <li>
                     <span>联赛：</span>
                     <select id="slMatch">
-                        <option value="">联赛</option>
+                        <option value="0">联赛</option>
                         <option value="1">西班牙足球甲级联赛</option>
                         <option value="2">德国足球甲级联赛</option>
                         <option value="3">英格兰足球超级联赛</option>
@@ -232,7 +232,6 @@
                     </select>
                     <select>
                         <option value="">--</option>
-                        <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
@@ -347,21 +346,6 @@
         </table>
         <nav class="nav-page">
             <ul class="pagination">
-                <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
             </ul>
         </nav>
     </div>
@@ -386,9 +370,9 @@
 </div>
 <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/lib/handlebars/handlebars.js"></script>
-<script type="text/javascript" src="js/datas.js"></script>
-<script type="text/javascript" src="js/init.js"></script>
+<script type="text/javascript" src="static/js/lib/handlebars/handlebars.js"></script>
+<script type="text/javascript" src="static/js/datas.js"></script>
+<script type="text/javascript" src="static/js/init.js"></script>
 <script id="playerTpl" type="text/x-handlebars-template">
 {{#each players}}
     <tr>
@@ -407,8 +391,8 @@
 {{#each players}}
     <div class="box-player-info">
         <div class="clearfix">
-            <div class="box-player-tx">
-                <img src="tx/{{tx}}" />
+            <div class="box-player-head">
+                <img src="static/img/head/{{head}}" />
                 <div class="box-head-name">
                     <span class="icon-sj icon-sj-{{sj}}"></span> {{name}}
                 </div>
@@ -420,6 +404,7 @@
                     <li>{{sr}}</li>
                     <li>{{zj}}</li>
                     <li>{{yj}}</li>
+                    <li><div class="box-hsdz star{{hsdz}}"></div></li>
                 </ul>
             </div>
             <div class="box-player-other">
@@ -527,13 +512,13 @@
     <div class="tips-trigon"></div>
     <div class="tips-trigon tips-trigon-2"></div>
 </div>
-<div class="box-player-head">
+<div class="box-player-title">
     <span class="icon-sj icon-sj-{{sj}}"></span> {{name}}
 </div>
 <div class="box-player-info clearfix">
     <div class="clearfix">
-        <div class="box-player-tx">
-            <img src="tx/{{tx}}" />
+        <div class="box-player-head">
+            <img src="static/img/head/{{head}}" />
         </div>
         <div class="box-player-other">
             <ul class="list-player-info">
@@ -592,6 +577,21 @@
 <div class="box-player-ycnl">
     <span>隐藏能力：</span>{{ycnl}}
 </div>
+</script>
+<script id="pageTpl" type="text/x-handlebars-template">
+<li>
+    <a href="javascript:;" aria-label="Previous">
+        <span aria-hidden="true">&laquo;首页</span>
+    </a>
+</li>
+{{#each pages}}
+<li><a href="javascript:;">1</a></li>
+{{/each}}
+<li>
+    <a href="javascript:;" aria-label="Next">
+        <span aria-hidden="true">末页&raquo;</span>
+    </a>
+</li>
 </script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 $(function () {
-    // 球员缓存
-    var playersCache = {};
+    var playersCache = {};  // 球员缓存
+    var players      = [];   // 搜索出来的球员列表，主要用于翻页时的缓存
+    var curPage      = 1;   // 翻页的当前页面
     
     var cls = {
         "ST": "label-danger",
@@ -23,6 +24,7 @@ $(function () {
     });
     renderPlayer();
 
+    // 渲染搜索出来的球员
     function renderPlayer (data) {
         var data     = data || defaultPlayers;
         var source   = $("#playerTpl").html();
@@ -31,10 +33,15 @@ $(function () {
         $("#listPlayer").find("tbody").html(html);
     }
 
+    // 渲染翻页
+    function page () {
+
+    }
+
     var vs = {
         "players": [{
             "name": "亨利",
-            "tx": "p6009676.png",
+            "head": "p6009676.png",
             "sj": "06",
             "sg": 180,
             "tz": 80,
@@ -46,7 +53,7 @@ $(function () {
             "zj": 3,
             "yj": 4,
             "zp": 81,
-            "hsdz": 5,
+            "hsdz": 1,
             "ss": 70,
             "smll": 13,
             "hx": 40,
@@ -83,7 +90,7 @@ $(function () {
             "ycnl": "领导力，进攻组织者"
         },{
             "name": "罗纳尔迪尼奥",
-            "tx": "p6009676.png",
+            "head": "p6009676.png",
             "zj": 3,
             "yj": 4,
             "sj": "06",
@@ -131,7 +138,6 @@ $(function () {
             "gkfszw": 100
         }],
         "people": [
-            {"name": "花式动作", "pos": "", "item": "hsdz"},
             {"name": "射术", "pos": "cam rw cf st", "item": "ss"},
             {"name": "射门力量", "pos": "cam rw cf st", "item": "smll"},
             {"name": "弧线", "pos": "", "item": "hx"},
@@ -233,7 +239,7 @@ $(function () {
     $("#slMatch").change(function () {
         var val   = $(this)[0].selectedIndex;
         var doc   = document.createDocumentFragment();
-        var datas = Matches[val - 1].team;
+        var datas = Matches[val].team;
         var op    = document.createElement("option");
 
         op.text = "球队";
@@ -280,16 +286,16 @@ $(function () {
             "sj": $("#slSeason").val(),   // 赛季
             "ls": $("#slMatch").val(),  // 联赛
             "jlb": $("#slJlb").val(),   // 俱乐部
-            "minZp": $("#slMinZp").val(),
-            "maxZp": $("#slMaxZp").val(),
-            "minTz": $("#slMinTz").val(),
-            "maxTz": $("#slMaxTz").val(),
-            "minSg": $("#slMinSg").val(),
-            "maxSg": $("#slMaxSg").val(),
+            "minZp": ~~$("#slMinZp").val(),
+            "maxZp": ~~$("#slMaxZp").val(),
+            "minTz": ~~$("#slMinTz").val(),
+            "maxTz": ~~$("#slMaxTz").val(),
+            "minSg": ~~$("#slMinSg").val(),
+            "maxSg": ~~$("#slMaxSg").val(),
             "minCsnf": $("#slMinCsnf").val(), // 出生年份
             "maxCsnf": $("#slMaxCsnf").val(),  // 出生年份
-            "tx": $("#slTx").val(),  // 体型
-            "hsdz": $("#slHsdz").val(), // 花式动作
+            "tx": ~~$("#slTx").val(),  // 体型
+            "hsdz": ~~$("#slHsdz").val(), // 花式动作
             "ycnl": $("#slHdProp").val()  // 隐藏属性
         };
 
@@ -391,7 +397,7 @@ $(function () {
         var diff = 0;
 
         if (xx.qh !== undefined) {
-            curQh = xx.qh
+            curQh = xx.qh;
         }
         diff = getQhDiff(qh) - getQhDiff(curQh);
         for (var i in xx) {

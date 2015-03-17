@@ -216,7 +216,11 @@ var defaultPlayers = {
 * 联赛数据
 */
 var Matches = [
-	{	
+	{
+		"id": 0,
+		"name": "",
+		"team": ""
+	}, {	
 		"id": 1,
 		"name": "西班牙足球甲级联赛",
 		"team": [

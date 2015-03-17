@@ -12,10 +12,10 @@ echo $_COOKIE["username"];
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<link href="js/lib/bootstrap/css/bootstrap.css" rel="stylesheet" media="all">
-<link href="css/common.css" rel="stylesheet" media="all">
-<link href="css/css.css" rel="stylesheet" media="all">
-<link href="css/plug.css" rel="stylesheet" media="all">
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" media="all">
+<link href="static/css/common.css" rel="stylesheet" media="all">
+<link href="static/css/css.css" rel="stylesheet" media="all">
+<link href="static/css/plug.css" rel="stylesheet" media="all">
 <title>FIFA Online3 杯赛系统</title>
 <style type="text/css">
 
@@ -27,7 +27,7 @@ echo $_COOKIE["username"];
     <div class="wrap">
         <ul class="list-nav">
             <li class="nav-item">
-                <a class="nav-item" href="2.html">球员数据库</a>
+                <a class="nav-item" href="index.html">球员数据库</a>
             </li>
             <li class="nav-item nav-item-cur">
                 <a href="javascript:;" class="nav-item nav-item-cur">战队系统</a>
@@ -451,21 +451,21 @@ echo $_COOKIE["username"];
 
 
 <!-- /.modal -->
-<script type="text/javascript" src="js/lib/jq/jquery.js"></script>
-<script type="text/javascript" src="js/lib/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/plug/btngroup/btngroup.js"></script>
-<script type="text/javascript" src="js/plug/verif/verif.js"></script>
-<script type="text/javascript" src="js/plug/toptips/toptips.js"></script>
-<script src="js/lib/seajs/sea.js"></script>
+<script type="text/javascript" src="static/js/lib/jq/jquery.js"></script>
+<script type="text/javascript" src="static/js/lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/js/plug/btngroup/btngroup.js"></script>
+<script type="text/javascript" src="static/js/plug/verif/verif.js"></script>
+<script type="text/javascript" src="static/js/plug/toptips/toptips.js"></script>
+<script src="static/js/lib/seajs/sea.js"></script>
 <script type="text/javascript">
 seajs.config({
-    base: "./js/lib/",
+    base: "./static/js/lib/",
     alias: {
         "layout": "./layout.js",
         "global": "./global.js"
     }
 });
-seajs.use("./js/main");
+seajs.use("./static/js/main");
 
 // $('#loginModal').modal("show");
 var viewModule = {

@@ -36,9 +36,9 @@ if ($act === "list") {
 	$xx2 = $_POST["xx2"];  // 详细字段2
 	$xx2val = $_POST["xx2val"]; // 详细字段2的值
 
-	$sql = "select sj, pos, gj, zp, player.jlb, name, hashid from player where 1 = 1";
+	$sql = "select sj, pos, zp, jlb, name, hashid from player where 1 = 1";
 	if (!empty($pos)) {
-		$sql = $sql." and pos like '%$pos%'";
+		$sql = $sql." and poses like '%$pos%'";
 	}
 	if (!empty($ls) && is_numeric($ls) ) {
 		$sql = $sql." and ls=$ls";
@@ -74,7 +74,7 @@ if ($act === "list") {
 		$sql .= " and $xx2 > $xx2val";
 	}
 
-	$sql .="limit 0, 200";
+	$sql .=" limit 0, 200";
 
 	$data = $db->get_all($sql);
 
