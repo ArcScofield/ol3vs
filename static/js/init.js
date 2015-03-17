@@ -367,16 +367,18 @@ $(function () {
         $("#listPlayer").find("input:checked").prop("checked", false);
     });
     
+    // 绑定位置筛选事件
     $(".list-union-pos").on("click", "li", function () {
         var pos = $(this).attr("data-pos");
         if (pos === "all") {
             $("#listPlayerVs").find("tr").show();
         } else {
             $("#listPlayerVs").find("tr").each(function (index, item) {
-                if ($(item).hasClass(pos)) {
-                    $(item).show();
+                var tr = $(item);
+                if (tr.hasClass(pos)) {
+                    tr.show();
                 } else {
-                    $(item).hide();
+                    tr.hide();
                 }
             });
         }
