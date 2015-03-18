@@ -40,8 +40,9 @@
     padding: 10px 0;
     text-align: center;
 }
-.box-txt-search input {
+.box-txt-search > input {
     line-height: 28px;
+    height: 28px;
     width: 80%;
 }
 .list-ad-search > li {

@@ -31,6 +31,7 @@ $(function () {
         var template = Handlebars.compile(source);
         var html     = template(data);
         $("#listPlayer").find("tbody").html(html);
+        renderPage(10, 1);
     }
 
     // 渲染翻页
@@ -40,12 +41,23 @@ $(function () {
         var template;
         var html;
 
-        if (page === 1) {
+        if (pages === 1) {
             html = "";
         } else {
+            if (pages <= 5) {
+                for (var i = 1; i <= pages; i++) {
+                    data.push({page: i});
+                }
+            } else {
+                var startPage = (curPage - 2) > 0 ? (curPage - 2) : 1;
+                var endPage = (curPage + 2) < pages ? (curPage + 2) : pages; 
+                for (var i =  startPage; i<= endPage; i++) {
+                    data.push({page: i});
+                }
+            }
             source  = $("#pageTpl").html();
             template = Handlebars.compile(source);
-            html     = template(data);
+            html     = template({pages: data});
         }
         $(".nav-page").html(html);
     }
