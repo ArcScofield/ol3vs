@@ -174,22 +174,23 @@
     height: 18px;
     width: 18px;
     vertical-align: middle;
+    background-image: url("../img/sj.png");
+    background-repeat: no-repeat;
 }
 .icon-sj-14 {
-    background: url("../img/icon/icon_18x18_2014.png") no-repeat;
+    background-position: -54px 0;
 }
 .icon-sj-10 {
-    background: url("../img/icon/icon_18x18_2010.png") no-repeat;
+    background-position: -36px 0;
 }
 .icon-sj-w {
-    background: url("../img/icon/icon_18x18_w.png") no-repeat;
+    background-position: 0 0;
 }
 .icon-sj-06 {
-    background: url("../img/icon/icon_18x18_2006.png") no-repeat;
+    background-position: -18px 0;
 }
 
 .box-player-vs {
-    width: 620px;
 }
 .tip-player-info > .box-player-info {
     width: 100%;
@@ -250,21 +251,42 @@
     background-repeat: no-repeat;
 }
 .star1 {
-    background-position: 0 -112px; 
+    background-position: 0 -112px;
 }
 .star2 {
-    background-position: 0 -84px; 
+    background-position: 0 -84px;
 }
 .star3 {
-    background-position: 0 -56px; 
+    background-position: 0 -56px;
 }
 .star4 {
-    background-position: 0 -28px; 
+    background-position: 0 -28px;
 }
 .star5 {
-    background-position: 0 0; 
+    background-position: 0 0;
 }
-
+.icon-foot {
+    display: inline-block;
+    height: 45px;
+    width: 19px;
+    background-image: url(../img/footability.png);
+    background-repeat: no-repeat;
+    color: #ffffff;
+    line-height: 45px;
+    text-align: center;
+}
+.l-foot1, .l-foot2, .l-foot3, .l-foot4 {
+    background-position: 0 0;
+}
+.l-foot5 {
+    background-position: 0 -45px;
+}
+.r-foot1, .r-foot2, .r-foot3, .r-foot4 {
+    background-position: -19px 0;
+}
+.r-foot5 {
+    background-position: -19px -45px;
+}
 #listPlayer {
     margin-bottom: 0px;
     border-bottom: 1px solid #dddddd

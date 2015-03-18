@@ -34,8 +34,20 @@ $(function () {
     }
 
     // 渲染翻页
-    function page () {
+    function renderPage (pages, curPage) {
+        var data = [];
+        var source;
+        var template;
+        var html;
 
+        if (page === 1) {
+            html = "";
+        } else {
+            source  = $("#pageTpl").html();
+            template = Handlebars.compile(source);
+            html     = template(data);
+        }
+        $(".nav-page").html(html);
     }
 
     var vs = {
@@ -50,7 +62,7 @@ $(function () {
             "gj": "法国",
             "pos": "ST",
             "poses": "cf:80|st:82|cam:80",
-            "zj": 3,
+            "zj": 5,
             "yj": 4,
             "zp": 81,
             "hsdz": 1,
