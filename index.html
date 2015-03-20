@@ -224,13 +224,13 @@
                 </li>
                 <li>
                     <span>逆足脚：</span>
-                    <select>
+                    <select id="slXgj">
                         <option value="">习惯脚</option>
-                        <option value="">左脚</option>
-                        <option value="">右脚</option>
-                        <option value="">左右脚</option>
+                        <option value="1">左脚</option>
+                        <option value="2">右脚</option>
+                        <option value="3">左右脚</option>
                     </select>
-                    <select>
+                    <select id="slXgjVal">
                         <option value="">--</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -375,7 +375,7 @@
 <script id="playerTpl" type="text/x-handlebars-template">
 {{#each players}}
     <tr>
-        <td class="td-c"><input type="checkbox" data-id="{{hashid}}"></td>
+        <td class="td-c"><input type="checkbox" data-hashid="{{hashid}}"></td>
         <td><span class="label {{#cls}}{{pos}}{{/cls}}">{{pos}}</span></td>
         <td><span class="icon-sj icon-sj-{{sj}}"></span></td>
         <td><span class="item-player" data-hashid={{hashid}}>{{name}}</span></td>

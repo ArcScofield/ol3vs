@@ -29,7 +29,7 @@ addChangeEvent(aaa, function () {
         while (len--) {
             var d = ds[len];
             tmpData = {
-                "name": d["name"],  // 名字
+                "name": d["name"].replace("·", "."),  // 名字
                 "sj": d["season"],  // 赛季
                 "url": d["player_img"],
                 "head": getHead(d["player_img"]),   // 大头像
@@ -79,6 +79,7 @@ addChangeEvent(aaa, function () {
                 "gkskq": ~~d["gk_handing"], // GK手控球
                 "gkfy": ~~d["gk_response"],  // GK反应
                 "gkfszw": ~~d["gk_positioning"],  // GK防守站位
+                "gkdjkq": ~~d["gk_kicking"], // GK大脚开球
                 "ycnl": d["hidden_ability"]
             };
             data.push(tmpData);

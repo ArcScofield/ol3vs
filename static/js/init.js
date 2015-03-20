@@ -1,8 +1,45 @@
 $(function () {
     var playersCache = {};  // 球员缓存
-    var players      = [];   // 搜索出来的球员列表，主要用于翻页时的缓存
+    var playersPage      = [];   // 搜索出来的球员列表，主要用于翻页时的缓存
     var curPage      = 1;   // 翻页的当前页面
-    
+    var vs = {
+        "players": [],
+        "people": [
+            {"name": "射术", "pos": "cam rw cf st", "item": "ss"},
+            {"name": "射门力量", "pos": "cam rw cf st", "item": "smll"},
+            {"name": "弧线", "pos": "", "item": "hx"},
+            {"name": "远射", "pos": "cm cam rw cf st rm", "item": "ys"},
+            {"name": "凌空抽射", "pos": "cf st", "item": "lkcs"},
+            {"name": "任意球", "pos": "", "item": "ryq"},
+            {"name": "罚点球", "pos": "", "item": "fdq"},
+            {"name": "头球", "pos": "rb cb cdm cm cam cf st", "item": "tq"},
+            {"name": "站位", "pos": "rb cb cdm cm cam rm", "item": "zw"},
+            {"name": "速度", "pos": "rb cb cdm cm cam rw cf st rm", "item": "sd"},
+            {"name": "加速", "pos": "rw cf st rm", "item": "js"},
+            {"name": "灵活", "pos": "rw rm", "item": "lh"},
+            {"name": "反应", "pos": "gk rb cb cdm cm cam rw cf st rm", "item": "fy"},
+            {"name": "弹跳", "pos": "gk cb", "item": "tt"},
+            {"name": "体力", "pos": "rb cdm cm rw rm", "item": "tl"},
+            {"name": "强壮", "pos": "rb cb cdm cm cf st", "item": "qz"},
+            {"name": "平衡", "pos": "", "item": "ph"},
+            {"name": "短传", "pos": "rb cb cdm cm cam rw cf st rm", "item": "dc"},
+            {"name": "长传", "pos": "cdm cm cam rw rm", "item": "cc"},
+            {"name": "传中", "pos": "rb rw cf rm", "item": "cz"},
+            {"name": "控球", "pos": "rb cb cdm cm cam rw cf st rm", "item": "kq"},
+            {"name": "盘带", "pos": "cm cam rw cf st rm", "item": "pd"},
+            {"name": "战术意识", "pos": "", "item": "zsys"},
+            {"name": "视野", "pos": "cdm cm cam rw rm", "item": "sy"},
+            {"name": "抢断", "pos": "rb cb cdm cm", "item": "qd"},
+            {"name": "铲断", "pos": "rb cb cdm", "item": "cd"},
+            {"name": "人盯人", "pos": "cb cdm", "item": "rdr"},
+            {"name": "侵略性", "pos": "rb cb cdm", "item": "qlx"},
+            {"name": "GK扑救", "pos": "gk", "item": "gkpj"},
+            {"name": "GK手控球", "pos": "gk", "item": "gkskq"},
+            {"name": "GK大脚开球", "pos": "gk", "item": "gkdjkq"},
+            {"name": "GK反应", "pos": "gk", "item": "gkfy"},
+            {"name": "GK防守站位", "pos": "gk", "item": "gkfszw"}
+        ]
+    };
     var cls = {
         "ST": "label-danger",
         "CF": "label-danger",
@@ -21,6 +58,7 @@ $(function () {
         "SW": "label-primary",
         "GK": "label-warning"
     };
+
     Handlebars.registerHelper('cls', function(options) {
         return cls[options.fn(this).toUpperCase()];
     });
@@ -64,142 +102,6 @@ $(function () {
         $(".nav-page").html(html);
     }
 
-    var vs = {
-        "players": [{
-            "name": "亨利",
-            "head": "p6009676.png",
-            "sj": "06",
-            "sg": 180,
-            "tz": 80,
-            "sr": "1980-08-08",
-            "jlb": "阿森纳",
-            "gj": "法国",
-            "pos": "ST",
-            "poses": "cf:80|st:82|cam:80",
-            "zj": 5,
-            "yj": 4,
-            "zp": 81,
-            "hsdz": 1,
-            "ss": 70,
-            "smll": 13,
-            "hx": 40,
-            "ys": 50,
-            "lkcs": 60,
-            "ryq": 67,
-            "fdq": 79,
-            "tq": 80,
-            "zw": 70,
-            "sd": 80,
-            "js": 98,
-            "lh": 67,
-            "fy": 87,
-            "tt": 89,
-            "tl": 98,
-            "qz": 78,
-            "ph": 65,
-            "dc": 89,
-            "cc": 67,
-            "cz": 78,
-            "kq": 91,
-            "pd": 92,
-            "zsys": 56,
-            "sy": 86,
-            "qd": 82,
-            "cd": 81,
-            "rdr": 85,
-            "qnx": 92,
-            "gkpj": 93,
-            "gkskq": 68,
-            "gkdjkq": 78,
-            "gkfy": 99,
-            "gkfszw": 100,
-            "ycnl": "领导力，进攻组织者"
-        },{
-            "name": "罗纳尔迪尼奥",
-            "head": "p6009676.png",
-            "zj": 3,
-            "yj": 4,
-            "sj": "06",
-            "sg": 180,
-            "tz": 80,
-            "sr": "1980-08-08",
-            "jlb": "阿森纳",
-            "gj": "法国",
-            "pos": "ST",
-            "poses": "cf:80|st:82|cb:70",
-            "zp": 81,
-            "hsdz":4,
-            "ss": 72,
-            "smll": 13,
-            "hx": 40,
-            "ys": 50,
-            "lkcs": 60,
-            "ryq": 67,
-            "fdq": 79,
-            "tq": 80,
-            "zw": 70,
-            "sd": 80,
-            "js": 98,
-            "lh": 67,
-            "fy": 87,
-            "tt": 89,
-            "tl": 98,
-            "qz": 78,
-            "ph": 65,
-            "dc": 89,
-            "cc": 67,
-            "cz": 78,
-            "kq": 91,
-            "pd": 92,
-            "zsys": 56,
-            "sy": 86,
-            "qd": 82,
-            "cd": 81,
-            "rdr": 85,
-            "qnx": 92,
-            "gkpj": 93,
-            "gkskq": 68,
-            "gkdjkq": 78,
-            "gkfy": 99,
-            "gkfszw": 100
-        }],
-        "people": [
-            {"name": "射术", "pos": "cam rw cf st", "item": "ss"},
-            {"name": "射门力量", "pos": "cam rw cf st", "item": "smll"},
-            {"name": "弧线", "pos": "", "item": "hx"},
-            {"name": "远射", "pos": "cm cam rw cf st rm", "item": "ys"},
-            {"name": "凌空抽射", "pos": "cf st", "item": "lkcs"},
-            {"name": "任意球", "pos": "", "item": "ryq"},
-            {"name": "罚点球", "pos": "", "item": "fdq"},
-            {"name": "头球", "pos": "rb cb cdm cm cam cf st", "item": "tq"},
-            {"name": "站位", "pos": "rb cb cdm cm cam rm", "item": "zw"},
-            {"name": "速度", "pos": "rb cb cdm cm cam rw cf st rm", "item": "sd"},
-            {"name": "加速", "pos": "rw cf st rm", "item": "js"},
-            {"name": "灵活", "pos": "rw rm", "item": "lh"},
-            {"name": "反应", "pos": "gk rb cb cdm cm cam rw cf st rm", "item": "fy"},
-            {"name": "弹跳", "pos": "gk cb", "item": "tt"},
-            {"name": "体力", "pos": "rb cdm cm rw rm", "item": "tl"},
-            {"name": "强壮", "pos": "rb cb cdm cm cf st", "item": "qz"},
-            {"name": "平衡", "pos": "", "item": "ph"},
-            {"name": "短传", "pos": "rb cb cdm cm cam rw cf st rm", "item": "dc"},
-            {"name": "长传", "pos": "cdm cm cam rw rm", "item": "cc"},
-            {"name": "传中", "pos": "rb rw cf rm", "item": "cz"},
-            {"name": "控球", "pos": "rb cb cdm cm cam rw cf st rm", "item": "kq"},
-            {"name": "盘带", "pos": "cm cam rw cf st rm", "item": "pd"},
-            {"name": "战术意识", "pos": "", "item": "zsys"},
-            {"name": "视野", "pos": "cdm cm cam rw rm", "item": "sy"},
-            {"name": "抢断", "pos": "rb cb cdm cm", "item": "qd"},
-            {"name": "铲断", "pos": "rb cb cdm", "item": "cd"},
-            {"name": "人盯人", "pos": "cb cdm", "item": "rdr"},
-            {"name": "侵略性", "pos": "rb cb cdm", "item": "qnx"},
-            {"name": "GK扑救", "pos": "gk", "item": "gkpj"},
-            {"name": "GK手控球", "pos": "gk", "item": "gkskq"},
-            {"name": "GK大脚开球", "pos": "gk", "item": "gkdjkq"},
-            {"name": "GK反应", "pos": "gk", "item": "gkfy"},
-            {"name": "GK防守站位", "pos": "gk", "item": "gkfszw"}
-        ]
-    };
-
     Handlebars.registerHelper('aaa', function(options) {
         return vs.players[0][options.fn(this)];
     });
@@ -241,11 +143,6 @@ $(function () {
     Handlebars.registerHelper('diff', function(options) {
         return vs.players[0][options.fn(this)] - vs.players[1][options.fn(this)];
     });
-
-    var source   = $("#vsPlayerInfoTpl").html();
-    var template = Handlebars.compile(source);
-    var html = template(vs);
-    $("#boxPlayerVs").html(html);
 
     Handlebars.registerHelper('color', function(options) {
         var val = ~~options.fn(this);
@@ -306,6 +203,7 @@ $(function () {
     });
 
     function search() {
+        curPage = 1;
         var data = {
             "names": $("#txtName").val().split(/[,，]/g),  // 名字
             "pos": $("#slPos").val(),  // 球员位置
@@ -325,6 +223,11 @@ $(function () {
             "ycnl": $("#slHdProp").val()  // 隐藏属性
         };
 
+        if ($("#slXgj").val().length !== 0) {
+            data.xgj = ~~$("#slXgj").val();
+            data.xgjVal = ~~$("#slXgjVal").val();
+        }
+
         if ($("#slXx1").val().length !== 0) {
             data.xx1 = $("#slXx1").val();
             data.xx1val = $("#xx1val").val();
@@ -338,7 +241,14 @@ $(function () {
         $.post("module/search.php?act=list", data, function (resp) {
             var resp = $.parseJSON(resp);
             if (resp.code === "ok") {
+                playersPage = resp.players;
                 renderPlayer(resp);
+                var players = resp.players;
+                for (var i = 0; i < players.length; i++) {
+                    if (!playersCache[players[i].hashid]) {
+                        playersCache[players[i].hashid] = players[i];
+                    }
+                }
             }
         });
     }
@@ -356,36 +266,42 @@ $(function () {
     }).on("click", "input", function (e) {
         e.stopPropagation();
     }).on("change", "input", function (e) {
+        var hashid = $(this).attr("data-hashid");
         var len = $("#listPlayer").find("input:checked").length;
+
+        if ($(this).prop("checked") && playersCache[hashid]) {
+            vs.players.push(playersCache[hashid]);
+        } else {
+            vs.players.pop();
+        }
         if (len === 2) {
+            var source   = $("#vsPlayerInfoTpl").html();
+            var template = Handlebars.compile(source);
+            var html = template(vs);
+            $("#boxPlayerVs").html(html);
             $('#vsModal').modal("show");
         }
     }).on("mouseover", ".item-player", function () {
         var hashid = $(this).attr("data-hashid");
-        if (hashid) {
-            if (playersCache[hashid]) {
-                $("#player" + hashid).show();
+        if (hashid && playersCache[hashid]) {
+            var offset = $(this).offset();
+            var width = $(this).width();
+            if ($("#player" + hashid).length > 0) {
+                var left = offset.left + width + 20 + "px";
+                var top = offset.top - 27 + "px";
+                $("#player" + hashid).css({"left": left, "top": top}).show();
             } else {
-                var offset = $(this).offset();
-                var width = $(this).width();
                 var tips = document.createElement("div");
                 tips.className = "tip-player-info";
                 tips.id = "player" + hashid;
                 tips.style.left = offset.left + width + 20 + "px";
                 tips.style.top = offset.top - 27 + "px";
                 tips.style.display = "block";
-                $.post("module/search.php?act=xx", {"hashid": hashid}, function (resp) {
-                    var resp = $.parseJSON(resp);
-                    if (resp.code === "ok") {
-                        var data = resp.players;
-                        playersCache[hashid] = data;
-                        var source   = $("#playerInfoTpl").html();
-                        var template = Handlebars.compile(source);
-                        var html = template(data);
-                        $(tips).html(html);
-                        document.body.appendChild(tips);
-                    }
-                });
+                var source   = $("#playerInfoTpl").html();
+                var template = Handlebars.compile(source);
+                var html = template(playersCache[hashid]);
+                $(tips).html(html);
+                document.body.appendChild(tips);
             }
         }
     }).on("mouseleave", ".item-player", function () {

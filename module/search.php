@@ -31,13 +31,15 @@ if ($act === "list") {
 	$maxCsnf = $_POST["maxCsnf"]; // 出生年份上限
 	$tx = $_POST["tx"];  // 体型
 	$hsdz = $_POST["hsdz"]; // 花式动作
+	$xgj = $_POST["xgj"];
+	$xgjVal = $_POST["xgjVal"];
 	
 	$xx1 = $_POST["xx1"]; // 详细字段1
 	$xx1val = $_POST["xx1val"];  // 详细字段1的值
 	$xx2 = $_POST["xx2"];  // 详细字段2
 	$xx2val = $_POST["xx2val"]; // 详细字段2的值
 
-	$sql = "select sj, pos, zp, jlb, name, hashid from player where 1 = 1";
+	$sql = "select * from player where 1 = 1";
 
 	for ($i = 0; $i < count($names); $i++) {
 		if ($i == 0) {
@@ -48,6 +50,15 @@ if ($act === "list") {
 		$sql = $sql."name like '%".$names[$i]."%'";
 	}
 
+	if (!empty($xgj)) {
+		if ($xgj == 1) {
+			$sql = $sql." and zj>=$xgjVal";
+		} else if ($xgj == 2) {
+			$sql = $sql." and yj>=$xgjVal";
+		} else if ($xgj == 3) {
+			$sql = $sql." and zj>=$xgjVal and yj>=$xgjVal";
+		}
+	}
 	if (!empty($pos)) {
 		$sql = $sql." and poses like '%$pos%'";
 	}
