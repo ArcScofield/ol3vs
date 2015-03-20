@@ -16,6 +16,7 @@ if( isset($_SERVER['HTTP_REFERER']) ) {
 $act = $_GET["act"];
 
 if ($act === "list") {
+	$names = $_POST["names"];
 	$pos = $_POST["pos"];
 	$ls = $_POST["ls"]; // 联赛
 	$jlb = $_POST["jlb"]; // 俱乐部
@@ -37,6 +38,16 @@ if ($act === "list") {
 	$xx2val = $_POST["xx2val"]; // 详细字段2的值
 
 	$sql = "select sj, pos, zp, jlb, name, hashid from player where 1 = 1";
+
+	for ($i = 0; $i < count($names); $i++) {
+		if ($i == 0) {
+			$sql = $sql." and ";
+		} else {
+			$sql = $sql." or ";
+		}
+		$sql = $sql."name like '%".$names[$i]."%'";
+	}
+
 	if (!empty($pos)) {
 		$sql = $sql." and poses like '%$pos%'";
 	}
@@ -61,6 +72,12 @@ if ($act === "list") {
 	if ( !empty($maxSg) && is_numeric($maxSg) ) {
 		$sql .= " and sg < $maxSg";
 	}
+	if ( !empty($minTz) && is_numeric($minTz) ) {
+		$sql .= " and tz > $minTz";
+	}
+	if ( !empty($maxTz) && is_numeric($maxTz) ) {
+		$sql .= " and tz < $maxTz";
+	}
 	if ( !empty($tx) && is_numeric($tx) ) {
 		$sql .= " and tx = $tx";
 	}
@@ -75,7 +92,6 @@ if ($act === "list") {
 	}
 
 	$sql .=" limit 0, 200";
-
 	$data = $db->get_all($sql);
 
 	if (is_array($data)) {

@@ -516,19 +516,26 @@
 <div class="box-player-info clearfix">
     <div class="clearfix">
         <div class="box-player-head">
-            <img src="static/img/head/{{head}}" />
-        </div>
-        <div class="box-player-other">
-            <ul class="list-player-info">
-                <li>{{sg}}cm/{{tz}}kg</li>
-                <li>{{sr}}</li>
-                <li>{{gj}}</li>
-                <li>{{jlb}}</li>
-            </ul>
-            <ul class="list-player-pos">
-                {{#poslist}}{{poses}}{{/poslist}}
-            </ul>
-        </div>
+                <img src="static/img/head/{{head}}" />
+            </div>
+            <div class="box-player-st">
+                <ul>
+                    <li>{{sg}}cm</li>
+                    <li>{{tz}}kg</li>
+                    <li>{{sr}}</li>
+                    <li><span class="icon-foot l-foot{{zj}}">{{zj}}</span><span class="icon-foot r-foot{{yj}}">{{yj}}</span></li>
+                    <li><div class="box-hsdz star{{hsdz}}"></div></li>
+                </ul>
+            </div>
+            <div class="box-player-other">
+                <ul class="list-player-info">
+                    <li>{{gj}}</li>
+                    <li>{{jlb}}</li>
+                </ul>
+                <ul class="list-player-pos">
+                    {{#poslist}}{{poses}}{{/poslist}}
+                </ul>
+            </div>
     </div>
 </div>
 <div class="box-player-xx clearfix">

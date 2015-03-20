@@ -2,73 +2,81 @@
 require_once("../includes/db.php");
 $db = new DB();
 
-$d = $_POST["data"];
+$ds = $_POST["data"];
+$len = count($ds);
+for ($i = 0; $i < $len; $i++) {
+    $d = $ds[$i];
+    if (empty($d["name"])) {
+        continue;
+    }
+    $hashid = time().rand(1000,9999);
+    $data = array(
+        "name"=> $d["name"],  // 名字
+        "sj"=> $d["sj"],  // 赛季
+        "head"=> $d["head"],   // 大头像
+        "sg"=> $d["sg"],   // 身高
+        "tz"=> $d["tz"],   // 体重
+        "gj"=> $d["gj"],  //国籍
+        "ls"=> $d["ls"],  // 联赛
+        "jlb"=> $d["jlb"], // 俱乐部
+        "zj"=> $d["zj"],  // 左脚
+        "yj"=> $d["yj"], //右脚
+        "hsdz"=> $d["hsdz"],  // 花式
+        "tx"=> $d["tx"], // 体型
+        "zp"=> $d["zp"], // 总评
+        "csnyr"=> $d["csnyr"], // 出生年月日
+        "pos"=> $d["pos"],  // max位置
+        "poses"=> $d["poses"],  // 各个位置
+        "hashid" => $hashid,   // 随机IE
+        "ss"=> $d["ss"], // 射术
+        "smll"=> $d["smll"], // 射门力量
+        "hx"=> $d["hx"], // 弧线
+        "ys"=> $d["ys"], // 远射
+        "lkcs"=> $d["lkcs"], // 凌空抽射
+        "ryq"=> $d["ryq"], // 任意球
+        "fdq"=> $d["fdq"], // 罚点球
+        "tq"=> $d["tq"], // 头球
+        "zw"=> $d["zw"], // 站位
+        "sd"=> $d["sd"], // 速度
+        "js"=> $d["js"], // 加速
+        "lh"=> $d["lh"], // 灵活
+        "fy"=> $d["fy"], // 反应
+        "tt"=> $d["tt"], // 弹跳
+        "tl"=> $d["tl"], // 体力
+        "qz"=> $d["qz"], // 强壮
+        "ph"=> $d["ph"], //平衡
+        "dc"=> $d["dc"], // 短传
+        "cc"=> $d["cc"], // 长传
+        "cz"=> $d["cz"], // 传中
+        "sy"=> $d["sy"], // 视野
+        "kq"=> $d["kq"], // 控球
+        "pd"=> $d["pd"], // 盘带
+        "pdsd"=> $d["pdsd"], // 盘带速度
+        "rdr"=> $d["rdr"], // 人盯人
+        "qlx"=> $d["qlx"], // 侵略性
+        "zsys"=> $d["zsys"], //战术意识
+        "qd"=> $d["qd"], //抢断
+        "cd"=> $d["cd"], // 铲断
+        "gkpj"=> $d["gkpj"], // GK扑救
+        "gkskq"=> $d["gkskq"], // GK手控球
+        "gkfy"=> $d["gkfy"], // GK反应
+        "gkfszw"=> $d["gkfszw"], // GK防守站位
+        "ycnl"=> $d["ycnl"] // 隐藏能力
+    );
+    
+    // print_r($data);
+    $res = $db->insert("player", $data);
 
-$hashid = time().rand(1000,9999);
-$data = array(
-    "name"=> $d["name"],  // 名字
-    "sj"=> $d["sj"],  // 赛季
-    "head"=> $d["head"],   // 大头像
-    "sg"=> $d["sg"],   // 身高
-    "tz"=> $d["tz"],   // 体重
-    "gj"=> $d["gj"],  //国籍
-    "ls"=> $d["ls"],  // 联赛
-    "jlb"=> $d["jlb"], // 俱乐部
-    "zj"=> $d["zj"],  // 左脚
-    "yj"=> $d["yj"], //右脚
-    "hs"=> $d["hs"],  // 花式
-    "zp"=> $d["zp"], // 总评
-    "csnyr"=> $d["csnyr"], // 出生年月日
-    "pos"=> $d["pos"],  // max位置
-    "poses"=> $d["poses"],  // 各个位置
-    "hashid" => $hashid,   // 随机IE
-    "ss"=> $d["ss"], // 射术
-    "smll"=> $d["smll"], // 射门力量
-    "hx"=> $d["hx"], // 弧线
-    "ys"=> $d["ys"], // 远射
-    "lkcs"=> $d["lkcs"], // 凌空抽射
-    "ryq"=> $d["ryq"], // 任意球
-    "fdq"=> $d["fdq"], // 罚点球
-    "tq"=> $d["tq"], // 头球
-    "zw"=> $d["zw"], // 站位
-    "sd"=> $d["sd"], // 速度
-    "js"=> $d["js"], // 加速
-    "lh"=> $d["lh"], // 灵活
-    "fy"=> $d["fy"], // 反应
-    "tt"=> $d["tt"], // 弹跳
-    "tl"=> $d["tl"], // 体力
-    "qz"=> $d["qz"], // 强壮
-    "ph"=> $d["ph"], //平衡
-    "dc"=> $d["dc"], // 短传
-    "cc"=> $d["cc"], // 长传
-    "cz"=> $d["cz"], // 传中
-    "sy"=> $d["sy"], // 视野
-    "kq"=> $d["kq"], // 控球
-    "pd"=> $d["pd"], // 盘带
-    "pdsd"=> $d["pdsd"], // 盘带速度
-    "rdr"=> $d["rdr"], // 人盯人
-    "qlx"=> $d["qlx"], // 侵略性
-    "zsys"=> $d["zsys"], //战术意识
-    "qd"=> $d["qd"], //抢断
-    "cd"=> $d["cd"], // 铲断
-    "gkpj"=> $d["gkpj"], // GK扑救
-    "gkskq"=> $d["gkskq"], // GK手控球
-    "gkfy"=> $d["gkfy"], // GK反应
-    "gkfszw"=> $d["gkfszw"], // GK防守站位
-    "ycnl"=> $d["ycnl"] // 隐藏能力
-);
-
-$res = $db->insert("player", $data);
-
-if ($res) {
-    $result = array("code"=> "ok", "desc"=> "插入数据成功！");
-} else {
-    $result = array("code"=> "error", "desc"=> "插入数据失败！");
+    if ($res) {
+        $result = array("code"=> "ok", "desc"=> "插入".$d["name"]."数据成功！");
+    } else {
+        $result = array("code"=> "error", "desc"=> "插入".$d["name"]."数据失败！");
+    }
+    // $url = "http://eafifa.tgbus.com/theme/eafifa/player_img/".$d["head"];
+    getImage($d["url"], "../static/img/head/", $d["head"]);
+    echo json_encode($result);
 }
-echo json_encode($result);
 
-$url = "http://eafifa.tgbus.com/theme/eafifa/player_img/".$d["tx"];
-getImage($url, "../tx/", $d["tx"]);
 
 // 获取头像
 function getImage ($url, $save_dir='', $filename='', $type = 1) {
@@ -97,7 +105,7 @@ function getImage ($url, $save_dir='', $filename='', $type = 1) {
     // 获取远程文件所采用的方法
     if ($type) { 
         $ch = curl_init();
-        $timeout = 5;
+        $timeout = 10;
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);

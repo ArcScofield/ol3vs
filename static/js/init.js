@@ -14,6 +14,8 @@ $(function () {
         "RM": "label-success",
         "CDM": "label-success",
         "LB": "label-primary",
+        "LWB": "label-primary",
+        "LWB": "label-primary",
         "RB": "label-primary",
         "CB": "label-primary",
         "SW": "label-primary",
@@ -305,7 +307,7 @@ $(function () {
 
     function search() {
         var data = {
-            "name": $("#txtName").val().split(/[,，]/g),  // 名字
+            "names": $("#txtName").val().split(/[,，]/g),  // 名字
             "pos": $("#slPos").val(),  // 球员位置
             "sj": $("#slSeason").val(),   // 赛季
             "ls": $("#slMatch").val(),  // 联赛
@@ -379,7 +381,7 @@ $(function () {
                         playersCache[hashid] = data;
                         var source   = $("#playerInfoTpl").html();
                         var template = Handlebars.compile(source);
-                        var html = template(vs.players[0]);
+                        var html = template(data);
                         $(tips).html(html);
                         document.body.appendChild(tips);
                     }

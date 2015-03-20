@@ -14,87 +14,102 @@
 联赛： <input type="text" id="txtLs" ><br/>
 俱乐部： <input type="text" id="txtJlb" >   
 <button id="btnSave">存储</button>
-<script type="text/javascript" src="js/lib/jq/jquery.js"></script>
+<script type="text/javascript" src="static/js/lib/jq/jquery.js"></script>
 <script type="text/javascript">
 var aaa = document.getElementById("aaa");
-var data = {};
+var data = [];
 
 addChangeEvent(aaa, function () {
     var val = aaa.value.match(/\(.*\)/g);
+    data = [];
     if (val !== null) {
-        var d = eval(val[0]).list[0];
-        $("#txtGj").val(d["国籍"]);
-        $("#txtLs").val(d["联赛"]);
-        $("#txtJlb").val(d["球队"]);
-        data = {
-            "name": d["球员名"],  // 名字
-            "ename": "",  // 英文名字
-            "sj": d["赛季"],  // 赛季
-            "tx": d["头像"],   // 大头像
-            "sg": ~~d["身高"],   // 身高
-            "tz": ~~d["体重"],   // 体重
-            "gj": d["国籍"],  //国籍
-            "ls": d["联赛"],  // 联赛
-            "jlb": d["球队"], // 俱乐部
-            "pos": d["角色"], //最佳位置
-            "poses": getPoses(d["首选位置"], d),
-            "zj": ~~d["左脚"],  // 左脚
-            "yj": ~~d["右脚"], //右脚
-            "hs": ~~d["花式动作"],  // 花式
-            "zp": ~~d["综合能力值"], // 总评
-            "csnyr": d["生日"], // 出生年月日
-            "ss": ~~d["射术"], // 射术
-            "smll": ~~d["射门力量"], // 射门力量
-            "hx": ~~d["弧线"], // 弧线
-            "ys": ~~d["远射"], // 远射
-            "lkcs": ~~d["凌空抽射"], // 凌空抽射
-            "ryq": ~~d["任意球"],
-            "fdq": ~~d["罚点球"],
-            "tq":  ~~d["头球"], // 头球
-            "zw": ~~d["站位"], 
-            "sd": ~~d["速度"],
-            "js": ~~d["加速"],
-            "lh": ~~d["灵活"],
-            "fy": ~~d["反应"],
-            "tt": ~~d["弹跳"],
-            "tl": ~~d["体力"],
-            "qz": ~~d["强壮"],
-            "ph": ~~d["平衡"],
-            "dc": ~~d["短传"],
-            "cc": ~~d["长传"],
-            "cz": ~~d["传中"],
-            "sy": ~~d["视野"],
-            "kq": ~~d["控球"],
-            "pd": ~~d["盘带"],
-            "pdsd": ~~d["盘带速度"],
-            "rdr": ~~d["人盯人"],
-            "qlx": ~~d["侵略性"],
-            "zsys": ~~d["战术意识"],
-            "qd": ~~d["抢断"],
-            "cd": ~~d["铲断"],
-            "gkpj": ~~d["GK扑救"],  // GK扑救
-            "gkskq": ~~d["GK手控球"], // GK手控球
-            "gkfy": ~~d["GK反应"],  // GK反应
-            "gkfszw": ~~d["GK防守站位"],  // GK防守站位
-            "ycnl": d["隐藏能力值"]
-        };
+        var ds = eval(val[0]).msg;
+        var len = ds.length;
+        var tmpData = {};
+        while (len--) {
+            var d = ds[len];
+            tmpData = {
+                "name": d["name"],  // 名字
+                "sj": d["season"],  // 赛季
+                "url": d["player_img"],
+                "head": getHead(d["player_img"]),   // 大头像
+                "sg": ~~d["height"],   // 身高
+                "tz": ~~d["weight"],   // 体重
+                "gj": ~~d["nationality"],  //国籍
+                "ls": ~~d["teague"],  // 联赛
+                "jlb": ~~d["team"], // 俱乐部
+                "pos": d["role"], //最佳位置
+                "poses": getPoses(d["preferred_role"], d),
+                "tx": ~~d["shape"],  // 模型
+                "zj": ~~(d["lr_foot"].split("/")[0]),  // 左脚
+                "yj": ~~(d["lr_foot"].split("/")[1]), //右脚
+                "hsdz": ~~d["handle_pass"],  // 花式
+                "zp": ~~d["ability"], // 总评
+                "csnyr": getBoth(d["date"]), // 出生年月日
+                "ss": ~~d["shot"], // 射术
+                "smll": ~~d["shtpwr"], // 射门力量
+                "hx": ~~d["arc"], // 弧线
+                "ys": ~~d["long_drive"], // 远射
+                "lkcs": ~~d["volley"], // 凌空抽射
+                "ryq": ~~d["free_kick"],
+                "fdq": ~~d["spot_kick"],
+                "tq":  ~~d["header"], // 头球
+                "zw": ~~d["position"], 
+                "sd": ~~d["speed"],
+                "js": ~~d["acceleration"],
+                "lh": ~~d["flexible"],
+                "fy": ~~d["response"],
+                "tt": ~~d["jump"],
+                "tl": ~~d["stamina"],
+                "qz": ~~d["sthenia"],
+                "ph": ~~d["balance"],
+                "dc": ~~d["short_pass"],
+                "cc": ~~d["long_pass"],
+                "cz": ~~d["flank_pass"],
+                "sy": ~~d["view"],
+                "kq": ~~d["ball_handling"],
+                "pd": ~~d["dribbling"],
+                "pdsd": ~~d["drib_speed"],
+                "rdr": ~~d["marking"],
+                "qlx": ~~d["aggressive"],
+                "zsys": ~~d["tactical_awareness"],
+                "qd": ~~d["steal"],
+                "cd": ~~d["sliding"],
+                "gkpj": ~~d["gk_diving_save"],  // GK扑救
+                "gkskq": ~~d["gk_handing"], // GK手控球
+                "gkfy": ~~d["gk_response"],  // GK反应
+                "gkfszw": ~~d["gk_positioning"],  // GK防守站位
+                "ycnl": d["hidden_ability"]
+            };
+            data.push(tmpData);
+        }
+        console.log(data);
     }
 });
 
 $("#btnSave").click(function () {
-    data.gj = $("#txtGj").val();
-    data.ls = $("#txtLs").val();
-    data.jlb = $("#txtJlb").val();
+    // data.gj = $("#txtGj").val();
+    // data.ls = $("#txtLs").val();
+    // data.jlb = $("#txtJlb").val();
     $.post("module/data.php", {"data": data}, function (resp) {
         console.log(resp);
     });
 });
 
+function getBoth (str) {
+    var d = new Date(str * 1000);
+    return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+}
+
+function getHead (url) {
+    var pos = url.lastIndexOf("/");
+    return url.substring(pos + 1);
+}
 function getPoses (poses, data) {
     var poses = poses.split(",");
     var str = "";
     for (var i = 0, len = poses.length; i < len; i++) {
-        str += poses[i] + ":" + data[poses[i]];
+        str += poses[i] + ":" + data[poses[i].toLowerCase()];
         if (i + 1 !== len) {
             str += "|";
         }
