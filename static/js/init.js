@@ -1,6 +1,7 @@
 $(function () {
     var playersCache = {};  // 球员缓存
-    var playersPage      = [];   // 搜索出来的球员列表，主要用于翻页时的缓存
+    var playersPage      = defaultPlayers;   // 搜索出来的球员列表，主要用于翻页时的缓存
+    var pageCount = 4;  // 每页的人数
     var curPage      = 1;   // 翻页的当前页面
     var vs = {
         "players": [],
@@ -62,20 +63,19 @@ $(function () {
     Handlebars.registerHelper('cls', function(options) {
         return cls[options.fn(this).toUpperCase()];
     });
-    renderPlayer();
+    renderPlayer(defaultPlayers.slice(0, 4));
+    renderPage(Math.ceil(defaultPlayers.length / pageCount), curPage);
 
     // 渲染搜索出来的球员
     function renderPlayer (data) {
-        var data     = data || defaultPlayers;
         var source   = $("#playerTpl").html();
         var template = Handlebars.compile(source);
-        var html     = template(data);
+        var html     = template({"players": data});
         $("#listPlayer").find("tbody").html(html);
-        renderPage(Math.ceil(data.players.length / 4), curPage);
     }
 
     // 渲染翻页
-    function renderPage (pages, curPage) {
+    function renderPage (pages) {
         var pages = pages || 1;
         var data = [];
         var source;
@@ -109,7 +109,7 @@ $(function () {
             }
             source  = $("#pageTpl").html();
             template = Handlebars.compile(source);
-            html     = template({pages: data});
+            html     = template({"pages": data, "count": pages});
         }
         $(".nav-page").html(html);
     }
@@ -325,6 +325,16 @@ $(function () {
 
     $('#vsModal').on('hide.bs.modal', function () {
         $("#listPlayer").find("input:checked").prop("checked", false);
+    });
+
+    $(".nav-page").on("click", "a", function () {
+        var page = ~~$(this).attr("data-page") || 1;
+        $(".nav-page").find(".active").removeClass("active");
+        $(this).parent().addClass("active");
+        curPage = page;
+
+        var data = playersPage.slice((curPage - 1) * pageCount, curPage * pageCount);
+        renderPlayer(data);
     });
     
     // 绑定位置筛选事件

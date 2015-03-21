@@ -86,8 +86,7 @@ var Country = [
 /*
 * 默认显示的球员
 */
-var defaultPlayers = {
-    "players": [
+var defaultPlayers = [
         {
             "id": 1,
             "sj": "w",
@@ -209,8 +208,7 @@ var defaultPlayers = {
             "zp": 81,
             "jlb": "多特蒙德"
         }
-    ]
-};
+];
 
 /**
 * 联赛数据
