@@ -71,28 +71,40 @@ $(function () {
         var template = Handlebars.compile(source);
         var html     = template(data);
         $("#listPlayer").find("tbody").html(html);
-        renderPage(10, 1);
+        renderPage(Math.ceil(data.players.length / 4), curPage);
     }
 
     // 渲染翻页
     function renderPage (pages, curPage) {
+        var pages = pages || 1;
         var data = [];
         var source;
         var template;
         var html;
+        var cls = "";
 
         if (pages === 1) {
             html = "";
         } else {
             if (pages <= 5) {
                 for (var i = 1; i <= pages; i++) {
-                    data.push({page: i});
+                    if (i === curPage) {
+                        cls = "active";
+                    } else {
+                        cls = "";
+                    }
+                    data.push({page: i, clses: cls});
                 }
             } else {
                 var startPage = (curPage - 2) > 0 ? (curPage - 2) : 1;
                 var endPage = (curPage + 2) < pages ? (curPage + 2) : pages; 
                 for (var i =  startPage; i<= endPage; i++) {
-                    data.push({page: i});
+                    if (i === curPage) {
+                        cls = "active";
+                    } else {
+                        cls = "";
+                    }
+                    data.push({page: i, cls: cls});
                 }
             }
             source  = $("#pageTpl").html();
