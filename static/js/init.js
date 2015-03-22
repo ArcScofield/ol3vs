@@ -1,5 +1,11 @@
 $(function () {
-    var playersCache = {};  // 球员缓存
+    var playersCache = {
+        "11111": {
+            "name": "罗纳尔迪尼奥",
+            "zj": 3,
+            "yj": 4
+        }
+    };  // 球员缓存
     var playersPage      = defaultPlayers;   // 搜索出来的球员列表，主要用于翻页时的缓存
     var pageCount = 4;  // 每页的人数
     var curPage      = 1;   // 翻页的当前页面
@@ -320,6 +326,15 @@ $(function () {
         var hashid = $(this).attr("data-hashid");
         if (hashid) {
             $("#player" + hashid).hide();
+        }
+    }).on("click", ".item-player", function () {
+        var hashid = $(this).attr("data-hashid");
+        $('#playerModal').modal("show");
+        if (hashid && playersCache[hashid]) {
+            var source   = $("#playerInfoTpl").html();
+            var template = Handlebars.compile(source);
+            var html = template(playersCache[hashid]);
+            $("#boxPlayer").html(html);
         }
     });
 
