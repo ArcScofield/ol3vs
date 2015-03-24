@@ -299,3 +299,29 @@
     left: 0;
     width: 100%;
 }
+
+.box-player-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+}
+.box-player-page-poses {
+    background: url(../img/playMapbg.jpg) no-repeat;
+    width: 324px;
+    height: 517px;
+}
+
+.playmapcont span {
+    display: block;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    width: 40px;
+    text-align: center;
+    color: #fff300;
+    font-weight: bold;
+    position: absolute;
+}
