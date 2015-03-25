@@ -1,0 +1,36 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<title>ol3vs</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+</head>
+
+<body>
+<script>
+var gui = require('nw.gui');
+var win = gui.Window.get();
+win.maximize()
+
+var isShowWindow = true;
+var tray = new gui.Tray({ title: 'www.ol3vs.com', icon: '2655716405282662783.png' });
+tray.tooltip = '点此打开';
+
+tray.on('click', function () {
+    if (isShowWindow) {
+        win.hide();
+        isShowWindow = false;
+    } else {
+        win.show();
+        isShowWindow = true;
+    }
+});
+
+win.on("minimize", function () {
+    win.hide();
+    isShowWindow = false;
+});
+</script>
+</body>  
+</html>  
