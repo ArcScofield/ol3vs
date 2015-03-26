@@ -3,7 +3,9 @@ $(function () {
         "11111": {
             "name": "罗纳尔迪尼奥",
             "zj": 3,
-            "yj": 4
+            "yj": 4,
+            "head": "p7008473.png",
+            "ycnl": "天赋"
         }
     };  // 球员缓存
     var playersPage      = defaultPlayers;   // 搜索出来的球员列表，主要用于翻页时的缓存
@@ -329,12 +331,12 @@ $(function () {
         }
     }).on("click", ".item-player", function () {
         var hashid = $(this).attr("data-hashid");
-        $('#playerModal').modal("show");
         if (hashid && playersCache[hashid]) {
             var source   = $("#playerInfoTpl").html();
             var template = Handlebars.compile(source);
             var html = template(playersCache[hashid]);
-            $("#boxPlayer").html(html);
+            $(".box-player-page-xx").html(html);
+            $(".box-player-page").show();
         }
     });
 

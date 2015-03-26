@@ -300,15 +300,26 @@
     width: 100%;
 }
 
+/* 单页球员信息展示样式 */
 .box-player-page {
     position: absolute;
+    display: none;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     z-index: 2;
+    background: #fff;
+}
+.box-player-page-xx {
+    width: 50%;
+    float: left;
+}
+.box-player-page-xx > .box-player-info {
+    width: 100%;
 }
 .box-player-page-poses {
+    float: right;
     background: url(../img/playMapbg.jpg) no-repeat;
     width: 324px;
     height: 517px;
@@ -325,3 +336,4 @@
     font-weight: bold;
     position: absolute;
 }
+/* 单页球员信息展示样式 */
