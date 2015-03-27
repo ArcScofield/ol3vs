@@ -47,7 +47,7 @@ if ($act === "list") {
 		} else {
 			$sql = $sql." or ";
 		}
-		$sql = $sql."name like '%".$names[$i]."%'";
+		$sql = $sql."name like '%".htmlspecialchars($names[$i])."%'";
 	}
 
 	if (!empty($xgj)) {
