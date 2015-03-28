@@ -261,9 +261,9 @@ $(function () {
         $.post("module/search.php?act=list", data, function (resp) {
             var resp = $.parseJSON(resp);
             if (resp.code === "ok") {
-                playersPage = resp.players;
-                renderPlayer(resp);
                 var players = resp.players;
+                playersPage = players;
+                renderPlayer(players);
                 for (var i = 0; i < players.length; i++) {
                     if (!playersCache[players[i].hashid]) {
                         playersCache[players[i].hashid] = players[i];
@@ -305,17 +305,24 @@ $(function () {
         var hashid = $(this).attr("data-hashid");
         if (hashid && playersCache[hashid]) {
             var offset = $(this).offset();
+            var docHeight = $(document).height();
+            var scrollHeight = $(document).scrollTop();
+            var divHeight = 456;
             var width = $(this).width();
+            var diff = 0;
+            if (offset.top + divHeight - scrollHeight >= docHeight) {
+                var diff = 350;
+            }
             if ($("#player" + hashid).length > 0) {
                 var left = offset.left + width + 20 + "px";
-                var top = offset.top - 27 + "px";
+                var top = offset.top - diff - 27 + "px";
                 $("#player" + hashid).css({"left": left, "top": top}).show();
             } else {
                 var tips = document.createElement("div");
                 tips.className = "tip-player-info";
                 tips.id = "player" + hashid;
                 tips.style.left = offset.left + width + 20 + "px";
-                tips.style.top = offset.top - 27 + "px";
+                tips.style.top = offset.top - diff - 27 + "px";
                 tips.style.display = "block";
                 var source   = $("#playerInfoTpl").html();
                 var template = Handlebars.compile(source);
@@ -329,7 +336,9 @@ $(function () {
         if (hashid) {
             $("#player" + hashid).hide();
         }
-    }).on("click", ".item-player", function () {
+    });
+    /*
+    .on("click", ".item-player", function () {
         var hashid = $(this).attr("data-hashid");
         if (hashid && playersCache[hashid]) {
             var source   = $("#playerInfoTpl").html();
@@ -339,6 +348,7 @@ $(function () {
             $(".box-player-page").show();
         }
     });
+    */
 
     $('#vsModal').on('hide.bs.modal', function () {
         $("#listPlayer").find("input:checked").prop("checked", false);
