@@ -102,7 +102,7 @@ if ($act === "list") {
 		$sql .= " and $xx2 > $xx2val";
 	}
 
-	$sql .=" limit 0, 200";
+	$sql .=" order by zp desc limit 0, 200";
 	$data = $db->get_all($sql);
 
 	if (is_array($data)) {
