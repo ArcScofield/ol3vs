@@ -78,13 +78,13 @@ if ($act === "list") {
 		$sql = $sql." and zp < $maxZp";
 	}
 	if ( !empty($minSg) && is_numeric($minSg) ) {
-		$sql .= " and sg > $minSg";
+		$sql .= " and sg >= $minSg";
 	}
 	if ( !empty($maxSg) && is_numeric($maxSg) ) {
 		$sql .= " and sg < $maxSg";
 	}
 	if ( !empty($minTz) && is_numeric($minTz) ) {
-		$sql .= " and tz > $minTz";
+		$sql .= " and tz >= $minTz";
 	}
 	if ( !empty($maxTz) && is_numeric($maxTz) ) {
 		$sql .= " and tz < $maxTz";
@@ -93,13 +93,13 @@ if ($act === "list") {
 		$sql .= " and tx = $tx";
 	}
 	if ( !empty($hsdz) && is_numeric($hsdz) ) {
-		$sql .= " and hsdz > $hsdz";
+		$sql .= " and hsdz >= $hsdz";
 	}
 	if ( !empty($xx1) && is_numeric($xx1val)) {
-		$sql .= " and $xx1 > $xx1val";
+		$sql .= " and $xx1 >= $xx1val";
 	}
 	if ( !empty($xx2) && is_numeric($xx2val)) {
-		$sql .= " and $xx2 > $xx2val";
+		$sql .= " and $xx2 >= $xx2val";
 	}
 
 	$sql .=" order by zp desc limit 0, 200";

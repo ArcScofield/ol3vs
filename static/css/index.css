@@ -242,6 +242,11 @@
     border-bottom: none;
     cursor: pointer;
 }
+.list-union-pos > .active {
+    background-color: #428bca;
+    color: #ffffff;
+    border: none;
+}
 .label-pos {
     display: inline-block;
     width: 42px;

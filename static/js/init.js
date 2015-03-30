@@ -1,47 +1,39 @@
 $(function () {
-    var playersCache = {
-        "11111": {
-            "name": "罗纳尔迪尼奥",
-            "zj": 3,
-            "yj": 4,
-            "head": "p7008473.png",
-            "ycnl": "天赋"
-        }
-    };  // 球员缓存
+    var playersCache = {};  // 球员缓存
     var playersPage      = defaultPlayers;   // 搜索出来的球员列表，主要用于翻页时的缓存
     var pageCount = 4;  // 每页的人数
     var curPage      = 1;   // 翻页的当前页面
     var vs = {
         "players": [],
         "people": [
-            {"name": "射术", "pos": "cam rw cf st", "item": "ss"},
-            {"name": "射门力量", "pos": "cam rw cf st", "item": "smll"},
+            {"name": "射术", "pos": "cam rw lw cf st", "item": "ss"},
+            {"name": "射门力量", "pos": "cam rw lw cf st", "item": "smll"},
             {"name": "弧线", "pos": "", "item": "hx"},
-            {"name": "远射", "pos": "cm cam rw cf st rm", "item": "ys"},
+            {"name": "远射", "pos": "cm cam rw lw cf st rm lm", "item": "ys"},
             {"name": "凌空抽射", "pos": "cf st", "item": "lkcs"},
             {"name": "任意球", "pos": "", "item": "ryq"},
             {"name": "罚点球", "pos": "", "item": "fdq"},
-            {"name": "头球", "pos": "rb cb cdm cm cam cf st", "item": "tq"},
-            {"name": "站位", "pos": "rb cb cdm cm cam rm", "item": "zw"},
-            {"name": "速度", "pos": "rb cb cdm cm cam rw cf st rm", "item": "sd"},
-            {"name": "加速", "pos": "rw cf st rm", "item": "js"},
-            {"name": "灵活", "pos": "rw rm", "item": "lh"},
-            {"name": "反应", "pos": "gk rb cb cdm cm cam rw cf st rm", "item": "fy"},
+            {"name": "头球", "pos": "rb lb cb cdm cm cam cf st", "item": "tq"},
+            {"name": "站位", "pos": "rb lb cb cdm cm cam rm lm", "item": "zw"},
+            {"name": "速度", "pos": "rb lb cb cdm cm cam rw lw cf st rm lm", "item": "sd"},
+            {"name": "加速", "pos": "rw lw cf st rm lm", "item": "js"},
+            {"name": "灵活", "pos": "rw lw rm lm", "item": "lh"},
+            {"name": "反应", "pos": "gk rb lb cb cdm cm cam rw lw cf st rm lm", "item": "fy"},
             {"name": "弹跳", "pos": "gk cb", "item": "tt"},
-            {"name": "体力", "pos": "rb cdm cm rw rm", "item": "tl"},
-            {"name": "强壮", "pos": "rb cb cdm cm cf st", "item": "qz"},
+            {"name": "体力", "pos": "rb lb cdm cm rw lw rm lm", "item": "tl"},
+            {"name": "强壮", "pos": "rb lb cb cdm cm cf st", "item": "qz"},
             {"name": "平衡", "pos": "", "item": "ph"},
-            {"name": "短传", "pos": "rb cb cdm cm cam rw cf st rm", "item": "dc"},
-            {"name": "长传", "pos": "cdm cm cam rw rm", "item": "cc"},
-            {"name": "传中", "pos": "rb rw cf rm", "item": "cz"},
-            {"name": "控球", "pos": "rb cb cdm cm cam rw cf st rm", "item": "kq"},
-            {"name": "盘带", "pos": "cm cam rw cf st rm", "item": "pd"},
+            {"name": "短传", "pos": "rb lb cb cdm cm cam rw lw cf st rm lm", "item": "dc"},
+            {"name": "长传", "pos": "cdm cm cam rw lw rm lm", "item": "cc"},
+            {"name": "传中", "pos": "rb lb rw lw cf rm lm", "item": "cz"},
+            {"name": "控球", "pos": "rb lb cb cdm cm cam rw lw cf st rm lm", "item": "kq"},
+            {"name": "盘带", "pos": "cm cam rw lw cf st rm lm", "item": "pd"},
             {"name": "战术意识", "pos": "", "item": "zsys"},
-            {"name": "视野", "pos": "cdm cm cam rw rm", "item": "sy"},
-            {"name": "抢断", "pos": "rb cb cdm cm", "item": "qd"},
-            {"name": "铲断", "pos": "rb cb cdm", "item": "cd"},
+            {"name": "视野", "pos": "cdm cm cam rw lw rm lm", "item": "sy"},
+            {"name": "抢断", "pos": "rb lb cb cdm cm", "item": "qd"},
+            {"name": "铲断", "pos": "rb lb cb cdm", "item": "cd"},
             {"name": "人盯人", "pos": "cb cdm", "item": "rdr"},
-            {"name": "侵略性", "pos": "rb cb cdm", "item": "qlx"},
+            {"name": "侵略性", "pos": "rb lb cb cdm", "item": "qlx"},
             {"name": "GK扑救", "pos": "gk", "item": "gkpj"},
             {"name": "GK手控球", "pos": "gk", "item": "gkskq"},
             {"name": "GK大脚开球", "pos": "gk", "item": "gkdjkq"},
@@ -71,7 +63,7 @@ $(function () {
     Handlebars.registerHelper('cls', function(options) {
         return cls[options.fn(this).toUpperCase()];
     });
-    renderPlayer(defaultPlayers.slice(0, 4));
+    renderPlayer(defaultPlayers.slice(0, pageCount));
     renderPage(Math.ceil(defaultPlayers.length / pageCount), curPage);
 
     // 渲染搜索出来的球员
@@ -171,6 +163,8 @@ $(function () {
 
         if (val < 60) {
             cls = "items-val-60";
+        } else if (val >= 80 && val < 90) {
+            cls = "items-val-80";
         }
 
         str += cls + "''>" + val + "</span>";
@@ -262,8 +256,10 @@ $(function () {
             var resp = $.parseJSON(resp);
             if (resp.code === "ok") {
                 var players = resp.players;
+                curPage = 1;
                 playersPage = players;
-                renderPlayer(players);
+                renderPlayer(players.slice(0, pageCount));
+                renderPage(Math.ceil(players.length / pageCount));
                 for (var i = 0; i < players.length; i++) {
                     if (!playersCache[players[i].hashid]) {
                         playersCache[players[i].hashid] = players[i];
@@ -367,6 +363,8 @@ $(function () {
     
     // 绑定位置筛选事件
     $(document.body).on("click", ".list-union-pos > li", function () {
+        $(this).parent().find(".active").removeClass("active");
+        $(this).addClass("active");
         var pos = $(this).attr("data-pos");
         if (pos === "all") {
             $("#listPlayerVs").find("tr").show();
