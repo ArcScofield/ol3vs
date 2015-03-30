@@ -128,7 +128,6 @@
     top: 9px;
 }
 .box-player-info {
-    border-bottom: 1px solid #e8e8e8;
 }
 .box-player-st {
     float: left;
@@ -189,6 +188,9 @@
 }
 .icon-sj-06 {
     background-position: -18px 0;
+}
+.icon-sj-07 {
+    background-position: -74px 0;
 }
 
 .box-player-vs {

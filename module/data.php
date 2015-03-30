@@ -14,6 +14,7 @@ for ($i = 0; $i < $len; $i++) {
         "name"=> $d["name"],  // 名字
         "sj"=> $d["sj"],  // 赛季
         "head"=> $d["head"],   // 大头像
+        "url"=> $d["url"],  // 头像URL
         "sg"=> $d["sg"],   // 身高
         "tz"=> $d["tz"],   // 体重
         "gj"=> $d["gj"],  //国籍
@@ -60,11 +61,28 @@ for ($i = 0; $i < $len; $i++) {
         "gkpj"=> $d["gkpj"], // GK扑救
         "gkskq"=> $d["gkskq"], // GK手控球
         "gkfy"=> $d["gkfy"], // GK反应
+        "gkdjkq"=> $d["gkdjkq"], // GK大脚开球
         "gkfszw"=> $d["gkfszw"], // GK防守站位
-        "ycnl"=> $d["ycnl"] // 隐藏能力
+        "gk1d1"=> $d["gk_onetone"], //GK一对一
+        "ycnl"=> $d["ycnl"], // 隐藏能力
+        "rb"=> $d["rb"],
+        "cb"=> $d["cb"],
+        "gk"=> $d["gk"],
+        "rm"=> $d["rm"],
+        "rw"=> $d["rw"],
+        "rwb"=> $d["rwb"],
+        "st"=> $d["st"],
+        "cf"=> $d["cf"],
+        "cm"=> $d["cm"],
+        "cdm"=> $d["cdm"],
+        "cam"=> $d["cam"],
+        "lb"=> $d["lb"],
+        "lm"=> $d["lm"],
+        "lw"=> $d["lw"],
+        "lwb"=> $d["lwb"],
+        "sw"=> $d["sw"]
     );
     
-    // print_r($data);
     $res = $db->insert("player", $data);
 
     if ($res) {
@@ -73,13 +91,15 @@ for ($i = 0; $i < $len; $i++) {
         $result = array("code"=> "error", "desc"=> "插入".$d["name"]."数据失败！");
     }
     // $url = "http://eafifa.tgbus.com/theme/eafifa/player_img/".$d["head"];
-    getImage($d["url"], "../static/img/head/", $d["head"]);
+    if (!file_exists("../static/img/head/".$d["head"])) {
+        getImage($d["url"], "../static/img/head/", $d["head"]);
+    }
     echo json_encode($result);
 }
 
 
 // 获取头像
-function getImage ($url, $save_dir='', $filename='', $type = 1) {
+function getImage ($url, $save_dir='', $filename='', $type = 0) {
     if ( trim($url) == '' ) {
         return array('file_name'=>'', 'save_path'=>'', 'error'=>1); 
     } 

@@ -36,8 +36,8 @@ addChangeEvent(aaa, function () {
                 "sg": ~~d["height"],   // 身高
                 "tz": ~~d["weight"],   // 体重
                 "gj": ~~d["nationality"],  //国籍
-                "ls": ~~d["teague"],  // 联赛
-                "jlb": ~~d["team"], // 俱乐部
+                "ls": 3 || ~~d["teague"],  // 联赛
+                "jlb": 6 || ~~d["team"], // 俱乐部
                 "pos": d["role"], //最佳位置
                 "poses": getPoses(d["preferred_role"], d),
                 "tx": ~~d["shape"],  // 模型
@@ -80,7 +80,24 @@ addChangeEvent(aaa, function () {
                 "gkfy": ~~d["gk_response"],  // GK反应
                 "gkfszw": ~~d["gk_positioning"],  // GK防守站位
                 "gkdjkq": ~~d["gk_kicking"], // GK大脚开球
-                "ycnl": d["hidden_ability"]
+                "gk1d1": ~~d["gk_onetone"], //GK一对一
+                "ycnl": d["hidden_ability"],
+                "rb": ~~d.rb,
+                "cb": ~~d.cb,
+                "gk": ~~d.gk,
+                "rm": ~~d.rm,
+                "rw": ~~d.rw,
+                "rwb": ~~d.rwb,
+                "st": ~~d.st,
+                "cf": ~~d.cf,
+                "cm": ~~d.cm,
+                "cdm": ~~d.cdm,
+                "cam": ~~d.cam,
+                "lb": ~~d.lb,
+                "lm": ~~d.lm,
+                "lw": ~~d.lw,
+                "lwb": ~~d.lwb,
+                "sw": ~~d.sw
             };
             data.push(tmpData);
         }

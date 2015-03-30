@@ -351,6 +351,7 @@ $(function () {
     */
 
     $('#vsModal').on('hide.bs.modal', function () {
+        vs.players.length = 0;
         $("#listPlayer").find("input:checked").prop("checked", false);
     });
 
@@ -365,7 +366,7 @@ $(function () {
     });
     
     // 绑定位置筛选事件
-    $(".list-union-pos").on("click", "li", function () {
+    $(document.body).on("click", ".list-union-pos > li", function () {
         var pos = $(this).attr("data-pos");
         if (pos === "all") {
             $("#listPlayerVs").find("tr").show();
