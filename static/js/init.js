@@ -306,30 +306,34 @@ $(function () {
         }
     }).on("mouseover", ".item-player", function () {
         var hashid = $(this).attr("data-hashid");
-        if (hashid && playersCache[hashid]) {
+        if (hashid && playerModel.playersCache[hashid]) {
             var offset = $(this).offset();
-            var docHeight = $(document).height();
+            var winHeight = $(window).height();
             var scrollHeight = $(document).scrollTop();
-            var divHeight = 456;
+            var divHeight = 496;
             var width = $(this).width();
             var diff = 0;
-            if (offset.top + divHeight - scrollHeight >= docHeight) {
-                var diff = 350;
+            if (winHeight - offset.top + scrollHeight >= divHeight) {
+                diff = 0;
+            } else if (offset.top - scrollHeight >= divHeight) {
+                diff = 460;
+            } else {
+                diff = 250;
             }
             if ($("#player" + hashid).length > 0) {
                 var left = offset.left + width + 20 + "px";
-                var top = offset.top - diff - 27 + "px";
+                var top = offset.top - diff + "px";
                 $("#player" + hashid).css({"left": left, "top": top}).show();
             } else {
                 var tips = document.createElement("div");
                 tips.className = "tip-player-info";
                 tips.id = "player" + hashid;
                 tips.style.left = offset.left + width + 20 + "px";
-                tips.style.top = offset.top - diff - 27 + "px";
+                tips.style.top = offset.top - diff + "px";
                 tips.style.display = "block";
                 var source   = $("#playerInfoTpl").html();
                 var template = Handlebars.compile(source);
-                var html = template(playersCache[hashid]);
+                var html = template(playerModel.playersCache[hashid]);
                 $(tips).html(html);
                 document.body.appendChild(tips);
             }
@@ -363,7 +367,7 @@ $(function () {
         $(this).parent().addClass("active");
         curPage = page;
 
-        var data = playersPage.slice((curPage - 1) * pageCount, curPage * pageCount);
+        var data = playerModel.playersPage.slice((curPage - 1) * pageCount, curPage * pageCount);
         playersView.renderPlayer(data);
     });
     
