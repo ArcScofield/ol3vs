@@ -1,8 +1,114 @@
 $(function () {
-    var playersCache = {};  // 球员缓存
-    var playersPage      = defaultPlayers;   // 搜索出来的球员列表，主要用于翻页时的缓存
-    var pageCount = 4;  // 每页的人数
-    var curPage      = 1;   // 翻页的当前页面
+    // 球员数据模型
+    var playerModel = {
+        localPlayers: [], // 本地缓存的球员，用于初次加载
+        playersPage: [],   // 搜索出来的球员列表，主要用于翻页时的缓存
+        pageCount: 17,  // 每页球员的数据量
+        curPage: 1,  // 当前页
+        playersCache: {},  // 球员缓存，用于鼠标移动显示详细信息
+        getData: function () {
+            var me = this;
+            var data = {
+                "names": $("#txtName").val().split(/[,，]/g),  // 名字
+                "pos": $("#slPos").val(),  // 球员位置
+                "sj": $("#slSeason").val(),   // 赛季
+                "ls": $("#slMatch").val(),  // 联赛
+                "jlb": $("#slJlb").val(),   // 俱乐部
+                "minZp": ~~$("#slMinZp").val(),
+                "maxZp": ~~$("#slMaxZp").val(),
+                "minTz": ~~$("#slMinTz").val(),
+                "maxTz": ~~$("#slMaxTz").val(),
+                "minSg": ~~$("#slMinSg").val(),
+                "maxSg": ~~$("#slMaxSg").val(),
+                "minCsnf": $("#slMinCsnf").val(), // 出生年份
+                "maxCsnf": $("#slMaxCsnf").val(),  // 出生年份
+                "tx": ~~$("#slTx").val(),  // 体型
+                "hsdz": ~~$("#slHsdz").val(), // 花式动作
+                "ycnl": $("#slHdProp").val()  // 隐藏属性
+            };
+            this.curPage = 1;  // 设置当前页为第一页
+
+            if ($("#slXgj").val().length !== 0) {
+                data.xgj = ~~$("#slXgj").val();
+                data.xgjVal = ~~$("#slXgjVal").val();
+            }
+
+            if ($("#slXx1").val().length !== 0) {
+                data.xx1 = $("#slXx1").val();
+                data.xx1val = $("#xx1val").val();
+            }
+
+            if ($("#slXx2").val().length !== 0) {
+                data.xx1 = $("#slXx2").val();
+                data.xx1val = $("#xx2val").val();
+            }
+            $.post("module/search.php?act=list", data, function (resp) {
+                var resp = $.parseJSON(resp);
+                if (resp.code === "ok") {
+                    var players = resp.players;
+                    me.playersPage = players;
+                    playersView.renderPlayer(players.slice(0, me.pageCount));
+                    playersView.renderPage(Math.ceil(players.length / me.pageCount), me.curPage);
+                    for (var i = 0; i < players.length; i++) {
+                        if (!me.playersCache[players[i].hashid]) {
+                            me.playersCache[players[i].hashid] = players[i];
+                        }
+                    }
+                }
+            });
+        }
+    };
+
+    // 球员数据View
+    var playersView = {
+        model: playerModel,
+        // 渲染搜索出来的球员
+        renderPlayer: function (data) {
+            var source   = $("#playerTpl").html();
+            var template = Handlebars.compile(source);
+            var html     = template({"players": data});
+            $("#listPlayer").find("tbody").html(html);
+        },
+        // 渲染翻页
+        renderPage: function (pages, curPage) {
+            var pages = pages || 1;
+            var data = [];
+            var source;
+            var template;
+            var html;
+            var cls = "";
+
+            if (pages === 1) {
+                html = "";
+            } else {
+                if (pages <= 5) {
+                    for (var i = 1; i <= pages; i++) {
+                        if (i === curPage) {
+                            cls = "active";
+                        } else {
+                            cls = "";
+                        }
+                        data.push({page: i, clses: cls});
+                    }
+                } else {
+                    var startPage = (curPage - 2) > 0 ? (curPage - 2) : 1;
+                    var endPage = (curPage + 2) < pages ? (curPage + 2) : pages; 
+                    for (var i =  startPage; i<= endPage; i++) {
+                        if (i === curPage) {
+                            cls = "active";
+                        } else {
+                            cls = "";
+                        }
+                        data.push({page: i, cls: cls});
+                    }
+                }
+                source  = $("#pageTpl").html();
+                template = Handlebars.compile(source);
+                html     = template({"pages": data, "count": pages});
+            }
+            $(".nav-page").html(html);
+        }
+    };
     var vs = {
         "players": [],
         "people": [
@@ -53,7 +159,7 @@ $(function () {
         "CDM": "label-success",
         "LB": "label-primary",
         "LWB": "label-primary",
-        "LWB": "label-primary",
+        "RWB": "label-primary",
         "RB": "label-primary",
         "CB": "label-primary",
         "SW": "label-primary",
@@ -63,56 +169,6 @@ $(function () {
     Handlebars.registerHelper('cls', function(options) {
         return cls[options.fn(this).toUpperCase()];
     });
-    renderPlayer(defaultPlayers.slice(0, pageCount));
-    renderPage(Math.ceil(defaultPlayers.length / pageCount), curPage);
-
-    // 渲染搜索出来的球员
-    function renderPlayer (data) {
-        var source   = $("#playerTpl").html();
-        var template = Handlebars.compile(source);
-        var html     = template({"players": data});
-        $("#listPlayer").find("tbody").html(html);
-    }
-
-    // 渲染翻页
-    function renderPage (pages) {
-        var pages = pages || 1;
-        var data = [];
-        var source;
-        var template;
-        var html;
-        var cls = "";
-
-        if (pages === 1) {
-            html = "";
-        } else {
-            if (pages <= 5) {
-                for (var i = 1; i <= pages; i++) {
-                    if (i === curPage) {
-                        cls = "active";
-                    } else {
-                        cls = "";
-                    }
-                    data.push({page: i, clses: cls});
-                }
-            } else {
-                var startPage = (curPage - 2) > 0 ? (curPage - 2) : 1;
-                var endPage = (curPage + 2) < pages ? (curPage + 2) : pages; 
-                for (var i =  startPage; i<= endPage; i++) {
-                    if (i === curPage) {
-                        cls = "active";
-                    } else {
-                        cls = "";
-                    }
-                    data.push({page: i, cls: cls});
-                }
-            }
-            source  = $("#pageTpl").html();
-            template = Handlebars.compile(source);
-            html     = template({"pages": data, "count": pages});
-        }
-        $(".nav-page").html(html);
-    }
 
     Handlebars.registerHelper('aaa', function(options) {
         return vs.players[0][options.fn(this)];
@@ -165,6 +221,10 @@ $(function () {
             cls = "items-val-60";
         } else if (val >= 80 && val < 90) {
             cls = "items-val-80";
+        } else if (val >= 90 && val < 100) {
+            cls = "items-val-90";
+        } else if (val >=100) {
+            cls = "";
         }
 
         str += cls + "''>" + val + "</span>";
@@ -207,67 +267,14 @@ $(function () {
 
 
     $("#btnSearch").click(function () {
-        search();
+        playerModel.getData();
     });
 
     $("#txtName").keypress(function(e) {
         if (e.keyCode === 13) {
-            search();
+            playerModel.getData();
         }
     });
-
-    function search() {
-        curPage = 1;
-        var data = {
-            "names": $("#txtName").val().split(/[,，]/g),  // 名字
-            "pos": $("#slPos").val(),  // 球员位置
-            "sj": $("#slSeason").val(),   // 赛季
-            "ls": $("#slMatch").val(),  // 联赛
-            "jlb": $("#slJlb").val(),   // 俱乐部
-            "minZp": ~~$("#slMinZp").val(),
-            "maxZp": ~~$("#slMaxZp").val(),
-            "minTz": ~~$("#slMinTz").val(),
-            "maxTz": ~~$("#slMaxTz").val(),
-            "minSg": ~~$("#slMinSg").val(),
-            "maxSg": ~~$("#slMaxSg").val(),
-            "minCsnf": $("#slMinCsnf").val(), // 出生年份
-            "maxCsnf": $("#slMaxCsnf").val(),  // 出生年份
-            "tx": ~~$("#slTx").val(),  // 体型
-            "hsdz": ~~$("#slHsdz").val(), // 花式动作
-            "ycnl": $("#slHdProp").val()  // 隐藏属性
-        };
-
-        if ($("#slXgj").val().length !== 0) {
-            data.xgj = ~~$("#slXgj").val();
-            data.xgjVal = ~~$("#slXgjVal").val();
-        }
-
-        if ($("#slXx1").val().length !== 0) {
-            data.xx1 = $("#slXx1").val();
-            data.xx1val = $("#xx1val").val();
-        }
-
-        if ($("#slXx2").val().length !== 0) {
-            data.xx1 = $("#slXx2").val();
-            data.xx1val = $("#xx2val").val();
-        }
-
-        $.post("module/search.php?act=list", data, function (resp) {
-            var resp = $.parseJSON(resp);
-            if (resp.code === "ok") {
-                var players = resp.players;
-                curPage = 1;
-                playersPage = players;
-                renderPlayer(players.slice(0, pageCount));
-                renderPage(Math.ceil(players.length / pageCount));
-                for (var i = 0; i < players.length; i++) {
-                    if (!playersCache[players[i].hashid]) {
-                        playersCache[players[i].hashid] = players[i];
-                    }
-                }
-            }
-        });
-    }
 
     $("#listPlayer").on("click", "tr", function () {
         var cbox = $(this).children().find("input");
@@ -345,7 +352,6 @@ $(function () {
         }
     });
     */
-
     $('#vsModal').on('hide.bs.modal', function () {
         vs.players.length = 0;
         $("#listPlayer").find("input:checked").prop("checked", false);
@@ -358,7 +364,7 @@ $(function () {
         curPage = page;
 
         var data = playersPage.slice((curPage - 1) * pageCount, curPage * pageCount);
-        renderPlayer(data);
+        playersView.renderPlayer(data);
     });
     
     // 绑定位置筛选事件

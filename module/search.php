@@ -60,7 +60,7 @@ if ($act === "list") {
 		}
 	}
 	if (!empty($pos)) {
-		$sql = $sql." and poses like '%$pos%'";
+		$sql = $sql." and poses like '%".htmlspecialchars($pos)."%'";
 	}
 	if (!empty($ls) && is_numeric($ls) ) {
 		$sql = $sql." and ls=$ls";

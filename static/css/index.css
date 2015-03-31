@@ -153,6 +153,12 @@
 .items-val-60 {
     color: #cccccc;
 }
+.items-val-80 {
+    color: #3d7dd5;
+}
+.items-val-90 {
+    color: #0070c0;
+}
 .box-player-ycnl {
     padding: 10px;
     line-height: 20px;
@@ -192,7 +198,9 @@
 .icon-sj-07 {
     background-position: -74px 0;
 }
-
+.table {
+    margin-bottom: 0;
+}
 .box-player-vs {
 }
 .tip-player-info > .box-player-info {
@@ -212,6 +220,9 @@
 }
 .box-player-head > img {
     box-shadow: 0 0 5px #ddd;
+}
+.list-player-st > li {
+    padding: 2px 0;
 }
 .box-player-other {
     text-align: right;
@@ -306,6 +317,8 @@
     left: 0;
     width: 100%;
 }
+
+
 
 /* 单页球员信息展示样式 */
 .box-player-page {

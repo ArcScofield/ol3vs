@@ -383,6 +383,7 @@
 <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="static/js/lib/handlebars/handlebars.js"></script>
 <script type="text/javascript" src="static/js/datas.js"></script>
+<script type="text/javascript" src="static/js/getData.js"></script>
 <script type="text/javascript" src="static/js/init.js"></script>
 <script id="playerTpl" type="text/x-handlebars-template">
 {{#each players}}
@@ -527,12 +528,13 @@
                 <img src="static/img/head/{{head}}" />
             </div>
             <div class="box-player-st">
-                <ul>
+                <ul class="list-player-st">
                     <li>{{sg}}cm</li>
                     <li>{{tz}}kg</li>
                     <li>{{sr}}</li>
                     <li><span class="icon-foot l-foot{{zj}}">{{zj}}</span><span class="icon-foot r-foot{{yj}}">{{yj}}</span></li>
                     <li><div class="box-hsdz star{{hsdz}}"></div></li>
+                    <li>体型：{{tx}}</li>
                 </ul>
             </div>
             <div class="box-player-other">
