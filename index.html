@@ -392,7 +392,7 @@
         <td><span class="icon-sj icon-sj-{{sj}}"></span></td>
         <td><span class="item-player" data-hashid={{hashid}}>{{name}}</span></td>
         <td>{{zp}}</td>
-        <td>{{jlb}}</td>
+        <td>{{#team}}{{ls}}-{{jlb}}{{/team}}</td>
     </tr>
 {{/each}}
 </script>
@@ -415,13 +415,13 @@
                     <li>{{sr}}</li>
                     <li><span class="icon-foot l-foot{{zj}}">{{zj}}</span><span class="icon-foot r-foot{{yj}}">{{yj}}</span></li>
                     <li><div class="box-hsdz star{{hsdz}}"></div></li>
-                    <li>体型：{{tx}}</li>
+                    <li>体型：{{#txes}}{{tx}}{{/txes}}</li>
                 </ul>
             </div>
             <div class="box-player-other">
                 <ul class="list-player-info">
                     <li>{{gj}}</li>
-                    <li>{{jlb}}</li>
+                    <li>{{#team}}{{ls}}-{{jlb}}{{/team}}</li>
                 </ul>
                 <ul class="list-player-pos">
                     {{#poslist}}{{poses}}{{/poslist}}
@@ -534,13 +534,13 @@
                     <li>{{sr}}</li>
                     <li><span class="icon-foot l-foot{{zj}}">{{zj}}</span><span class="icon-foot r-foot{{yj}}">{{yj}}</span></li>
                     <li><div class="box-hsdz star{{hsdz}}"></div></li>
-                    <li>体型：{{tx}}</li>
+                    <li>体型：{{#txes}}{{tx}}{{/txes}}</li>
                 </ul>
             </div>
             <div class="box-player-other">
                 <ul class="list-player-info">
                     <li>{{gj}}</li>
-                    <li>{{jlb}}</li>
+                    <li>{{#team}}{{ls}}-{{jlb}}{{/team}}</li>
                 </ul>
                 <ul class="list-player-pos">
                     {{#poslist}}{{poses}}{{/poslist}}

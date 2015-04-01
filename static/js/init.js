@@ -238,6 +238,29 @@ $(function () {
         return str;
     });
 
+    Handlebars.registerHelper('txes', function(options) {
+        var arr = ["肥胖", "普通", "瘦弱"]
+        return arr[~~options.fn(this)];
+    });
+
+    Handlebars.registerHelper('team', function(options) {
+        var arr = options.fn(this).split("-");
+        var i = Matches.length;
+        var j = 0;
+        var team = "";
+        while (i--) {
+            if (Matches[i].id === ~~arr[0]) {
+                j = Matches[i].team.length;
+                while (j--) {
+                    if (Matches[i].team[j].id === ~~arr[1]) {
+                        return Matches[i].team[j].name;
+                        break;
+                    }
+                }
+            }
+        }
+        return "";
+    });
 
     // 加载联赛球队
     $("#slMatch").change(function () {
