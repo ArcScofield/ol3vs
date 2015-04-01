@@ -71,35 +71,42 @@ $(function () {
         },
         // 渲染翻页
         renderPage: function (pages, curPage) {
-            var pages = pages || 1;
             var data = [];
             var source;
             var template;
             var html;
             var cls = "";
+            pages = pages || Math.ceil(this.model.playersPage.length / this.model.pageCount);
+            curPage = curPage || this.model.curPage;
 
             if (pages === 1) {
                 html = "";
             } else {
-                if (pages <= 5) {
+                if (pages <= 7) {
                     for (var i = 1; i <= pages; i++) {
                         if (i === curPage) {
                             cls = "active";
                         } else {
                             cls = "";
                         }
-                        data.push({page: i, clses: cls});
+                        data.push({page: i, clses: cls, name: i});
                     }
                 } else {
-                    var startPage = (curPage - 2) > 0 ? (curPage - 2) : 1;
-                    var endPage = (curPage + 2) < pages ? (curPage + 2) : pages; 
+                    var startPage = (curPage - 3) > 0 ? (curPage - 3) : 1;
+                    var endPage = (curPage + 3) < pages ? (curPage + 3) : pages;
+                    if (startPage > 1) {
+                        data.push({page: 1, clses: "", name: "«首页"});
+                    }
                     for (var i =  startPage; i<= endPage; i++) {
                         if (i === curPage) {
                             cls = "active";
                         } else {
                             cls = "";
                         }
-                        data.push({page: i, cls: cls});
+                        data.push({page: i, clses: cls, name: i});
+                    }
+                    if (endPage < pages) {
+                        data.push({page: pages, clses: "", name: "末页»"});
                     }
                 }
                 source  = $("#pageTpl").html();
@@ -292,8 +299,8 @@ $(function () {
         var hashid = $(this).attr("data-hashid");
         var len = $("#listPlayer").find("input:checked").length;
 
-        if ($(this).prop("checked") && playersCache[hashid]) {
-            vs.players.push(playersCache[hashid]);
+        if ($(this).prop("checked") && playerModel.playersCache[hashid]) {
+            vs.players.push(playerModel.playersCache[hashid]);
         } else {
             vs.players.pop();
         }
@@ -365,10 +372,11 @@ $(function () {
         var page = ~~$(this).attr("data-page") || 1;
         $(".nav-page").find(".active").removeClass("active");
         $(this).parent().addClass("active");
-        curPage = page;
+        playerModel.curPage = page;
 
-        var data = playerModel.playersPage.slice((curPage - 1) * pageCount, curPage * pageCount);
+        var data = playerModel.playersPage.slice((playerModel.curPage - 1) * playerModel.pageCount, playerModel.curPage * playerModel.pageCount);
         playersView.renderPlayer(data);
+        playersView.renderPage();
     });
     
     // 绑定位置筛选事件
