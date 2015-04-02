@@ -7,7 +7,7 @@ $len = count($ds);
 for ($i = 0; $i < $len; $i++) {
     $d = $ds[$i];
     if (empty($d["name"])) {
-        continue;
+        // continue;
     }
     $hashid = time().rand(1000,9999);
     $data = array(
@@ -91,9 +91,9 @@ for ($i = 0; $i < $len; $i++) {
         $result = array("code"=> "error", "desc"=> "插入".$d["name"]."数据失败！");
     }
     // $url = "http://eafifa.tgbus.com/theme/eafifa/player_img/".$d["head"];
-    if (!file_exists("../static/img/head/".$d["head"])) {
-        getImage($d["url"], "../static/img/head/", $d["head"]);
-    }
+    // if (!file_exists("../static/img/head/".$d["head"])) {
+    //    getImage($d["url"], "../static/img/head/", $d["head"]);
+    //}
     echo json_encode($result);
 }
 

@@ -14,8 +14,10 @@
 联赛： <input type="text" id="txtLs" ><br/>
 俱乐部： <input type="text" id="txtJlb" >   
 <button id="btnSave">存储</button>
+<button id="btnSave2">存储2</button>
 <script type="text/javascript" src="static/js/lib/jq/jquery.js"></script>
 <script type="text/javascript">
+window.tempDatas = [];
 var aaa = document.getElementById("aaa");
 var data = [];
 
@@ -114,6 +116,13 @@ $("#btnSave").click(function () {
     });
 });
 
+$("#btnSave2").click(function () {
+    $.post("module/data.php", {"data": window.tempDatas}, function (resp) {
+        window.tempDatas = [];
+        console.log(resp);
+    });
+});
+
 function getBoth (str) {
     var d = new Date(str * 1000);
     return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
@@ -159,6 +168,12 @@ function addChangeEvent (el, callback) {
         el.addEventListener("blur", selectionchange);
     }
 }
+
+window.addEventListener('message', function(event) {
+    $.post("module/data.php", {"data": event.data}, function (resp) {
+        console.log(resp);
+    });
+}, false);
 </script>
 </body>
 </html>
