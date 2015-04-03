@@ -11,7 +11,7 @@
         "show_in_taskbar": true,
         "frame": true,
         "kiosk": false,
-        "icon": "2655716405282662783.png"
+        "icon": "logo.png"
     },
     "webkit":{
         "plugin":true

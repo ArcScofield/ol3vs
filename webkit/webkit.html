@@ -14,7 +14,7 @@ var win = gui.Window.get();
 win.maximize()
 
 var isShowWindow = true;
-var tray = new gui.Tray({ title: 'www.ol3vs.com', icon: '2655716405282662783.png' });
+var tray = new gui.Tray({ title: 'www.ol3vs.com', icon: 'logo.png' });
 tray.tooltip = '点此打开';
 
 tray.on('click', function () {
@@ -31,6 +31,7 @@ win.on("minimize", function () {
     win.hide();
     isShowWindow = false;
 });
+window.location.href = "http://www.ol3vs.com";
 </script>
 </body>  
 </html>  

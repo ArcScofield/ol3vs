@@ -283,12 +283,12 @@ $(function () {
         var datas = Matches[val].team;
         var op    = document.createElement("option");
 
-        op.text = "球队";
+        op.innerHTML = "球队";
         op.value = 0;
         doc.appendChild(op);
         for (var i = 0; i < datas.length; i++) {
             op = document.createElement("option");
-            op.text = datas[i].name;
+            op.innerHTML = datas[i].name;
             op.value = datas[i].id;
             doc.appendChild(op);
         }
@@ -388,6 +388,20 @@ $(function () {
             $("#player" + hashid).hide();
         }
     });
+
+    if (window.VBArray && ~~document.documentMode <= 9) {
+        var defaultStr = "逗号分隔搜索多名球员";
+        $("#txtName").css("color", "#999").val(defaultStr).focus(function () {
+            if ($(this).val() === defaultStr) {
+                $(this).val("");
+            }
+            $(this).css("color", "#000");
+        }).blur(function () {
+            if ($(this).val().length === 0) {
+                $(this).val(defaultStr).css("color", "#999");
+            }
+        });
+    }
     /*
     .on("click", ".item-player", function () {
         var hashid = $(this).attr("data-hashid");
