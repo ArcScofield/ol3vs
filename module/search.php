@@ -2,7 +2,7 @@
 require_once("../includes/db.php");
 $db = new DB();
 
-/* 检查是否直接访问本页面
+// 检查是否直接访问本页面
 if( isset($_SERVER['HTTP_REFERER']) ) {
     $url_array = explode('http://', $_SERVER['HTTP_REFERER']);
     $url = explode('/', $url_array[1]);
@@ -12,7 +12,6 @@ if( isset($_SERVER['HTTP_REFERER']) ) {
 } else {
 	exit('Access Denied! Please do not load this page directly.');
 }
-*/
 
 $act = $_GET["act"];
 

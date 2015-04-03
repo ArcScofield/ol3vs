@@ -28,9 +28,6 @@
                 <a href="javascript:;">球员数据库</a>
             </li>
             <li class="nav-item">
-                <a href="match.php">战队系统</a>
-            </li>
-            <li class="nav-item">
                 <a target="_blank" href="download/ol3vs.exe">数据库下载</a>
             </li>
         </ul>
@@ -78,6 +75,7 @@
                     <select id="slSeason">
                         <option value="">赛季</option>
                         <option value="14">2014</option>
+                        <option value="15">2014（韩）</option>
                         <option value="10">2010</option>
                         <option value="7">2007</option>
                         <option value="6">2006</option>
@@ -110,7 +108,7 @@
                 <li>
                     <span>联赛：</span>
                     <select id="slMatch">
-                        <option value="0">联赛</option>
+                        <option value="">联赛</option>
                         <option value="1">西班牙足球甲级联赛</option>
                         <option value="2">德国足球甲级联赛</option>
                         <option value="3">英格兰足球超级联赛</option>
@@ -141,7 +139,7 @@
                 <li>
                     <span>球队：</span>
                     <select id="slJlb">
-                        <option>球队</option>
+                        <option value="">球队</option>
                     </select>
                 </li>
                 <li>
@@ -294,7 +292,7 @@
                 </li>
                 <li>
                     <span>出生年份：</span>
-                    <select id="slMinCsnf">
+                    <select id="slMinCsnf" disabled=true>
                         <option value="">--</option>
                         <option value="1970">1970</option>
                         <option value="1975">1875</option>
@@ -303,7 +301,7 @@
                         <option value="1990">1990</option>
                     </select>
                      - 
-                    <select id="slMaxCsnf">
+                    <select id="slMaxCsnf" disabled=true>
                         <option value="">--</option>
                         <option value="1970">1970</option>
                         <option value="1975">1875</option>
@@ -322,8 +320,8 @@
                     </select>
                 </li>
                 <li>
-                    <span>隐藏能力：</span>
-                    <select id="slHdProp"></select>
+                    <span tilte="暂不可用">隐藏能力：</span>
+                    <select id="slHdProp" disabled=true></select>
                 </li>
                 <li>
                     <span></span>
@@ -420,7 +418,7 @@
             </div>
             <div class="box-player-other">
                 <ul class="list-player-info">
-                    <li>{{gj}}</li>
+                    <li>{{csnyr}}</li>
                     <li>{{#team}}{{ls}}-{{jlb}}{{/team}}</li>
                 </ul>
                 <ul class="list-player-pos">
@@ -428,9 +426,10 @@
                 </ul>
             </div>
         </div>
+        <div class="box-player-ycnl"><span>隐藏能力：</span>{{ycnl}}</div>
         <div class="box-level-change">
             <span>查看能力：</span>
-            <select id="slQh1">
+            <select data-playerid="{{@index}}" data-type="qh">
                 <option value="1">强化</option>
                 <option value="0">+0</option>
                 <option value="1">+1</option>
@@ -444,7 +443,7 @@
                 <option value="9">+9</option>
                 <option value="10">+10</option>
             </select>
-            <select id="slLv1">
+            <select data-playerid="{{@index}}" data-ytpe="lv">
                 <option value="1">等级</option>
                 <option value="1">Lv.1</option>
                 <option value="2">Lv.2</option>
@@ -486,13 +485,13 @@
                         <span class="data-item">{{name}}</span>
                     </td>
                     <td>
-                        <span class="data-player-f">{{#aaa}}{{item}}{{/aaa}}</span>
+                        {{#aaa}}0-{{item}}{{/aaa}}
                     </td>
                     <td>
-                        <span class="data-player-s">{{#bbb}}{{item}}{{/bbb}}</span>
+                        {{#aaa}}1-{{item}}{{/aaa}}
                     </td>
                     <td>
-                        <span class="data-diff">{{#diff}}{{item}}{{/diff}}</span>
+                        {{#diff}}{{item}}{{/diff}}
                     </td>
                 </tr>
             {{/each}}
@@ -539,7 +538,7 @@
             </div>
             <div class="box-player-other">
                 <ul class="list-player-info">
-                    <li>{{gj}}</li>
+                    <li>{{csnyr}}</li>
                     <li>{{#team}}{{ls}}-{{jlb}}{{/team}}</li>
                 </ul>
                 <ul class="list-player-pos">

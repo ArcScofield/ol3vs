@@ -87,7 +87,7 @@ var Country = [
 */
 var Matches = [
 	{
-		"id": 0,
+		"id": "",
 		"name": "",
 		"team": []
 	}, {	

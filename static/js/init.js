@@ -178,11 +178,23 @@ $(function () {
     });
 
     Handlebars.registerHelper('aaa', function(options) {
-        return vs.players[0][options.fn(this)];
-    });
+        var arr = options.fn(this).split("-");
+        var val = vs.players[~~arr[0]][arr[1]];
+        var str = "<span class='";
+        var cls = "";
 
-    Handlebars.registerHelper('bbb', function(options) {
-        return vs.players[1][options.fn(this)];
+        if (val < 60) {
+            cls = "items-val-60";
+        } else if (val >= 80 && val < 90) {
+            cls = "items-val-80";
+        } else if (val >= 90 && val < 100) {
+            cls = "items-val-90";
+        } else if (val >=100) {
+            cls = "";
+        }
+
+        str += cls + "'>" + val + "</span>";
+        return str;
     });
 
     Handlebars.registerHelper('poslist', function(options) {
@@ -261,6 +273,8 @@ $(function () {
         }
         return "";
     });
+
+    playerModel.getData();
 
     // 加载联赛球队
     $("#slMatch").change(function () {
@@ -421,49 +435,37 @@ $(function () {
         }
     });
 
-    $("#slQh1").change(function(event) {
-        var xx = vs.players[0];
-        var qh = ~~$(this).val();
+    $("#boxPlayerVs").on("change", ".box-level-change>select", function () {
+        var id = ~~$(this).attr("data-playerid");
+        var type = $(this).attr("data-type");
+        var xx = vs.players[id];
+        var val = ~~$(this).val();
         var curQh = 1;
+        var curLv = 1;
         var diff = 0;
 
         if (xx.qh !== undefined) {
             curQh = xx.qh;
         }
-        diff = getQhDiff(qh) - getQhDiff(curQh);
-        for (var i in xx) {
-            if (typeof xx[i] === "number") {
-                xx[i] = xx[i] + diff;
-            }
-        }
-        xx.qh = qh;
-        var source   = $("#vsTpl").html();
-        var template = Handlebars.compile(source);
-        var html = template(vs);
-        $("#listPlayerVs").find("tbody").html(html);
-    });
-
-    $("#slLv1").change(function(event) {
-        var xx = vs.players[0];
-        var lv = ~~$(this).val();
-        var curLv = 1;
-        var diff = 0;
-
         if (xx.lv !== undefined) {
             curLv = xx.lv;
         }
-        diff = lv - curLv;
-        for (var i in xx) {
-            if (typeof xx[i] === "number") {
-                xx[i] = xx[i] + diff;
-            }
+        if (type === "qh") {
+            diff = getQhDiff(val) - getQhDiff(curQh);
+            xx.qh = val;
+        } else {
+            diff = val - curLv;
+            xx.lv = val;
         }
-        xx.lv = lv;
+        for (var i = 0, len = vs.people.length; i < len ;i++) {
+            xx[vs.people[i].item] = ~~xx[vs.people[i].item] + diff;
+        }
         var source   = $("#vsTpl").html();
         var template = Handlebars.compile(source);
         var html = template(vs);
         $("#listPlayerVs").find("tbody").html(html);
     });
+
 
     /*
     * 获取强化能力差
