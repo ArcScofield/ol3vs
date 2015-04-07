@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<link href="static/js/lib/bootstrap/css/bootstrap.css" rel="stylesheet" media="all">
+<link href="static/css/player.min.css" rel="stylesheet" media="all">
+<style type="text/css">
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+.box-sl {
+    padding: 15px 0;
+}
+</style>
+<title>FIFA Online3数据库</title>
+</head>
+
+<body>
+<div class="container">
+    <div class="box-sl">
+        <select id="slSeason">
+            <option value="">赛季</option>
+            <option value="14">2014</option>
+            <option value="15">2014（韩）</option>
+            <option value="10">2010</option>
+            <option value="7">2007</option>
+            <option value="6">2006</option>
+            <option value="02">世界杯</option>
+            <option value="l">传奇</option>
+        </select>
+        <select id="slMatch">
+            <option value="">联赛</option>
+            <option value="1">西班牙足球甲级联赛</option>
+            <option value="2">德国足球甲级联赛</option>
+            <option value="3">英格兰足球超级联赛</option>
+            <option value="4">意大利足球甲级联赛</option>
+            <option value="5">法国足球甲级联赛</option>
+            <option value="6">荷兰足球甲级联赛</option>
+            <option value="7">比利时足球甲级联赛</option>
+            <option value="8">丹麦足球超级联赛</option>
+            <option value="9">英格兰足球冠军联赛</option>
+            <option value="10">法国足球乙级联赛</option>
+            <option value="11">德国足球乙级联赛</option>
+            <option value="12">意大利足球乙级联赛</option>
+            <option value="13">美国职业足球大联盟</option>
+            <option value="14">挪威足球超级联赛</option>
+            <option value="15">苏格兰足球超级联赛</option>
+            <option value="16">西班牙足球乙级联赛</option>
+            <option value="17">瑞典足球超级联赛</option>
+            <option value="18">英格兰足球甲级联赛</option>
+            <option value="19">阿根廷联赛</option>
+            <option value="20">葡萄牙足球联赛</option>
+            <option value="21">俄罗斯足球超级联赛</option>
+            <option value="22">瑞士足球超级联赛</option>
+            <option value="23">沙特阿拉伯足球联赛</option>
+            <option value="24">澳大利亚职业足球联赛</option>
+            <option value="25">土耳其足球超级联赛</option>
+        </select>
+        <select id="slJlb">
+            <option value="">球队</option>
+        </select>
+    </div>
+    <table class="tb-team table table-hover table-striped" id="listPlayer">
+        <thead>
+            <tr>
+                <th>头像</th>
+                <th>位置</th>
+                <th>赛季</th>
+                <th>球员名</th>
+                <th>身高</th>
+                <th>生日</th>
+                <th>能力</th>
+                <th>俱乐部</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript" src="static/js/lib/handlebars/handlebars.js"></script>
+<script type="text/javascript" src="static/js/datas.js"></script>
+<script id="playerTpl" type="text/x-handlebars-template">
+{{#each players}}
+    <tr>
+        <td><img src="static/img/head/{{head}}" /></td>
+        <td><span class="label {{#cls}}{{pos}}{{/cls}}">{{pos}}</span></td>
+        <td><span class="icon-sj icon-sj-{{sj}}"></span></td>
+        <td><input type="text" value="{{name}}" /><button class="btn-setname" data-id="{{id}}">确定</button></td>
+        <td>{{sg}}</td>
+        <td>{{csnyr}}</td>
+        <td>{{zp}}</td>
+        <td>{{#team}}{{ls}}-{{jlb}}{{/team}}</td>
+    </tr>
+{{/each}}
+</script>
+<script type="text/javascript">
+$(function () {
+    var cls = {
+        "ST": "label-danger",
+        "CF": "label-danger",
+        "LW": "label-danger",
+        "RW": "label-danger",
+        "CAM": "label-success",
+        "CM": "label-success",
+        "LM": "label-success",
+        "RM": "label-success",
+        "CDM": "label-success",
+        "LB": "label-primary",
+        "LWB": "label-primary",
+        "RWB": "label-primary",
+        "RB": "label-primary",
+        "CB": "label-primary",
+        "SW": "label-primary",
+        "GK": "label-warning"
+    };
+
+    Handlebars.registerHelper('cls', function(options) {
+        return cls[options.fn(this).toUpperCase()];
+    });
+
+    Handlebars.registerHelper('team', function(options) {
+        var arr = options.fn(this).split("-");
+        var i = Matches.length;
+        var j = 0;
+        var team = "";
+        while (i--) {
+            if (Matches[i].id === ~~arr[0]) {
+                j = Matches[i].team.length;
+                while (j--) {
+                    if (Matches[i].team[j].id === ~~arr[1]) {
+                        return Matches[i].team[j].name;
+                    }
+                }
+            }
+        }
+        return "";
+    });
+
+    // 加载联赛球队
+    $("#slMatch").change(function () {
+        var val   = $(this)[0].selectedIndex;
+        var doc   = document.createDocumentFragment();
+        var datas = Matches[val].team;
+        var op    = document.createElement("option");
+
+        op.innerHTML = "球队";
+        op.value = 0;
+        doc.appendChild(op);
+        for (var i = 0; i < datas.length; i++) {
+            op = document.createElement("option");
+            op.innerHTML = datas[i].name;
+            op.value = datas[i].id;
+            doc.appendChild(op);
+        }
+        $("#slJlb").empty()[0].appendChild(doc);
+    });
+    $("#slSeason").change(function () {
+        getData();
+    });
+    $("#slJlb").change(function () {
+        getData();
+    });
+
+    function getData () {
+        var data = {
+            sj: 15 || $("#slSeason").val(),
+            ls: $("#slMatch").val(),
+            jlb: $("#slJlb").val()
+        };
+
+        $.post("module/search.php?act=list", data, function (resp) {
+            resp = $.parseJSON(resp);
+            if (resp.code === "ok") {
+                var players = resp.players;
+                var source   = $("#playerTpl").html();
+                var template = Handlebars.compile(source);
+                var html     = template({"players": players});
+                $("#listPlayer").find("tbody").html(html);
+            }
+        });
+    }
+    getData();
+
+    $("#listPlayer").on("click", ".btn-setname", function () {
+        var me = this;
+        var id = ~~$(this).attr("data-id");
+        var name = $(this).prev().val();
+        $.post("module/search.php?act=setname", {id: id, name: name},function (resp) {
+            resp = $.parseJSON(resp);
+            if (resp.code === "ok") {
+                $(me).hide();
+                alert("成功");
+            } else {
+                alert("失败");
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>

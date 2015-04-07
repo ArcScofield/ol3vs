@@ -14,7 +14,6 @@
 联赛： <input type="text" id="txtLs" ><br/>
 俱乐部： <input type="text" id="txtJlb" >   
 <button id="btnSave">存储</button>
-<button id="btnSave2">存储2</button>
 <script type="text/javascript" src="static/js/lib/jq/jquery.js"></script>
 <script type="text/javascript">
 window.tempDatas = [];
@@ -38,8 +37,8 @@ addChangeEvent(aaa, function () {
                 "sg": ~~d["height"],   // 身高
                 "tz": ~~d["weight"],   // 体重
                 "gj": ~~d["nationality"],  //国籍
-                "ls": 3 || ~~d["teague"],  // 联赛
-                "jlb": 6 || ~~d["team"], // 俱乐部
+                "ls": 2 || ~~d["teague"],  // 联赛
+                "jlb": 1 || ~~d["team"], // 俱乐部
                 "pos": d["role"], //最佳位置
                 "poses": getPoses(d["preferred_role"], d),
                 "tx": ~~d["shape"],  // 模型
@@ -116,13 +115,6 @@ $("#btnSave").click(function () {
     });
 });
 
-$("#btnSave2").click(function () {
-    $.post("module/data.php", {"data": window.tempDatas}, function (resp) {
-        window.tempDatas = [];
-        console.log(resp);
-    });
-});
-
 function getBoth (str) {
     var d = new Date(str * 1000);
     return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
@@ -170,6 +162,7 @@ function addChangeEvent (el, callback) {
 }
 
 window.addEventListener('message', function(event) {
+    alert(11);
     $.post("module/data.php", {"data": event.data}, function (resp) {
         console.log(resp);
     });

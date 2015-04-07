@@ -6,8 +6,7 @@
 <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <link href="static/js/lib/bootstrap/css/bootstrap.css" rel="stylesheet" media="all">
-<link href="static/css/common.css" rel="stylesheet" media="all">
-<link href="static/css/index.css" rel="stylesheet" media="all">
+<link href="static/css/player.min.css" rel="stylesheet" media="all">
 <!--[if lt IE 9]>
 <script>
 (function(tags){for(var i=0; i<tags.length; i++)document.createElement(tags[i]);})(["article","aside","details","figcaption","figure","footer","header","hgroup","nav","section","video"]);
@@ -15,9 +14,6 @@
 <![endif]-->
 
 <title>FIFA Online3数据库</title>
-<style type="text/css">
-
-</style>
 </head>
 
 <body>
@@ -31,7 +27,7 @@
                 <a href="javascript:;">球员数据库</a>
             </li>
             <li class="nav-item">
-                <a target="_blank" href="download/ol3vs.exe">数据库下载</a>
+                <a href="download/ol3vs.zip">数据库下载</a>
             </li>
         </ul>
     </div>
@@ -383,8 +379,7 @@
 <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="static/js/lib/handlebars/handlebars.js"></script>
-<script type="text/javascript" src="static/js/datas.js"></script>
-<script type="text/javascript" src="static/js/init.js"></script>
+<script type="text/javascript" src="static/js/player.min.js"></script>
 <script id="playerTpl" type="text/x-handlebars-template">
 {{#each players}}
     <tr>
@@ -566,29 +561,29 @@
         <li><span class="dib tr">反应：</span>{{#color}}{{fy}}{{/color}}</li>
     </ul>
     <ul class="list-xx-items">
-        <li><span class="dib tr">弹跳：</span>{{#color}}{{ss}}{{/color}}</li>
-        <li><span class="dib tr">体力：</span>{{#color}}{{smll}}{{/color}}</li>
-        <li><span class="dib tr">强壮：</span>{{#color}}{{hx}}{{/color}}</li>
-        <li><span class="dib tr">平衡：</span>{{#color}}{{lkcs}}{{/color}}</li>
-        <li><span class="dib tr">短传：</span>{{#color}}{{ryq}}{{/color}}</li>
-        <li><span class="dib tr">长传：</span>{{#color}}{{fdq}}{{/color}}</li>
-        <li><span class="dib tr">传中：</span>{{#color}}{{tq}}{{/color}}</li>
+        <li><span class="dib tr">弹跳：</span>{{#color}}{{tt}}{{/color}}</li>
+        <li><span class="dib tr">体力：</span>{{#color}}{{tl}}{{/color}}</li>
+        <li><span class="dib tr">强壮：</span>{{#color}}{{qz}}{{/color}}</li>
+        <li><span class="dib tr">平衡：</span>{{#color}}{{ph}}{{/color}}</li>
+        <li><span class="dib tr">短传：</span>{{#color}}{{dc}}{{/color}}</li>
+        <li><span class="dib tr">长传：</span>{{#color}}{{cc}}{{/color}}</li>
+        <li><span class="dib tr">传中：</span>{{#color}}{{cz}}{{/color}}</li>
         <li><span class="dib tr">视野：</span>{{#color}}{{zw}}{{/color}}</li>
-        <li><span class="dib tr">控球：</span>{{#color}}{{sd}}{{/color}}</li>
-        <li><span class="dib tr">盘带：</span>{{#color}}{{js}}{{/color}}</li>
-        <li><span class="dib tr">盘带速度：</span>{{#color}}{{lh}}{{/color}}</li>
-        <li><span class="dib tr">人盯人：</span>{{#color}}{{fy}}{{/color}}</li>
+        <li><span class="dib tr">控球：</span>{{#color}}{{kq}}{{/color}}</li>
+        <li><span class="dib tr">盘带：</span>{{#color}}{{pd}}{{/color}}</li>
+        <li><span class="dib tr">盘带速度：</span>{{#color}}{{pdsd}}{{/color}}</li>
+        <li><span class="dib tr">人盯人：</span>{{#color}}{{rdr}}{{/color}}</li>
     </ul>
     <ul class="list-xx-items">
-        <li><span class="dib tr">侵略性：</span>{{#color}}{{ss}}{{/color}}</li>
-        <li><span class="dib tr">战术意识：</span>{{#color}}{{smll}}{{/color}}</li>
-        <li><span class="dib tr">抢断：</span>{{#color}}{{hx}}{{/color}}</li>
-        <li><span class="dib tr">铲断：</span>{{#color}}{{lkcs}}{{/color}}</li>
-        <li><span class="dib tr">GK扑救：</span>{{#color}}{{ryq}}{{/color}}</li>
-        <li><span class="dib tr">GK手控球：</span>{{#color}}{{fdq}}{{/color}}</li>
-        <li><span class="dib tr">GK大脚开球：</span>{{#color}}{{tq}}{{/color}}</li>
-        <li><span class="dib tr">GK反应：</span>{{#color}}{{zw}}{{/color}}</li>
-        <li><span class="dib tr">GK防守站位：</span>{{#color}}{{sd}}{{/color}}</li>
+        <li><span class="dib tr">侵略性：</span>{{#color}}{{qlx}}{{/color}}</li>
+        <li><span class="dib tr">战术意识：</span>{{#color}}{{zsys}}{{/color}}</li>
+        <li><span class="dib tr">抢断：</span>{{#color}}{{qd}}{{/color}}</li>
+        <li><span class="dib tr">铲断：</span>{{#color}}{{cd}}{{/color}}</li>
+        <li><span class="dib tr">GK扑救：</span>{{#color}}{{gkpj}}{{/color}}</li>
+        <li><span class="dib tr">GK手控球：</span>{{#color}}{{gkskq}}{{/color}}</li>
+        <li><span class="dib tr">GK大脚开球：</span>{{#color}}{{gkdjkq}}{{/color}}</li>
+        <li><span class="dib tr">GK反应：</span>{{#color}}{{gkfy}}{{/color}}</li>
+        <li><span class="dib tr">GK防守站位：</span>{{#color}}{{gkfszw}}{{/color}}</li>
     </ul>
 </div>
 <div class="box-player-ycnl">
@@ -603,6 +598,10 @@
     </li>
     {{/each}}
 </ul>
+</script>
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1254724656'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/stat.php%3Fid%3D1254724656' type='text/javascript'%3E%3C/script%3E"));
 </script>
 </body>
 </html>

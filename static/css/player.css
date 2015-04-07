@@ -1,0 +1,368 @@
+.dib-wrap {
+    font-size: 0;/* 所有浏览器 */
+    *word-spacing: -1px;/* IE6、7 */
+}
+.dib-wrap .dib {
+    font-size: 12px;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align:top;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    /* firefox 中 letter-spacing 会导致脱离普通流的元素水平位移 */
+    .dib-wrap{
+        letter-spacing:-5px;/* Safari 等不支持字体大小为 0 的浏览器, N 根据父级字体调节*/
+    }
+}
+.dib {
+    display: inline-block;
+    *display:inline;
+    *zoom:1;
+}
+
+.side {
+    width: 300px;
+    border: 1px solid rgb(225, 225, 225);
+    background: #ffffff;
+    margin-top: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.13);
+}
+.side > h4 {
+    margin: 0 0;
+    background-color: #337ab7;
+    color: #ffffff;
+    padding: 13px 0 13px 20px;
+    font-weight: bold;
+    font-family: "Microsoft YaHei",微软雅黑, Sans-serif;
+    font-size: 14px;
+}
+.box-txt-search {
+    padding: 10px 0;
+    text-align: center;
+}
+.box-txt-search > input {
+    line-height: 28px;
+    height: 28px;
+    width: 80%;
+}
+.list-ad-search > li {
+    padding: 10px 0;
+}
+.list-ad-search > li > span {
+    width: 90px;
+    display: inline-block;
+    text-align: right;
+}
+
+.item-player {
+    cursor: pointer;
+}
+
+.layout {
+    background-color: rgb(0, 0, 0);
+    box-sizing: border-box;
+    color: rgb(51, 51, 51);
+    display: block;
+    left: 0px;
+    opacity: 0.5;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 1;
+    transition-delay: 0s;
+    transition-duration: 0.15s;
+    transition-property: opacity;
+    transition-timing-function: linear;
+}
+.tip-player-info {
+    position: absolute;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px 1px #ccc;
+    width: 380px;
+    background: #fff;
+    font-size: 12px;
+    border: 1px solid #eaeaea;
+    z-index: 2;
+    display: none;
+}
+.box-tips-trigon {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 20px;
+    left: -30px; 
+}
+.tips-trigon {
+    border-left: 15px solid transparent;
+    border-top: 15px solid transparent;
+    border-right: 15px solid #eaeaea;
+    border-bottom: 15px solid transparent;
+    height: 0px;
+    width: 0px;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.tips-trigon-2 {
+    border-right: 15px solid #ffffff;
+    left: 1px;
+}
+.box-player-title {
+    position: relative;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 7px 0 7px 23px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #4f9cee;
+}
+.box-player-title:before {
+    content: "";
+    display: block;
+    background: #4f9cee;
+    position: absolute;
+    width: 7px;
+    height: 18px;
+    left: 8px;
+    top: 9px;
+}
+.box-player-info {
+}
+.box-player-st {
+    float: left;
+    padding-left: 8px;
+}
+.box-player-xx {
+    border-bottom: 1px solid #e8e8e8;
+    padding: 10px 0;
+}
+.list-xx-items {
+    float: left;
+    width: 33%;
+}
+.tr {
+    text-align: right;
+}
+.list-xx-items {
+    line-height: 22px;
+}
+.list-xx-items > li > .dib {
+    width: 80px;
+}
+.items-val-60 {
+    color: #cccccc;
+}
+.items-val-80 {
+    color: #3d7dd5;
+}
+.items-val-90 {
+    color: #0070c0;
+}
+.box-player-ycnl {
+    padding: 10px;
+    line-height: 20px;
+}
+
+
+.main {
+    position: absolute;
+    left: 320px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #ffffff;
+    border: 1px solid rgb(225, 225, 225);
+    box-shadow: 0 1px 3px rgba(0,0,0,.13);
+}
+.icon-sj {
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    vertical-align: middle;
+    background-image: url("../img/sj.png");
+    background-repeat: no-repeat;
+}
+.icon-sj-14 {
+    background-position: -54px 0;
+}
+.icon-sj-15 {
+    background-position: -92px -0;}
+}
+.icon-sj-10 {
+    background-position: -36px 0;
+}
+.icon-sj-w {
+    background-position: 0 0;
+}
+.icon-sj-06 {
+    background-position: -18px 0;
+}
+.icon-sj-07 {
+    background-position: -74px 0;
+}
+.table {
+    margin-bottom: 0;
+}
+.box-player-vs {
+}
+.tip-player-info > .box-player-info {
+    width: 100%;
+    float: none;
+}
+.box-player-info {
+    float: left;
+    width: 50%;
+    font-size: 12px;
+}
+.box-head-name {
+    text-align: center;
+}
+.box-player-head {
+    float: left;
+}
+.box-player-head > img {
+    box-shadow: 0 0 5px #ddd;
+    width: 128px;
+    height: 128px;
+}
+.list-player-st > li {
+    padding: 2px 0;
+}
+.box-player-other {
+    text-align: right;
+    padding-right: 10px;
+}
+.list-player-info {
+    line-height: 22px;
+}
+.box-player-other {
+    float: right;
+}
+.list-player-pos {
+    line-height: 22px;
+}
+.box-level-change {
+    padding: 10px;
+    text-align: left;
+}
+.list-union-pos {
+    padding-left: 10px;
+}
+.list-union-pos > li {
+    border-radius: 3px 3px 0 0;
+    display: inline-block;
+    padding: 5px 8px;
+    width: 70px;
+    text-align: center;
+    border: 1px solid #dddddd;
+    border-bottom: none;
+    cursor: pointer;
+}
+.list-union-pos > .active {
+    background-color: #428bca;
+    color: #ffffff;
+    border: none;
+}
+.label-pos {
+    display: inline-block;
+    width: 42px;
+    margin-right: 15px;
+}
+.box-hsdz {
+    width: 75px;
+    height: 14px;
+    background-image: url(../img/stars.gif);
+    background-repeat: no-repeat;
+}
+.star1 {
+    background-position: 0 -112px;
+}
+.star2 {
+    background-position: 0 -84px;
+}
+.star3 {
+    background-position: 0 -56px;
+}
+.star4 {
+    background-position: 0 -28px;
+}
+.star5 {
+    background-position: 0 0;
+}
+.icon-foot {
+    display: inline-block;
+    height: 45px;
+    width: 19px;
+    background-image: url(../img/footability.png);
+    background-repeat: no-repeat;
+    color: #ffffff;
+    line-height: 45px;
+    text-align: center;
+}
+.l-foot1, .l-foot2, .l-foot3, .l-foot4 {
+    background-position: 0 0;
+}
+.l-foot5 {
+    background-position: 0 -45px;
+}
+.r-foot1, .r-foot2, .r-foot3, .r-foot4 {
+    background-position: -19px 0;
+}
+.r-foot5 {
+    background-position: -19px -45px;
+}
+#listPlayer {
+    margin-bottom: 0px;
+    border-bottom: 1px solid #dddddd
+}
+.nav-page {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.pagination {
+    margin: 5px 0;
+}
+
+
+
+/* 单页球员信息展示样式 */
+.box-player-page {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    background: #fff;
+}
+.box-player-page-xx {
+    width: 50%;
+    float: left;
+}
+.box-player-page-xx > .box-player-info {
+    width: 100%;
+}
+.box-player-page-poses {
+    float: right;
+    background: url(../img/playMapbg.jpg) no-repeat;
+    width: 324px;
+    height: 517px;
+}
+
+.playmapcont span {
+    display: block;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    width: 40px;
+    text-align: center;
+    color: #fff300;
+    font-weight: bold;
+    position: absolute;
+}
+/* 单页球员信息展示样式 */

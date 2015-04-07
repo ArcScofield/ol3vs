@@ -102,7 +102,7 @@ if ($act === "list") {
 		$sql .= " and $xx2 >= $xx2val";
 	}
 
-	$sql .=" order by zp desc limit 0, 200";
+	$sql .=" order by zp desc limit 0, 170";
 	$data = $db->get_all($sql);
 
 	if (is_array($data)) {
@@ -120,6 +120,16 @@ if ($act === "list") {
 		$result = array("code"=> "ok", "desc"=> "读取数据成功！", "players"=> $data);
 	} else {
 		$result = array("code"=> "error", "desc"=> "读取数据失败！");
+	}
+	echo json_encode($result);
+} else if ($act === "setname") {
+	$id = $_POST["id"];
+	$name = $_POST["name"];
+	$result = $db->update("player", Array("name"=> $name), "id=".$id);
+	if ($result) {
+		$result = array("code"=> "ok", "desc"=> "修改数据成功！");
+	} else {
+		$result = array("code"=> "error", "desc"=> "修改数据失败！");
 	}
 	echo json_encode($result);
 }

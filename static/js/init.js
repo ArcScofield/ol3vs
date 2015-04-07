@@ -1,4 +1,5 @@
 $(function () {
+    "use strict";
     // 球员数据模型
     var playerModel = {
         localPlayers: [], // 本地缓存的球员，用于初次加载
@@ -43,7 +44,7 @@ $(function () {
                 data.xx1val = $("#xx2val").val();
             }
             $.post("module/search.php?act=list", data, function (resp) {
-                var resp = $.parseJSON(resp);
+                resp = $.parseJSON(resp);
                 if (resp.code === "ok") {
                     var players = resp.players;
                     me.playersPage = players;
@@ -54,8 +55,22 @@ $(function () {
                             me.playersCache[players[i].hashid] = players[i];
                         }
                     }
+                    if (players .length > 0 && localStorage && !localStorage.getItem("player")) {
+                        localStorage.setItem("player", JSON.stringify(players));
+                    }
                 }
             });
+        },
+        setDate: function (players) {
+            var me = this;
+            me.playersPage = players;
+            playersView.renderPlayer(players.slice(0, me.pageCount));
+            playersView.renderPage(Math.ceil(players.length / me.pageCount), me.curPage);
+            for (var i = 0; i < players.length; i++) {
+                if (!me.playersCache[players[i].hashid]) {
+                    me.playersCache[players[i].hashid] = players[i];
+                }
+            }
         }
     };
 
@@ -82,7 +97,7 @@ $(function () {
             if (pages === 1) {
                 html = "";
             } else {
-                if (pages <= 7) {
+                if (pages <= 10) {
                     for (var i = 1; i <= pages; i++) {
                         if (i === curPage) {
                             cls = "active";
@@ -92,12 +107,12 @@ $(function () {
                         data.push({page: i, clses: cls, name: i});
                     }
                 } else {
-                    var startPage = (curPage - 3) > 0 ? (curPage - 3) : 1;
-                    var endPage = (curPage + 3) < pages ? (curPage + 3) : pages;
+                    var startPage = (curPage - 4) > 0 ? (curPage - 4) : 1;
+                    var endPage = (curPage + 4) < pages ? (curPage + 4) : pages;
                     if (startPage > 1) {
                         data.push({page: 1, clses: "", name: "«首页"});
                     }
-                    for (var i =  startPage; i<= endPage; i++) {
+                    for (var i =  startPage; i <= endPage; i++) {
                         if (i === curPage) {
                             cls = "active";
                         } else {
@@ -222,7 +237,6 @@ $(function () {
                 obj[a] = true;
             }
         });
-        delete obj;
         return html;
     });
     
@@ -251,8 +265,8 @@ $(function () {
     });
 
     Handlebars.registerHelper('txes', function(options) {
-        var arr = ["肥胖", "普通", "瘦弱"]
-        return arr[~~options.fn(this)];
+        var arr = ["肥胖", "普通", "瘦弱"];
+        return arr[~~options.fn(this) - 1];
     });
 
     Handlebars.registerHelper('team', function(options) {
@@ -266,7 +280,6 @@ $(function () {
                 while (j--) {
                     if (Matches[i].team[j].id === ~~arr[1]) {
                         return Matches[i].team[j].name;
-                        break;
                     }
                 }
             }
@@ -274,7 +287,11 @@ $(function () {
         return "";
     });
 
-    playerModel.getData();
+    if (localStorage && localStorage.getItem("player")) {
+        playerModel.setDate($.parseJSON(localStorage.getItem("player")));
+    } else {
+        playerModel.getData();
+    }
 
     // 加载联赛球队
     $("#slMatch").change(function () {
