@@ -7,6 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <link href="static/js/lib/bootstrap/css/bootstrap.css" rel="stylesheet" media="all">
 <link href="static/css/player.min.css" rel="stylesheet" media="all">
+<meta http-equiv='x-dns-prefetch-control' content='on'>
+<link rel='dns-prefetch' href='http://www.ol3vs.com'>
+<link rel='dns-prefetch' href='http://ol3vs.com'>
+<link rel='prerender' href='http://www.ol3vs.com/match.php'>
+<link rel="next" href="http://www.ol3vs.com/match.php">
 <!--[if lt IE 9]>
 <script>
 (function(tags){for(var i=0; i<tags.length; i++)document.createElement(tags[i]);})(["article","aside","details","figcaption","figure","footer","header","hgroup","nav","section","video"]);
@@ -76,8 +81,8 @@
                         <option value="14">2014</option>
                         <option value="15">2014（韩）</option>
                         <option value="10">2010</option>
-                        <option value="7">2007</option>
-                        <option value="6">2006</option>
+                        <option value="07">2007</option>
+                        <option value="06">2006</option>
                         <option value="02">世界杯</option>
                         <option value="l">传奇</option>
                     </select>
@@ -504,10 +509,10 @@
             <span class="data-item">{{name}}</span>
         </td>
         <td>
-            <span class="data-player-f">{{#aaa}}{{item}}{{/aaa}}</span>
+            {{#aaa}}0-{{item}}{{/aaa}}
         </td>
         <td>
-            <span class="data-player-s">{{#bbb}}{{item}}{{/bbb}}</span>
+             {{#aaa}}1-{{item}}{{/aaa}}
         </td>
         <td>
             <span class="data-diff">{{#diff}}{{item}}{{/diff}}</span>
@@ -599,9 +604,11 @@
     {{/each}}
 </ul>
 </script>
+<div style="display: none;">
 <script type="text/javascript">
 var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
 document.write(unescape("%3Cspan id='cnzz_stat_icon_1254724656'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/stat.php%3Fid%3D1254724656' type='text/javascript'%3E%3C/script%3E"));
 </script>
+</div>
 </body>
 </html>

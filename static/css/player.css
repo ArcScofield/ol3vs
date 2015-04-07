@@ -78,7 +78,7 @@
 .tip-player-info {
     position: absolute;
     border-radius: 3px;
-    box-shadow: 2px 2px 2px 1px #ccc;
+    box-shadow: 0 0 4px 1px #ccc;
     width: 380px;
     background: #fff;
     font-size: 12px;

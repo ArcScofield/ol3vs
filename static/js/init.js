@@ -351,14 +351,13 @@ $(function () {
         e.stopPropagation();
     }).on("change", "input", function (e) {
         var hashid = $(this).attr("data-hashid");
-        var len = $("#listPlayer").find("input:checked").length;
 
         if ($(this).prop("checked") && playerModel.playersCache[hashid]) {
             vs.players.push(playerModel.playersCache[hashid]);
         } else {
             vs.players.pop();
         }
-        if (len === 2) {
+        if (vs.players.length === 2) {
             var source   = $("#vsPlayerInfoTpl").html();
             var template = Handlebars.compile(source);
             var html = template(vs);
