@@ -1,0 +1,6 @@
+<br />
+<b>Warning</b>:  readfile(http://static.inven.co.kr/image_2011/site_image/fifaonline3/playerimg/p208137.png) [<a href='function.readfile'>function.readfile</a>]: failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in <b>D:\myfile\GitHub\ol3vs\module\data.php</b> on line <b>147</b><br />
+<br />
+<b>Warning</b>:  readfile(http://static.inven.co.kr/image_2011/site_image/fifaonline3/playerimg/p208137.png) [<a href='function.readfile'>function.readfile</a>]: failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in <b>D:\myfile\GitHub\ol3vs\module\data.php</b> on line <b>148</b><br />
