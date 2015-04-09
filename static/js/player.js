@@ -100,7 +100,7 @@ var Matches = [
 				"name": "科尔多瓦"
 			}, {
 				"id": 18,
-				"name": "阿尔梅里亚"
+				"name": "西班牙人"
 			}, {
 				"id": 19,
 				"name": "拉科鲁里亚"
@@ -268,7 +268,7 @@ var Matches = [
 				"name": "佛罗伦萨"
 			}, {
 				"id": 10,
-				"name": "森索罗"
+				"name": "萨索罗"
 			}, {
 				"id": 11,
 				"name": "巴勒莫"
@@ -1634,6 +1634,24 @@ var Matches = [
 		"id": 32,
 		"name": "墨西哥联赛",
 		"team": []
+	}, {
+		"id": 33,
+		"name": "中国足球超级联赛",
+		"team": [
+			{
+				"id": 1,
+				"name": "广州恒大",
+			}, {
+				"id": 2,
+				"name": "山东鲁能"
+			}, {
+				"id": 3,
+				"name": "贵州人和"
+			}, {
+				"id": 4,
+				"name": "北京国安"
+			}
+		]
 	}
 ];
 
@@ -2094,7 +2112,8 @@ $(function () {
 
     // 加载联赛球队
     $("#slMatch").change(function () {
-        var val   = $(this)[0].selectedIndex;
+        var val   = $(this).val();
+        console.log(val);
         var doc   = document.createDocumentFragment();
         var datas = Matches[val].team;
         var op    = document.createElement("option");
@@ -2150,14 +2169,13 @@ $(function () {
         e.stopPropagation();
     }).on("change", "input", function (e) {
         var hashid = $(this).attr("data-hashid");
-        var len = $("#listPlayer").find("input:checked").length;
 
         if ($(this).prop("checked") && playerModel.playersCache[hashid]) {
             vs.players.push(playerModel.playersCache[hashid]);
         } else {
             vs.players.pop();
         }
-        if (len === 2) {
+        if (vs.players.length === 2) {
             var source   = $("#vsPlayerInfoTpl").html();
             var template = Handlebars.compile(source);
             var html = template(vs);
@@ -2232,6 +2250,7 @@ $(function () {
     */
     $('#vsModal').on('hide.bs.modal', function () {
         vs.players.length = 0;
+        $("#listPlayer").find(".success").removeClass("success");
         $("#listPlayer").find("input:checked").prop("checked", false);
     });
 
