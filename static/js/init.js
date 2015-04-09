@@ -295,7 +295,8 @@ $(function () {
 
     // 加载联赛球队
     $("#slMatch").change(function () {
-        var val   = $(this)[0].selectedIndex;
+        var val   = $(this).val();
+        console.log(val);
         var doc   = document.createDocumentFragment();
         var datas = Matches[val].team;
         var op    = document.createElement("option");
