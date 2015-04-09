@@ -432,6 +432,7 @@ $(function () {
     */
     $('#vsModal').on('hide.bs.modal', function () {
         vs.players.length = 0;
+        $("#listPlayer").find(".success").removeClass("success");
         $("#listPlayer").find("input:checked").prop("checked", false);
     });
 
