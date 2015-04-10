@@ -2,7 +2,7 @@
 require_once("../includes/db.php");
 $db = new DB();
 
-/*
+
 $ds = $_POST["data"];
 $len = count($ds);
 for ($i = 0; $i < $len; $i++) {
@@ -97,21 +97,22 @@ for ($i = 0; $i < $len; $i++) {
     //}
     echo json_encode($result);
 }
-*/
-$sql = "select head from player where sj='15'";
+/*
+$sql = "select head,url from player where sj='10'";
 $data = $db->get_all($sql);
 $len = count($data);
 for ($i = 0; $i < $len; $i++) {
     $d = $data[$i];
-    $url = "http://static.inven.co.kr/image_2011/site_image/fifaonline3/playerimg/".$d["head"];
+    $url = $d["url"];
     if (!file_exists("../static/img/head/".$d["head"])) {
         // echo "<img src='".$url."' />";
         print_r(getImage($url, "../static/img/head", $d["head"]));
     }
 }
+*/
 
 // 获取头像
-function getImage ($url, $save_dir='', $filename='', $type = 1) {
+function getImage ($url, $save_dir='', $filename='', $type = 0) {
     if ( trim($url) == '' ) {
         return array('file_name'=>'', 'save_path'=>'', 'error'=>1); 
     } 
@@ -141,7 +142,7 @@ function getImage ($url, $save_dir='', $filename='', $type = 1) {
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-        curl_setopt($ch, curlopt_referer, "http://static.inven.co.kr/");
+        curl_setopt($ch, curlopt_referer, "http://www.sgamer.cn/");
         $img = curl_exec($ch);
         curl_close($ch);
     } else {
