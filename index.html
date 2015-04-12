@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -390,6 +391,10 @@
 <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="static/js/lib/handlebars/handlebars.js"></script>
 <script type="text/javascript" src="static/js/player.min.js"></script>
+<!--
+<script type="text/javascript" src="static/js/datas.js"></script>
+<script type="text/javascript" src="static/js/init.js"></script>
+-->
 <script id="playerTpl" type="text/x-handlebars-template">
 {{#each players}}
     <tr>
@@ -560,6 +565,7 @@
         <li><span class="dib tr">射术：</span>{{#color}}{{ss}}{{/color}}</li>
         <li><span class="dib tr">射门力量：</span>{{#color}}{{smll}}{{/color}}</li>
         <li><span class="dib tr">弧线：</span>{{#color}}{{hx}}{{/color}}</li>
+        <li><span class="dib tr">远射：</span>{{#color}}{{ys}}{{/color}}</li>
         <li><span class="dib tr">凌空抽射：</span>{{#color}}{{lkcs}}{{/color}}</li>
         <li><span class="dib tr">任意球：</span>{{#color}}{{ryq}}{{/color}}</li>
         <li><span class="dib tr">罚点球：</span>{{#color}}{{fdq}}{{/color}}</li>
@@ -568,9 +574,9 @@
         <li><span class="dib tr">速度：</span>{{#color}}{{sd}}{{/color}}</li>
         <li><span class="dib tr">加速：</span>{{#color}}{{js}}{{/color}}</li>
         <li><span class="dib tr">灵活：</span>{{#color}}{{lh}}{{/color}}</li>
-        <li><span class="dib tr">反应：</span>{{#color}}{{fy}}{{/color}}</li>
     </ul>
     <ul class="list-xx-items">
+        <li><span class="dib tr">反应：</span>{{#color}}{{fy}}{{/color}}</li>
         <li><span class="dib tr">弹跳：</span>{{#color}}{{tt}}{{/color}}</li>
         <li><span class="dib tr">体力：</span>{{#color}}{{tl}}{{/color}}</li>
         <li><span class="dib tr">强壮：</span>{{#color}}{{qz}}{{/color}}</li>
@@ -582,9 +588,9 @@
         <li><span class="dib tr">控球：</span>{{#color}}{{kq}}{{/color}}</li>
         <li><span class="dib tr">盘带：</span>{{#color}}{{pd}}{{/color}}</li>
         <li><span class="dib tr">盘带速度：</span>{{#color}}{{pdsd}}{{/color}}</li>
-        <li><span class="dib tr">人盯人：</span>{{#color}}{{rdr}}{{/color}}</li>
     </ul>
     <ul class="list-xx-items">
+        <li><span class="dib tr">人盯人：</span>{{#color}}{{rdr}}{{/color}}</li>
         <li><span class="dib tr">侵略性：</span>{{#color}}{{qlx}}{{/color}}</li>
         <li><span class="dib tr">战术意识：</span>{{#color}}{{zsys}}{{/color}}</li>
         <li><span class="dib tr">抢断：</span>{{#color}}{{qd}}{{/color}}</li>

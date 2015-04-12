@@ -1652,6 +1652,13 @@ var Matches = [
 				"name": "北京国安"
 			}
 		]
+	}, {
+		"id": 34,
+		"name": "世界联赛",
+		"team": [{
+			"id": 1,
+			"name": "中国传奇"
+		}]
 	}
 ];
 
@@ -1972,7 +1979,8 @@ $(function () {
             {"name": "长传", "pos": "cdm cm cam rw lw rm lm", "item": "cc"},
             {"name": "传中", "pos": "rb lb rw lw cf rm lm", "item": "cz"},
             {"name": "控球", "pos": "rb lb cb cdm cm cam rw lw cf st rm lm", "item": "kq"},
-            {"name": "盘带", "pos": "cm cam rw lw cf st rm lm", "item": "pd"},
+            {"name": "盘带", "pos": "cm cam rw lw cf rm lm", "item": "pd"},
+            {"name": "盘带速度", "pos": "", "item": "pdsd"},
             {"name": "战术意识", "pos": "", "item": "zsys"},
             {"name": "视野", "pos": "cdm cm cam rw lw rm lm", "item": "sy"},
             {"name": "抢断", "pos": "rb lb cb cdm cm", "item": "qd"},
@@ -2113,7 +2121,6 @@ $(function () {
     // 加载联赛球队
     $("#slMatch").change(function () {
         var val   = $(this).val();
-        console.log(val);
         var doc   = document.createDocumentFragment();
         var datas = Matches[val].team;
         var op    = document.createElement("option");
@@ -2221,7 +2228,18 @@ $(function () {
         if (hashid) {
             $("#player" + hashid).hide();
         }
+    })
+    /*.on("click", ".item-player", function () {
+        var hashid = $(this).attr("data-hashid");
+        if (hashid && playerModel.playersCache[hashid]) {
+            var source   = $("#playerInfoTpl").html();
+            var template = Handlebars.compile(source);
+            var html = template(playerModel.playersCache[hashid]);
+            $(".box-player-page-xx").html(html);
+            $(".box-player-page").show();
+        }
     });
+    */
 
     if (window.VBArray && ~~document.documentMode <= 9) {
         var defaultStr = "逗号分隔搜索多名球员";
@@ -2236,18 +2254,7 @@ $(function () {
             }
         });
     }
-    /*
-    .on("click", ".item-player", function () {
-        var hashid = $(this).attr("data-hashid");
-        if (hashid && playersCache[hashid]) {
-            var source   = $("#playerInfoTpl").html();
-            var template = Handlebars.compile(source);
-            var html = template(playersCache[hashid]);
-            $(".box-player-page-xx").html(html);
-            $(".box-player-page").show();
-        }
-    });
-    */
+
     $('#vsModal').on('hide.bs.modal', function () {
         vs.players.length = 0;
         $("#listPlayer").find(".success").removeClass("success");

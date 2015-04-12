@@ -107,9 +107,11 @@ addChangeEvent(aaa, function () {
 });
 
 $("#btnSave").click(function () {
-    // data.gj = $("#txtGj").val();
-    // data.ls = $("#txtLs").val();
-    // data.jlb = $("#txtJlb").val();
+    $.each(data, function (i ,item) {
+        // item.gj = $("#txtGj").val();
+        item.ls = $("#txtLs").val();
+        item.jlb = $("#txtJlb").val();
+    });
     $.post("module/data.php", {"data": data}, function (resp) {
         console.log(resp);
     });

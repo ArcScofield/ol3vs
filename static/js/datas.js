@@ -40,7 +40,7 @@ var HdProp = [
 */
 var Matches = [
 	{
-		"id": "",
+		"id": 0,
 		"name": "",
 		"team": []
 	}, {	
@@ -1655,10 +1655,10 @@ var Matches = [
 	}, {
 		"id": 34,
 		"name": "世界联赛",
-		"team": [
+		"team": [{
 			"id": 1,
 			"name": "中国传奇"
-		]
+		}]
 	}
 ];
 
